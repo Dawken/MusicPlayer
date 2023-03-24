@@ -1,10 +1,10 @@
 import React from 'react'
-import './App.css'
+import Login from './components/subPages/login'
+
 
 function App() {
 	return (
-		<>
-		</>
+		<Login />
 	)
 }
 
