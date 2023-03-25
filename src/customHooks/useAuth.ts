@@ -17,7 +17,7 @@ const useAuth = () => {
 			})
 			.then((res) => {
 				setSpotify(res.data);
-				window.history.pushState({}, '', '/');
+				window.history.pushState({}, '/', '/');
 			})
 			.catch(() => {
 				navigate('/');
