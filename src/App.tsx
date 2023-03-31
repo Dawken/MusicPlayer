@@ -1,9 +1,9 @@
-import React from 'react';
-import Login from './components/subPages/login';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import PrivateRoutes from './components/utils/privateRoutes';
-import Layout from './components/layout/layout';
-import { QueryClient, QueryClientProvider } from 'react-query';
+import React from 'react'
+import Login from './components/subPages/login'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import PrivateRoutes from './components/utils/privateRoutes'
+import Layout from './components/layout/layout'
+import { QueryClient, QueryClientProvider } from 'react-query'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -11,7 +11,7 @@ const queryClient = new QueryClient({
 			refetchOnWindowFocus: false,
 		},
 	},
-});
+})
 
 const App = () => {
 	return (
@@ -25,7 +25,7 @@ const App = () => {
 				</Routes>
 			</BrowserRouter>
 		</QueryClientProvider>
-	);
-};
+	)
+}
 
-export default App;
+export default App

@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 export type StatusCode = {
-	isLoggedIn: boolean;
-};
+	isLoggedIn: boolean
+}
 
-export const initialState: StatusCode = { isLoggedIn: false };
+export const initialState: StatusCode = { isLoggedIn: false }
 
 export const user = createSlice({
 	name: 'clientResponse',
@@ -14,9 +14,9 @@ export const user = createSlice({
 			state,
 			action: PayloadAction<{ isLogged: boolean }>
 		) => {
-			state.isLoggedIn = action.payload.isLogged;
+			state.isLoggedIn = action.payload.isLogged
 		},
 	},
-});
+})
 
-export const { getClientResponse } = user.actions;
+export const { getClientResponse } = user.actions
