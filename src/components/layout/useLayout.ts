@@ -1,15 +1,14 @@
-import useAuth from '../../../customHooks/useAuth'
+import useAuth from '../../customHooks/useAuth'
 import { useEffect, useState } from 'react'
-import spotifyApi from '../../../shared/spotifyApi'
+import spotifyApi from '../../shared/spotifyApi'
+import { Track } from '../../types/searchTracksResponse'
 
-const useSearchBar = () => {
+const useLayout = () => {
 	const spotify = useAuth()
 	const { accessToken } = spotify
 
-	const [search, setSearch] = useState('')
-	const [searchResult, setSearchResult] = useState<
-		SpotifyApi.TrackObjectSimplified[]
-	>([])
+	const [search, setSearch] = useState<string>('')
+	const [searchResult, setSearchResult] = useState<Track[]>([])
 
 	useEffect(() => {
 		if (accessToken) {
@@ -21,7 +20,7 @@ const useSearchBar = () => {
 		if (!search) return setSearchResult([])
 		if (!accessToken) return
 
-		spotifyApi.searchTracks(search).then((res) => {
+		spotifyApi.searchTracks(search).then((res: any) => {
 			if (res.body.tracks) {
 				setSearchResult(res.body.tracks.items)
 			}
@@ -30,6 +29,7 @@ const useSearchBar = () => {
 	return {
 		setSearch,
 		search,
+		searchResult,
 	}
 }
-export default useSearchBar
+export default useLayout
