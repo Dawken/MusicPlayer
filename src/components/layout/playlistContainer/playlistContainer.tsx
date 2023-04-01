@@ -6,13 +6,12 @@ interface ChildComponentProps {
 	searchResult: Track[]
 }
 const PlaylistContainer = ({ searchResult }: ChildComponentProps) => {
-	console.log(searchResult)
 	return (
-		<>
+		<div>
 			{searchResult.map((item) => {
-				return <TrackSearchResult item={item} key={Math.random()} />
+				return <TrackSearchResult item={item} key={item.id} />
 			})}
-		</>
+		</div>
 	)
 }
 export default PlaylistContainer
