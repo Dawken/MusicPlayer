@@ -1,9 +1,11 @@
 import React from 'react'
-import useSearchBar from './useSearchBar'
 
-const SearchBar = () => {
-	const { setSearch, search } = useSearchBar()
+type SearchType = {
+	search: string
+	setSearch: React.Dispatch<React.SetStateAction<string>>
+}
 
+const SearchBar = ({ search, setSearch }: SearchType) => {
 	return (
 		<input onChange={(event) => setSearch(event.target.value)} value={search} />
 	)

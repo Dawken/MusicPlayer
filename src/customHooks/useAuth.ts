@@ -44,7 +44,7 @@ const useAuth = () => {
 				.catch(() => {
 					navigate('/login')
 				})
-		}, (expires - 60) * 1000)
+		}, (expires - 120) * 1000)
 		return () => clearInterval(interval)
 	}, [accessToken, expires])
 	return spotify
