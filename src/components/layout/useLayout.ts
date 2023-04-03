@@ -11,20 +11,17 @@ const useLayout = () => {
 	const [searchResult, setSearchResult] = useState<Track[]>([])
 
 	useEffect(() => {
-		if (accessToken) {
-			spotifyApi.setAccessToken(accessToken)
-		}
-	}, [accessToken])
-
-	useEffect(() => {
 		if (!search) return setSearchResult([])
 		if (!accessToken) return
 
-		spotifyApi.searchTracks(search).then((res: any) => {
-			if (res.body.tracks) {
-				setSearchResult(res.body.tracks.items)
-			}
-		})
+		if (accessToken) {
+			spotifyApi.setAccessToken(accessToken)
+			spotifyApi.searchTracks(search).then((res: any) => {
+				if (res.body.tracks) {
+					setSearchResult(res.body.tracks.items)
+				}
+			})
+		}
 	}, [search])
 	return {
 		setSearch,
