@@ -1,11 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export type StatusCode = {
-	isLoggedIn: boolean
-	track: string
-}
-
-export const initialState: StatusCode = { isLoggedIn: false, track: '' }
+export const initialState = { isLoggedIn: false, track: '' }
 
 export const user = createSlice({
 	name: 'clientResponse',
