@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import SpotifyPlayer from 'react-spotify-web-playback'
 import useAuth from '../../../customHooks/useAuth'
+import styles from './musicPlayer.module.scss'
+import SpotifyPlayer from 'react-spotify-web-playback'
 
 interface TrackUriType {
 	trackUri: string
@@ -16,10 +17,12 @@ const MusicPlayer = ({ trackUri }: TrackUriType) => {
 	}, [trackUri])
 
 	if (!spotify.accessToken) return null
+
 	return (
-		<div>
+		<div className={styles.footer}>
 			<SpotifyPlayer
 				token={spotify.accessToken}
+				styles={{ bgColor: '#111111' }}
 				showSaveIcon
 				callback={(state) => {
 					!state.isPlaying && setPlay(false)

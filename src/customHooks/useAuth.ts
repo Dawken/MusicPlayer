@@ -11,13 +11,11 @@ const useAuth = () => {
 
 	const isLogged = useAppSelector((state) => state.auth.isLoggedIn)
 
-	const { accessToken } = spotify
 	useEffect(() => {
-		if (!accessToken && isLogged)
+		if (isLogged)
 			musicPlayerBackend
 				.get('/api/get-cookie')
 				.then((res) => {
-					window.history.pushState({}, '', '/')
 					setSpotify(res.data)
 				})
 				.catch(() => {

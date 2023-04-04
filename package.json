@@ -3,6 +3,9 @@
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
+		"@mui/icons-material": "5.11.11",
+		"@mui/lab": "5.0.0-alpha.121",
+		"@mui/material": "5.11.2",
 		"@reduxjs/toolkit": "1.9.1",
 		"@testing-library/jest-dom": "5.16.5",
 		"@testing-library/react": "13.4.0",
@@ -21,6 +24,7 @@
 		"react-router-dom": "6.9.0",
 		"react-scripts": "5.0.1",
 		"react-spotify-web-playback": "0.13.4",
+		"sass": "1.60.0",
 		"spotify-api": "0.0.0",
 		"spotify-web-api-js": "1.5.2",
 		"spotify-web-api-node": "5.0.2",

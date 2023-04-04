@@ -1,40 +1,18 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import TrackSearchResult from './trackSearchResult/trackSearchResult'
 import { Track } from '../../../types/searchTracksResponse'
-import useAuth from '../../../customHooks/useAuth'
-import spotifyApi from '../../../shared/spotifyApi'
+import usePlaylistContainer from './usePlaylistContainer'
+import styles from './playlistContainer.module.scss'
 
-interface ChildComponentProps {
+type SearchResultType = {
 	searchResult: Track[]
 }
-type TrackType = {
-	track: Track
-}
 
-const PlaylistContainer = ({ searchResult }: ChildComponentProps) => {
-	const [tracks, setTracks] = useState<TrackType[]>([])
-	const spotify = useAuth()
-
-	const { accessToken } = spotify
-
-	useEffect(() => {
-		if (accessToken) {
-			spotifyApi.setAccessToken(accessToken)
-			spotifyApi.getMyRecentlyPlayedTracks({ limit: 30 }).then((data: any) => {
-				const uniqueTracks = data.body.items.filter(
-					(item: TrackType, index: number, self: []) =>
-						index ===
-						self.findIndex(
-							(tracks: TrackType) => tracks.track.id === item.track.id
-						)
-				)
-				setTracks(uniqueTracks)
-			})
-		}
-	}, [accessToken])
+const PlaylistContainer = ({ searchResult }: SearchResultType) => {
+	const { tracks } = usePlaylistContainer()
 
 	return (
-		<div>
+		<div className={styles.mainContainer}>
 			{searchResult.length > 0
 				? searchResult.map((item) => {
 						return <TrackSearchResult item={item} key={item.id} />
