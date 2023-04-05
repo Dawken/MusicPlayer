@@ -1,6 +1,29 @@
+.tracks {
+  margin: 20px 20px;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
+  gap: 34px;
+}
+.sectionText {
+  font-size: 35px;
+  color: white;
+  margin: 20px 15vh;
+  display: flex;
+  justify-content: flex-start;
+  font-family: 'Fira Sans', sans-serif;
+}
+
 .mainContainer {
   background-color: #111111;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  .bestResults {
+    .bestResultsTracks {
+      @extend .tracks
+    }
+  }
+  .lastPlayed {
+    .lastPlayedTracks {
+      @extend .tracks
+    }
+  }
 }
