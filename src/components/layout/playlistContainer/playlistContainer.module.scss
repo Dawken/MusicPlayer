@@ -16,14 +16,21 @@
 
 .mainContainer {
   background-color: #111111;
+  padding-bottom: 100px;
   .bestResults {
     .bestResultsTracks {
       @extend .tracks
     }
   }
-  .lastPlayed {
-    .lastPlayedTracks {
+  .bestArtists {
+    .bestResultsArtists {
       @extend .tracks
+    }
+  }
+  .lastPlayed {
+    margin-bottom: 50px;
+    .lastPlayedTracks {
+      @extend .tracks;
     }
   }
 }

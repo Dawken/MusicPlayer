@@ -6,14 +6,14 @@ import MusicPlayer from '../sharedComponents/musicPlayer/musicPlayer'
 import { useAppSelector } from '../../redux/store'
 
 const Layout = () => {
-	const { setSearch, search, searchResult } = useLayout()
+	const { setSearch, search, searchResult, artists } = useLayout()
 
 	const track = useAppSelector((state) => state.auth.track)
 
 	return (
 		<div>
 			<SearchBar search={search} setSearch={setSearch} />
-			<PlaylistContainer searchResult={searchResult} />
+			<PlaylistContainer searchResult={searchResult} artists={artists} />
 			<MusicPlayer trackUri={track} />
 		</div>
 	)

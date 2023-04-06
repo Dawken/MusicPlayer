@@ -1,12 +1,14 @@
 import React from 'react'
-import { Track } from '../../../../types/searchTracksResponse'
 import { store } from '../../../../redux/store'
 import { setTrack } from '../../../../redux/user'
 import styles from './trackSearchResult.module.scss'
 import PlayCircleFilledWhiteIcon from '@mui/icons-material/PlayCircleFilledWhite'
+import SpotifyApi from 'spotify-web-api-node'
+
+import TrackObjectFull = SpotifyApi.TrackObjectFull
 
 interface TrackSearchResultProps {
-	item: Track
+	item: TrackObjectFull
 }
 
 const TrackSearchResult = ({ item }: TrackSearchResultProps) => {

@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react'
 import useAuth from '../../../customHooks/useAuth'
 import spotifyApi from '../../../shared/spotifyApi'
-import { Track } from '../../../types/searchTracksResponse'
+import SpotifyApi from 'spotify-web-api-node'
+import TrackObjectFull = SpotifyApi.TrackObjectFull
+import PlayHistoryObject = SpotifyApi.PlayHistoryObject
 
-type TrackType = {
-	track: Track
-}
+type TracksType = SpotifyApi.PlayHistoryObject[]
 
 const usePlaylistContainer = () => {
-	const [tracks, setTracks] = useState<TrackType[]>([])
+	const [tracks, setTracks] = useState<TrackObjectFull[]>([])
 	const spotify = useAuth()
 
 	const { accessToken } = spotify
@@ -16,16 +16,19 @@ const usePlaylistContainer = () => {
 	useEffect(() => {
 		if (accessToken) {
 			spotifyApi.setAccessToken(accessToken)
-			spotifyApi.getMyRecentlyPlayedTracks({ limit: 30 }).then((data: any) => {
-				const uniqueTracks = data.body.items.filter(
-					(item: TrackType, index: number, self: []) =>
-						index ===
-						self.findIndex(
-							(tracks: TrackType) => tracks.track.id === item.track.id
-						)
-				)
-				setTracks(uniqueTracks)
-			})
+			spotifyApi
+				.getMyRecentlyPlayedTracks({ limit: 30 })
+				.then((data: { body: { items: TracksType } }) => {
+					const uniqueTracks = data.body.items.filter(
+						(item, index, self) =>
+							index ===
+							self.findIndex((tracks) => tracks.track.id === item.track.id)
+					)
+					const convertedTracks = uniqueTracks.map(
+						(item: PlayHistoryObject) => item.track
+					)
+					setTracks(convertedTracks)
+				})
 		}
 	}, [accessToken])
 

@@ -1,8 +1,8 @@
 .songContainer {
-  width: auto;
+  width: 200px;
   max-width: 220px ;
-  background-color: #1f1f1f;
-  border-radius: 12px;
+  background-color: #151515;
+  border-radius: 10px;
   text-align: center;
   color: white;
   margin: 10px;
@@ -10,7 +10,7 @@
   .songPhotoContainer {
     position: relative;
     .songPhoto {
-      width: 85%;
+      width: 140px;
       margin: 15px;
       border-radius: 12px;
       -webkit-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
