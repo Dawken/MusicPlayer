@@ -1,4 +1,6 @@
 import React from 'react'
+import styles from './searchBar.module.scss'
+import SearchIcon from '@mui/icons-material/Search'
 
 type SearchType = {
 	search: string
@@ -7,7 +9,17 @@ type SearchType = {
 
 const SearchBar = ({ search, setSearch }: SearchType) => {
 	return (
-		<input onChange={(event) => setSearch(event.target.value)} value={search} />
+		<div className={styles.searchBarContainer}>
+			<div className={styles.searchBar}>
+				<SearchIcon className={styles.searchIcon} />
+				<input
+					className={styles.searchInput}
+					placeholder={'Search something'}
+					onChange={(event) => setSearch(event.target.value)}
+					value={search}
+				/>
+			</div>
+		</div>
 	)
 }
 export default SearchBar
