@@ -5,6 +5,7 @@ import useLayout from './useLayout'
 import MusicPlayer from '../sharedComponents/musicPlayer/musicPlayer'
 import { useAppSelector } from '../../redux/store'
 import styles from './layout.module.scss'
+import SidebarMenu from '../sharedComponents/sidebarMenu/sidebarMenu'
 
 const Layout = () => {
 	const { setSearch, search, searchResult, artists } = useLayout()
@@ -13,8 +14,11 @@ const Layout = () => {
 
 	return (
 		<div className={styles.layoutContainer}>
-			<SearchBar search={search} setSearch={setSearch} />
-			<PlaylistContainer searchResult={searchResult} artists={artists} />
+			<SidebarMenu />
+			<div className={styles.mainContainer}>
+				<SearchBar search={search} setSearch={setSearch} />
+				<PlaylistContainer searchResult={searchResult} artists={artists} />
+			</div>
 			<MusicPlayer trackUri={track} />
 		</div>
 	)

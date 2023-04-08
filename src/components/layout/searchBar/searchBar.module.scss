@@ -1,5 +1,7 @@
 .searchBarContainer {
-  padding: 30px 0 10px 120px;
+  display: flex;
+  justify-content: flex-start;
+  padding: 5vh 0 2vh 8vh;
   .searchBar {
     width: 300px;
     height: 40px;
@@ -26,5 +28,4 @@
     }
   }
 }
-
 

@@ -1,4 +1,7 @@
-.layoutContainer {
-  background-color: #111111;
+.layoutContainer{
+  display: flex;
   height: 100%;
+  .mainContainer {
+    width: 100%;
+  }
 }

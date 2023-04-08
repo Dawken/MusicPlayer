@@ -1,21 +1,19 @@
 .tracks {
-  margin: 20px 20px;
+  margin: 10px;
   justify-content: center;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, max-content));
-  gap: 34px;
 }
 .sectionText {
   font-size: 35px;
   color: white;
-  margin: 20px 15vh;
+  margin: 20px 70px;
   display: flex;
   justify-content: flex-start;
   font-family: 'Fira Sans', sans-serif;
 }
 
 .mainContainer {
-  padding-bottom: 100px;
   .bestResults {
     .bestResultsTracks {
       @extend .tracks
