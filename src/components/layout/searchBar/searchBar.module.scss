@@ -1,9 +1,9 @@
 .searchBarContainer {
   display: flex;
   justify-content: flex-start;
-  padding: 5vh 0 2vh 8vh;
+  padding: 2rem;
   .searchBar {
-    width: 300px;
+    width: 30vh;
     height: 40px;
     border: #111111;
     border-radius: 20px;
@@ -19,7 +19,7 @@
       background-color: #505050;
       outline: none;
       border: none;
-      width: 240px;
+      width: 23vh;
       height: 30px;
       color: white;
       font-family: 'Rajdhani', sans-serif;
