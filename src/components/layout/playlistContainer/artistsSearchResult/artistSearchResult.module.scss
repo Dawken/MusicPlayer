@@ -1,19 +1,20 @@
 .artistContainer {
-  width: 200px;
-  max-width: 220px ;
+  width: 20vh ;
+  height: 28vh;
   background-color: #151515;
   border-radius: 10px;
   text-align: center;
   color: white;
-  margin: 10px;
+  margin: 40px;
   transition: 0.3s;
   .artistPhotoContainer {
+    display: flex;
+    justify-content: center;
     .artistPhoto {
       width: 140px;
       height: 140px;
       border-radius: 50%;
       margin:15px;
-      overflow: hidden;
       -webkit-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
       -moz-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
       box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
@@ -21,9 +22,12 @@
   }
   .artistName {
     font-family: 'Fira Sans', sans-serif;
-    margin: 10px;
+    margin: 20px 0;
     font-weight: bold;
     font-size: 18px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
   }
 }
 .aristContainer:hover {

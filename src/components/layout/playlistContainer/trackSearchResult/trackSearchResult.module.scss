@@ -1,32 +1,23 @@
 .songContainer {
-  max-width: 20vh ;
+  width: 20vh ;
+  height: 28vh;
   background-color: #151515;
   border-radius: 10px;
   text-align: center;
   color: white;
-  margin: 20px;
+  margin: 20px 40px;
   transition: 0.3s;
   .songPhotoContainer {
-    position: relative;
+    display: flex;
+    justify-content: center;
     .songPhoto {
       width: 15vh;
+      height: 15vh;
       margin: 15px;
       border-radius: 12px;
       -webkit-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
       -moz-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
       box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
-    }
-    .playIcon {
-      font-size: 60px;
-      color: #16ff00;
-      position: absolute;
-      bottom: 30px;
-      right: 20px;
-      visibility: hidden;
-      transition: 0.4s;
-      transform: translate3d(0, 10px, 0);
-      transition-timing-function: ease;
-      transition-duration: 0.1s;
     }
   }
   .artistName {
@@ -34,12 +25,17 @@
     margin: 0 10px;
     font-weight: bold;
     font-size: 13px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
   }
   .songName {
     font-family: 'Fira Sans', sans-serif;
-    margin: 10px 10px;
+    padding: 20px 10px;
     font-weight: 200;
     font-size: 17px;
+    display: flex;
+    justify-content: center;
   }
 }
 .songContainer:hover {

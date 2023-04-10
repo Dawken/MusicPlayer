@@ -25,7 +25,9 @@ const useLayout = () => {
 				}
 			})
 			spotifyApi.searchArtists(search).then((res) => {
-				if (res.body.artists?.items) setArtists(res.body.artists.items)
+				if (res.body.artists?.items) {
+					setArtists(res.body.artists.items)
+				}
 			})
 		}
 	}, [search])

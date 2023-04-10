@@ -1,7 +1,9 @@
 .sidebarMenuContainer {
   background-color: black;
-  width: 90%;
+  width: 15%;
   grid-area: sidebar;
+  height: 100vh;
+  position: fixed;
   .homePage {
     display: flex;
     margin: 20px 1rem;
