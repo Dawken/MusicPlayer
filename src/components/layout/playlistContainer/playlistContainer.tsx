@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import TrackSearchResult from './trackSearchResult/trackSearchResult'
 import usePlaylistContainer from './usePlaylistContainer'
 import styles from './playlistContainer.module.scss'
@@ -7,7 +7,6 @@ import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import SkeletonTrackSearchResult from '../../../animations/skeletonLoading/skeletonTrackSearchResult'
-import { useAppSelector } from '../../../redux/store'
 import SkeletonArtistSearchResult from '../../../animations/skeletonLoading/skeletonArtistSearchResult'
 
 interface SearchResultType {
@@ -16,37 +15,7 @@ interface SearchResultType {
 }
 
 const PlaylistContainer = ({ searchResult, artists }: SearchResultType) => {
-	const { tracks } = usePlaylistContainer()
-
-	const [visibleItems, setVisibleItems] = useState(6)
-
-	useEffect(() => {
-		const handleResize = () => {
-			const windowWidth = window.innerWidth
-			switch (true) {
-				case windowWidth <= 1630 && windowWidth >= 1360:
-					setVisibleItems(5)
-					break
-				case windowWidth <= 1360 && windowWidth >= 1090:
-					setVisibleItems(4)
-					break
-				case windowWidth < 1090 && windowWidth >= 810:
-					setVisibleItems(3)
-					break
-				case windowWidth < 810:
-					setVisibleItems(2)
-					break
-				default:
-					setVisibleItems(6)
-			}
-		}
-		handleResize()
-		window.addEventListener('resize', handleResize)
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [])
-	const isTyping = useAppSelector((state) => state.auth.isUserTyping)
+	const { tracks, isTyping, visibleItems } = usePlaylistContainer()
 
 	return (
 		<div className={styles.mainContainer}>

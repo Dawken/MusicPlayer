@@ -4,6 +4,7 @@ export const initialState = {
 	isLoggedIn: false,
 	track: '',
 	isUserTyping: false,
+	photoColor: '',
 }
 
 export const user = createSlice({
@@ -25,7 +26,11 @@ export const user = createSlice({
 		) => {
 			state.isUserTyping = action.payload.isUserTyping
 		},
+		setPhotoColor: (state, action: PayloadAction<{ photoColor: string }>) => {
+			state.photoColor = action.payload.photoColor
+		},
 	},
 })
 
-export const { getClientResponse, setTrack, setIsUserTyping } = user.actions
+export const { getClientResponse, setTrack, setIsUserTyping, setPhotoColor } =
+	user.actions

@@ -16,7 +16,9 @@
 		"@types/react-dom": "18.0.11",
 		"@types/spotify-api": "0.0.21",
 		"@types/spotify-web-api-js": "0.21.0",
+		"chroma-js": "2.4.2",
 		"eslint-config-prettier": "8.8.0",
+		"fast-average-color": "9.3.0",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
 		"react-query": "3.39.2",
@@ -68,6 +70,7 @@
 		]
 	},
 	"devDependencies": {
+		"@types/chroma-js": "2.4.0",
 		"@types/spotify-web-api-node": "5.0.7",
 		"@typescript-eslint/eslint-plugin": "5.56.0",
 		"@typescript-eslint/parser": "5.56.0",

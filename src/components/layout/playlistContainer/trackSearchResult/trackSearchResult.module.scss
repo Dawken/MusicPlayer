@@ -1,6 +1,5 @@
 .songContainer {
-  width: 20vh ;
-  height: 28vh;
+  width: 20vh;
   background-color: #151515;
   border-radius: 10px;
   text-align: center;
@@ -24,7 +23,7 @@
     font-family: 'Fira Sans', sans-serif;
     margin: 0 10px;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 1rem;
     border-radius: 15px;
     display: flex;
     justify-content: center;
@@ -33,7 +32,7 @@
     font-family: 'Fira Sans', sans-serif;
     padding: 20px 10px;
     font-weight: 200;
-    font-size: 17px;
+    font-size: 0.9rem;
     display: flex;
     justify-content: center;
   }

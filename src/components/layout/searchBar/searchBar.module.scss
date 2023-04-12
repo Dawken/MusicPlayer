@@ -5,9 +5,8 @@
   .searchBar {
     width: 30vh;
     height: 40px;
-    border: #111111;
     border-radius: 20px;
-    background-color: #505050;
+    background-color: #111111;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,10 +15,10 @@
       margin: 5px;
     }
     .searchInput {
-      background-color: #505050;
+      background-color: #111111;
       outline: none;
       border: none;
-      width: 23vh;
+      width: 20vh;
       height: 30px;
       color: white;
       font-family: 'Rajdhani', sans-serif;
