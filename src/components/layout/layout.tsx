@@ -1,42 +1,27 @@
-import React, { useEffect, useState } from 'react'
-import useAuth from '../../customHooks/useAuth'
-import SpotifyWebApi from 'spotify-web-api-node'
-
-const spotifyApi = new SpotifyWebApi({
-	clientId: process.env.REACT_APP_SPOTIFY_API,
-})
+import React from 'react'
+import SearchBar from './searchBar/searchBar'
+import PlaylistContainer from './playlistContainer/playlistContainer'
+import useLayout from './useLayout'
+import MusicPlayer from '../sharedComponents/musicPlayer/musicPlayer'
+import styles from './layout.module.scss'
+import SidebarMenu from '../sharedComponents/sidebarMenu/sidebarMenu'
 
 const Layout = () => {
-	const spotify = useAuth()
-	const { accessToken } = spotify
+	const { setSearch, search, searchResult, artists, color } = useLayout()
 
-	const [search, setSearch] = useState('')
-	const [searchResult, setSearchResult] = useState<
-		SpotifyApi.TrackObjectSimplified[]
-	>([])
-
-	useEffect(() => {
-		if (accessToken) {
-			spotifyApi.setAccessToken(accessToken)
-		}
-	}, [accessToken])
-
-	useEffect(() => {
-		if (!search) return setSearchResult([])
-		if (!accessToken) return
-
-		spotifyApi.searchTracks(search).then((res) => {
-			if (res.body.tracks) {
-				setSearchResult(res.body.tracks.items)
-			}
-		})
-	}, [search])
-	console.log(searchResult)
 	return (
-		<input
-			onChange={(event) => setSearch(event.target.value)}
-			value={search}
-		></input>
+		<div className={styles.layoutContainer}>
+			<SidebarMenu />
+			<div className={styles.mainContainer}>
+				<div
+					className={styles.backgroundImageColor}
+					style={{ backgroundColor: `${color}` }}
+				></div>
+				<SearchBar search={search} setSearch={setSearch} />
+				<PlaylistContainer searchResult={searchResult} artists={artists} />
+			</div>
+			<MusicPlayer />
+		</div>
 	)
 }
 export default Layout

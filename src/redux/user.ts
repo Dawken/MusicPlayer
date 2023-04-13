@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export type StatusCode = {
-	isLoggedIn: boolean
+export const initialState = {
+	isLoggedIn: false,
+	track: '',
+	isUserTyping: false,
+	photoColor: '',
 }
-
-export const initialState: StatusCode = { isLoggedIn: false }
 
 export const user = createSlice({
 	name: 'clientResponse',
@@ -16,7 +17,20 @@ export const user = createSlice({
 		) => {
 			state.isLoggedIn = action.payload.isLogged
 		},
+		setTrack: (state, action: PayloadAction<{ track: string }>) => {
+			state.track = action.payload.track
+		},
+		setIsUserTyping: (
+			state,
+			action: PayloadAction<{ isUserTyping: boolean }>
+		) => {
+			state.isUserTyping = action.payload.isUserTyping
+		},
+		setPhotoColor: (state, action: PayloadAction<{ photoColor: string }>) => {
+			state.photoColor = action.payload.photoColor
+		},
 	},
 })
 
-export const { getClientResponse } = user.actions
+export const { getClientResponse, setTrack, setIsUserTyping, setPhotoColor } =
+	user.actions

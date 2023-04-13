@@ -1,0 +1,27 @@
+@keyframes skeletonLoading {
+  0% {
+    background-position: 200% 0
+  }
+
+  to {
+    background-position: -200% 0
+  }
+}
+.skeleton {
+  opacity: 0.7;
+  background: linear-gradient(270deg,#111111, #3d3d3d,#3d3d3d,#111111);
+  background-size: 400% 100%;
+  animation: skeletonLoading 6s linear infinite;
+}
+.skeletonText {
+  width: 80%;
+  height: 15px;
+  margin: 5px 0;
+  border-radius: 12px;
+}
+.skeletonArtist {
+  width: 50%;
+  height: 15px;
+  margin: 5px 0;
+  border-radius: 12px;
+}

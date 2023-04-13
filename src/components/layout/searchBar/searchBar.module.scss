@@ -1,0 +1,30 @@
+.searchBarContainer {
+  display: flex;
+  justify-content: flex-start;
+  padding: 1.5rem;
+  .searchBar {
+    width: 30vh;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #111111;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    .searchIcon {
+      color: white;
+      margin: 10px;
+    }
+    .searchInput {
+      background-color: #111111;
+      outline: none;
+      border: none;
+      width: 20vh;
+      height: 30px;
+      color: white;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}
+

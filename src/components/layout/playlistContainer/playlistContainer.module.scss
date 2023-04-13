@@ -1,0 +1,33 @@
+.tracks {
+  margin: 5px 15px;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+}
+.sectionText {
+  font-size: 35px;
+  color: white;
+  padding: 2rem 2rem 0;
+  display: flex;
+  justify-content: flex-start;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.mainContainer {
+  .bestResults {
+    .bestResultsTracks {
+      @extend .tracks
+    }
+  }
+  .bestArtists {
+    .bestResultsArtists {
+      @extend .tracks
+    }
+  }
+  .lastPlayed {
+    margin-bottom: 100px;
+    .lastPlayedTracks {
+      @extend .tracks;
+    }
+  }
+}

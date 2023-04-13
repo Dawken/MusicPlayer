@@ -1,0 +1,52 @@
+.songContainer {
+  width: 20vh;
+  background-color: #151515;
+  border-radius: 10px;
+  text-align: center;
+  color: white;
+  margin: 20px 40px;
+  transition: 0.3s;
+  .songPhotoContainer {
+    display: flex;
+    justify-content: center;
+    .songPhoto {
+      width: 15vh;
+      height: 15vh;
+      margin: 15px;
+      border-radius: 12px;
+      -webkit-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
+      -moz-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
+      box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
+    }
+  }
+  .artistName {
+    font-family: 'Fira Sans', sans-serif;
+    margin: 0 10px;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+  }
+  .songName {
+    font-family: 'Fira Sans', sans-serif;
+    padding: 20px 10px;
+    font-weight: 200;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+  }
+}
+.songContainer:hover {
+  background-color: #343434;
+  transition: 0.3s;
+  cursor: pointer;
+  .playIcon {
+    visibility: visible;
+    transition: 0.3s;
+    transform: translate(0%);
+  }
+  .playIcon:hover {
+    scale: 1.1;
+  }
+}
