@@ -2,7 +2,6 @@ import React from 'react'
 import SearchBar from './searchBar/searchBar'
 import PlaylistContainer from './playlistContainer/playlistContainer'
 import useLayout from './useLayout'
-import MusicPlayer from '../sharedComponents/musicPlayer/musicPlayer'
 import styles from './layout.module.scss'
 import SidebarMenu from '../sharedComponents/sidebarMenu/sidebarMenu'
 
@@ -20,7 +19,6 @@ const Layout = () => {
 				<SearchBar search={search} setSearch={setSearch} />
 				<PlaylistContainer searchResult={searchResult} artists={artists} />
 			</div>
-			<MusicPlayer />
 		</div>
 	)
 }

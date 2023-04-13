@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { spotifyAuthenticationUrl } from '../../shared/spotifyAuthenticationUrl'
+import { spotifyAuthenticationUrl } from '../../../shared/spotifyAuthenticationUrl'
 import { useMutation } from 'react-query'
-import { store, useAppSelector } from '../../redux/store'
-import { getClientResponse } from '../../redux/user'
-import musicPlayerBackend from '../../config/axiosConfig'
+import { store, useAppSelector } from '../../../redux/store'
+import { getClientResponse } from '../../../redux/user'
+import musicPlayerBackend from '../../../config/axiosConfig'
 import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
