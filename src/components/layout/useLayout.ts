@@ -10,11 +10,10 @@ const useLayout = () => {
 	const spotify = useAuth()
 	const { accessToken } = spotify
 
-	const track = useAppSelector((state) => state.auth.track)
 	const imageColor = useAppSelector((state) => state.auth.photoColor)
 
 	const [color, setColor] = useState('')
-	const [search, setSearch] = useState<string>('')
+	const [search, setSearch] = useState('')
 	const [searchResult, setSearchResult] = useState<TrackObjectFull[]>([])
 	const [artists, setArtists] = useState<ArtistObjectFull[]>()
 
@@ -45,7 +44,6 @@ const useLayout = () => {
 		search,
 		searchResult,
 		artists,
-		track,
 		color,
 	}
 }

@@ -7,7 +7,7 @@ import styles from './layout.module.scss'
 import SidebarMenu from '../sharedComponents/sidebarMenu/sidebarMenu'
 
 const Layout = () => {
-	const { setSearch, search, searchResult, artists, track, color } = useLayout()
+	const { setSearch, search, searchResult, artists, color } = useLayout()
 
 	return (
 		<div className={styles.layoutContainer}>
@@ -20,7 +20,7 @@ const Layout = () => {
 				<SearchBar search={search} setSearch={setSearch} />
 				<PlaylistContainer searchResult={searchResult} artists={artists} />
 			</div>
-			<MusicPlayer trackUri={track} />
+			<MusicPlayer />
 		</div>
 	)
 }

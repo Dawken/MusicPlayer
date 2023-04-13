@@ -1,18 +1,18 @@
 .searchBarContainer {
   display: flex;
   justify-content: flex-start;
-  padding: 2rem;
+  padding: 1.5rem;
   .searchBar {
     width: 30vh;
     height: 40px;
     border-radius: 20px;
     background-color: #111111;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     .searchIcon {
       color: white;
-      margin: 5px;
+      margin: 10px;
     }
     .searchInput {
       background-color: #111111;

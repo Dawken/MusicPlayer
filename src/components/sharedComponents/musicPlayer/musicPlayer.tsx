@@ -2,19 +2,16 @@ import React, { useEffect, useState } from 'react'
 import useAuth from '../../../customHooks/useAuth'
 import styles from './musicPlayer.module.scss'
 import SpotifyPlayer from 'react-spotify-web-playback'
+import { useAppSelector } from '../../../redux/store'
 
-interface TrackUriType {
-	trackUri: string
-}
-
-const MusicPlayer = ({ trackUri }: TrackUriType) => {
+const MusicPlayer = () => {
 	const spotify = useAuth()
-
+	const track = useAppSelector((state) => state.auth.track)
 	const [play, setPlay] = useState(false)
 
 	useEffect(() => {
 		setPlay(true)
-	}, [trackUri])
+	}, [track])
 
 	if (!spotify.accessToken) return null
 
@@ -28,7 +25,7 @@ const MusicPlayer = ({ trackUri }: TrackUriType) => {
 					!state.isPlaying && setPlay(false)
 				}}
 				play={play}
-				uris={trackUri ? [trackUri] : []}
+				uris={track ? [track] : []}
 			/>
 		</div>
 	)
