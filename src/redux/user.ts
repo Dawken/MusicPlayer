@@ -5,6 +5,7 @@ export const initialState = {
 	track: '',
 	isUserTyping: false,
 	photoColor: '',
+	playingSongColor: '',
 }
 
 export const user = createSlice({
@@ -29,8 +30,19 @@ export const user = createSlice({
 		setPhotoColor: (state, action: PayloadAction<{ photoColor: string }>) => {
 			state.photoColor = action.payload.photoColor
 		},
+		setPlayingSongColor: (
+			state,
+			action: PayloadAction<{ playingSongColor: string }>
+		) => {
+			state.playingSongColor = action.payload.playingSongColor
+		},
 	},
 })
 
-export const { getClientResponse, setTrack, setIsUserTyping, setPhotoColor } =
-	user.actions
+export const {
+	getClientResponse,
+	setTrack,
+	setIsUserTyping,
+	setPhotoColor,
+	setPlayingSongColor,
+} = user.actions
