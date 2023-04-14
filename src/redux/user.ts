@@ -4,7 +4,7 @@ export const initialState = {
 	isLoggedIn: false,
 	track: '',
 	isUserTyping: false,
-	photoColor: '',
+	photoColor: '#1f19d9',
 	playingSongColor: '',
 }
 

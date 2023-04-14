@@ -41,7 +41,9 @@ const useTrackSearchResult = () => {
 	}
 
 	const handleMouseLeave = () => {
-		store.dispatch(setPhotoColor({ photoColor: songColor }))
+		if (songColor !== '') {
+			store.dispatch(setPhotoColor({ photoColor: songColor }))
+		}
 	}
 	return {
 		setSong,

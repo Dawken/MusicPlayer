@@ -4,6 +4,7 @@ import { useAppSelector } from '../../../redux/store'
 
 const BackgroundImageColor = () => {
 	const imageColor = useAppSelector((state) => state.auth.photoColor)
+
 	return (
 		<div
 			className={styles.backgroundImageColor}

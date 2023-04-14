@@ -1,0 +1,29 @@
+.playlist {
+  width: 90%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 1);
+  border-radius: 5px;
+  margin: 20px;
+  .playlistData {
+    display: flex;
+    align-items: center;
+    .playlistPhoto {
+      width: 8vh;
+      height: 8vh;
+      margin:10px;
+      border-radius: 6px;
+    }
+    .playlistName {
+      font-size: 22px;
+      margin: 20px;
+    }
+  }
+  .arrowDown {
+    margin: 0 20px;
+    font-size: 35px;
+
+  }
+}
