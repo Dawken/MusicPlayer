@@ -22,24 +22,24 @@ const SidebarMenu = () => {
 			</Link>
 			<ul className={styles.optionsList}>
 				<li>
-					<div className={styles.listOption}>
+					<Link to={'/'} className={styles.listOption}>
 						{pathname === '/' ? (
 							<HomeIcon className={styles.icon} />
 						) : (
 							<HomeOutlinedIcon className={styles.icon} />
 						)}
 						<div className={styles.listOptionText}>Home</div>
-					</div>
+					</Link>
 				</li>
 				<li>
-					<div className={styles.listOption}>
+					<Link to={'/createPlaylist'} className={styles.listOption}>
 						{pathname === '/createplaylist' ? (
 							<LibraryAddSharpIcon className={styles.icon} />
 						) : (
 							<LibraryAddOutlinedIcon className={styles.icon} />
 						)}
 						<div className={styles.listOptionText}>Create playlist</div>
-					</div>
+					</Link>
 				</li>
 				<li>
 					<Link to={'/playlists'} className={styles.listOption}>

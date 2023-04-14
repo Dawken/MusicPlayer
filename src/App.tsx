@@ -7,6 +7,7 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import './index.scss'
 import Playlists from './components/subPages/playlists/playlists'
 import MusicPlayer from './components/sharedComponents/musicPlayer/musicPlayer'
+import SidebarMenu from './components/sharedComponents/sidebarMenu/sidebarMenu'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -20,29 +21,15 @@ const App = () => {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<BrowserRouter>
+				<SidebarMenu />
 				<Routes>
 					<Route element={<PrivateRoutes />}>
-						<Route
-							path='/'
-							element={
-								<>
-									<Layout />
-									<MusicPlayer />
-								</>
-							}
-						/>
-						<Route
-							path='/playlists'
-							element={
-								<>
-									<Playlists />
-									<MusicPlayer />
-								</>
-							}
-						/>
+						<Route path='/' element={<Layout />} />
+						<Route path='/playlists' element={<Playlists />} />
 					</Route>
 					<Route path='/login' element={<Login />} />
 				</Routes>
+				<MusicPlayer />
 			</BrowserRouter>
 		</QueryClientProvider>
 	)
