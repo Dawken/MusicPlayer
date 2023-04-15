@@ -5,13 +5,10 @@ import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
 import { Link } from 'react-router-dom'
 import BackgroundImageColor from '../../sharedComponents/backgroundImageColor/backgroundImageColor'
 import PlaylistItem from './playlistItem/playlistItem'
+import SkeletonPlaylistItem from '../../../animations/skeletonLoading/skeletonPlaylistItem'
 
 const Playlists = () => {
 	const { playlists } = useLayout()
-
-	if (!playlists) return <div>Loading...</div>
-
-	console.log(playlists)
 
 	return (
 		<div className={styles.layout}>
@@ -36,9 +33,13 @@ const Playlists = () => {
 								<div className={styles.createPlaylistText}>Create playlist</div>
 							</Link>
 						</div>
-						{playlists.items.map((item) => {
-							return <PlaylistItem item={item} key={item.id} />
-						})}
+						{!playlists
+							? Array.from({ length: 5 }, (_, i) => (
+									<SkeletonPlaylistItem key={i} />
+							  ))
+							: playlists?.items.map((item) => {
+									return <PlaylistItem item={item} key={item.id} />
+							  })}
 					</section>
 				)}
 			</div>

@@ -4,16 +4,17 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 1);
+  background-color: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
   margin: 20px;
   .playlistData {
     display: flex;
     align-items: center;
+    width: 90%;
     .playlistPhoto {
-      width: 8vh;
-      height: 8vh;
-      margin:10px;
+      width: 70px;
+      height: 70px;
+      margin: 10px;
       border-radius: 6px;
     }
     .playlistName {
@@ -24,6 +25,5 @@
   .arrowDown {
     margin: 0 20px;
     font-size: 35px;
-
   }
 }
