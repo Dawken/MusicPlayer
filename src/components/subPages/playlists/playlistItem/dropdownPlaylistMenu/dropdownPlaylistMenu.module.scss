@@ -1,0 +1,48 @@
+.dropdownContainer {
+  .playlistSong {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .songContainer {
+      display: flex;
+      align-items: center;
+      margin: 5px 15px;
+      width: 15vh;
+      .songPhoto {
+        width: 40%;
+        border-radius: 8px;
+      }
+      .songData {
+        margin: 10px 15px;
+        .songName {
+          font-weight: bold;
+          font-size: 1rem;
+          width: 100px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .artistName {
+          font-size: 18px;
+        }
+      }
+    }
+    .albumName {
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .songDurationTime {
+      font-size: 18px;
+      margin: 5px 20px;
+    }
+  }
+}
+@media only screen and (max-width: 550px) {
+  .albumName {
+    visibility: hidden;
+    width: 0;
+  }
+}

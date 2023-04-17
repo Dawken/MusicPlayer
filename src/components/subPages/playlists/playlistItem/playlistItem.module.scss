@@ -6,24 +6,55 @@
   justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 5px;
-  margin: 20px;
+  margin: 0 10px;
+  transition: transform 1s ease-in-out;
   .playlistData {
     display: flex;
     align-items: center;
-    width: 90%;
+    width: 100%;
+    height: 100%;
     .playlistPhoto {
-      width: 70px;
-      height: 70px;
+      height: 85%;
       margin: 10px;
       border-radius: 6px;
     }
     .playlistName {
-      font-size: 22px;
-      margin: 20px;
+      font-size: 1.2rem;
+      width: 15vh;
+      margin: 10px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
-  .arrowDown {
+  .arrow {
     margin: 0 20px;
     font-size: 35px;
+  }
+}
+.dropdownMenu {
+  width: 90%;
+  height: 0;
+  margin: 0 10px 30px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 0  0 5px 5px;
+  transform: translate3d(0,-1px, 0);
+  transition-timing-function: linear;
+  transition: 0.2s;
+  overflow: hidden;
+  opacity: 0;
+}
+.active.active{
+  opacity: 1;
+  visibility: visible;
+  height: auto;
+  transform: translate(0%);
+}
+
+@media only screen and (max-width: 550px) {
+  .playlistName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
