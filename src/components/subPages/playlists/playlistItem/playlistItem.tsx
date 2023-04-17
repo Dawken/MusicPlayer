@@ -8,6 +8,8 @@ import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
 import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
 import spotifyApi from '../../../../shared/spotifyApi'
 import DropdownPlaylistMenu from './dropdownPlaylistMenu/dropdownPlaylistMenu'
+import { store } from '../../../../redux/store'
+import { setTrack } from '../../../../redux/user'
 
 interface ItemType {
 	item: PlaylistObjectSimplified
@@ -25,27 +27,24 @@ const PlaylistItem = ({ item }: ItemType) => {
 		})
 		setIsActive((prevState) => !prevState)
 	}
-
+	const playPlaylist = () => {
+		store.dispatch(setTrack({ track: item.uri }))
+	}
 	return (
 		<>
-			<div className={styles.playlist}>
+			<div className={styles.playlist} onClick={() => showSongs(item.id)}>
 				<div className={styles.playlistData}>
 					<img
+						onClick={playPlaylist}
 						className={`${styles.playlistPhoto} ${loading.skeleton}`}
 						src={item.images[0]?.url}
 					/>
 					<div className={styles.playlistName}>{item.name}</div>
 				</div>
 				{isActive ? (
-					<KeyboardArrowUpIcon
-						className={styles.arrow}
-						onClick={() => showSongs(item.id)}
-					/>
+					<KeyboardArrowUpIcon className={styles.arrow} />
 				) : (
-					<KeyboardArrowDownOutlinedIcon
-						className={styles.arrow}
-						onClick={() => showSongs(item.id)}
-					/>
+					<KeyboardArrowDownOutlinedIcon className={styles.arrow} />
 				)}
 			</div>
 			<div
@@ -55,7 +54,7 @@ const PlaylistItem = ({ item }: ItemType) => {
 						: `${styles.dropdownMenu}`
 				}
 			>
-				<DropdownPlaylistMenu playlistData={playlistData} />
+				<DropdownPlaylistMenu playlistData={playlistData} uri={item.uri} />
 			</div>
 		</>
 	)

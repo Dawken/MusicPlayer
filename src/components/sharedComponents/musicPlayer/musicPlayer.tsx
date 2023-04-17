@@ -7,17 +7,21 @@ import { useAppSelector } from '../../../redux/store'
 const MusicPlayer = () => {
 	const spotify = useAuth()
 	const track = useAppSelector((state) => state.auth.track)
+	const songNumber = useAppSelector((state) => state.auth.songNumber)
 
 	if (!spotify.accessToken) return null
 
 	return (
 		<div className={styles.footer}>
 			<SpotifyPlayer
+				key={songNumber}
 				token={spotify.accessToken}
 				styles={{ bgColor: '#111111' }}
+				initialVolume={0.5}
+				play
 				showSaveIcon
-				play={true}
 				uris={track ? [track] : []}
+				offset={songNumber ? songNumber : 0}
 			/>
 		</div>
 	)
