@@ -9,7 +9,7 @@ import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
 import spotifyApi from '../../../../shared/spotifyApi'
 import DropdownPlaylistMenu from './dropdownPlaylistMenu/dropdownPlaylistMenu'
 import { store } from '../../../../redux/store'
-import { setTrack } from '../../../../redux/user'
+import { setSongNumber, setTrack } from '../../../../redux/user'
 
 interface ItemType {
 	item: PlaylistObjectSimplified
@@ -29,6 +29,7 @@ const PlaylistItem = ({ item }: ItemType) => {
 	}
 	const playPlaylist = () => {
 		store.dispatch(setTrack({ track: item.uri }))
+		store.dispatch(setSongNumber({ songNumber: 0 }))
 	}
 	return (
 		<>
@@ -39,7 +40,7 @@ const PlaylistItem = ({ item }: ItemType) => {
 						className={`${styles.playlistPhoto} ${loading.skeleton}`}
 						src={item.images[0]?.url}
 					/>
-					<div className={styles.playlistName}>{item.name}</div>
+					<span className={styles.playlistName}>{item.name}</span>
 				</div>
 				{isActive ? (
 					<KeyboardArrowUpIcon className={styles.arrow} />

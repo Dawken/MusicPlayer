@@ -3,8 +3,9 @@ import styles from './dropdownPlaylistMenu.module.scss'
 import dayjs from 'dayjs'
 import SpotifyApi from 'spotify-web-api-node'
 import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
-import { store } from '../../../../../redux/store'
+import { store, useAppSelector } from '../../../../../redux/store'
 import { setSongNumber, setTrack } from '../../../../../redux/user'
+import AccessTimeIcon from '@mui/icons-material/AccessTime'
 
 interface PlaylistDataType {
 	playlistData: PlaylistTrackObject[]
@@ -12,6 +13,9 @@ interface PlaylistDataType {
 }
 
 const DropdownPlaylistMenu = ({ playlistData, uri }: PlaylistDataType) => {
+	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
+	const playingSongId = useAppSelector((state) => state.auth.playingSongId)
+
 	const playSong = (item: PlaylistTrackObject, index: number) => {
 		store.dispatch(setTrack({ track: uri }))
 		store.dispatch(setSongNumber({ songNumber: index }))
@@ -19,6 +23,12 @@ const DropdownPlaylistMenu = ({ playlistData, uri }: PlaylistDataType) => {
 
 	return (
 		<div className={styles.dropdownContainer}>
+			<div className={styles.playlistInfo}>
+				<span>#</span>
+				<span>Title</span>
+				<span className={styles.albumName}>Album</span>
+				<AccessTimeIcon className={styles.clock} />
+			</div>
 			{playlistData.map((item, index) => {
 				return (
 					<div
@@ -26,11 +36,19 @@ const DropdownPlaylistMenu = ({ playlistData, uri }: PlaylistDataType) => {
 						key={item.track?.id}
 						onClick={() => playSong(item, index)}
 					>
+						{item.track?.id === playingSongId && isPlaying ? (
+							<img
+								className={styles.equalizer}
+								src='https://open.spotifycdn.com/cdn/images/equaliser-animated-green.f5eb96f2.gif'
+							/>
+						) : (
+							<div className={styles.songNumber}>{index + 1}</div>
+						)}
 						<div className={styles.songContainer}>
 							<img
 								className={styles.songPhoto}
 								src={item.track?.album.images[2].url}
-							></img>
+							/>
 							<div className={styles.songData}>
 								<div className={styles.songName}>{item.track?.name}</div>
 								<div className={styles.artistName}>

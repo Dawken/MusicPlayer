@@ -1,49 +1,32 @@
 import { store, useAppSelector } from '../../../../redux/store'
-import {
-	setPhotoColor,
-	setPlayingSongColor,
-	setTrack,
-} from '../../../../redux/user'
+import { setPhotoColor, setTrack } from '../../../../redux/user'
 import { FastAverageColor } from 'fast-average-color'
 import chroma from 'chroma-js'
 
 const useTrackSearchResult = () => {
-	const songColor = useAppSelector((state) => state.auth.playingSongColor)
+	const playingSongColor = useAppSelector(
+		(state) => state.auth.playingSongColor
+	)
 
-	const getColorFromImage = (
-		imageUrl: string,
-		callback: (color: string) => void
-	) => {
+	const setSong = (imageUrl: string, item: string) => {
+		store.dispatch(setTrack({ track: item }))
+	}
+
+	const handleHover = (imageUrl: string) => {
 		const fac = new FastAverageColor()
 		fac
 			.getColorAsync(imageUrl, { mode: 'precision' })
 			.then((color) => {
 				const colorHex = chroma(color.rgb).saturate(2).hex()
-				callback(colorHex)
+				store.dispatch(setPhotoColor({ photoColor: colorHex }))
 			})
 			.catch((error) => {
 				console.error(error)
 			})
 	}
 
-	const setSong = (imageUrl: string, item: string) => {
-		store.dispatch(setTrack({ track: item }))
-
-		getColorFromImage(imageUrl, (colorHex) => {
-			store.dispatch(setPlayingSongColor({ playingSongColor: colorHex }))
-		})
-	}
-
-	const handleHover = (imageUrl: string) => {
-		getColorFromImage(imageUrl, (colorHex) => {
-			store.dispatch(setPhotoColor({ photoColor: colorHex }))
-		})
-	}
-
 	const handleMouseLeave = () => {
-		if (songColor !== '') {
-			store.dispatch(setPhotoColor({ photoColor: songColor }))
-		}
+		store.dispatch(setPhotoColor({ photoColor: playingSongColor }))
 	}
 	return {
 		setSong,

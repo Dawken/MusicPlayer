@@ -5,14 +5,14 @@ import React from 'react'
 
 const SkeletonPlaylistItem = () => {
 	return (
-		<div className={styles.playlist}>
+		<div className={styles.playlist} style={{ marginBottom: '30px' }}>
 			<div className={styles.playlistData}>
 				<div className={`${styles.playlistPhoto} ${loading.skeleton}`} />
 				<div
 					className={`${loading.skeleton} ${loading.skeletonAlbumText}`}
 				></div>
 			</div>
-			<KeyboardArrowDownOutlinedIcon className={styles.arrowDown} />
+			<KeyboardArrowDownOutlinedIcon className={styles.arrow} />
 		</div>
 	)
 }

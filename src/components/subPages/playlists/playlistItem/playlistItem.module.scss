@@ -1,6 +1,6 @@
 .playlist {
   width: 90%;
-  height: 10vh;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -14,17 +14,22 @@
     width: 100%;
     height: 100%;
     .playlistPhoto {
-      height: 85%;
+      height: 8vh;
+      width: 8vh;
       margin: 10px;
       border-radius: 6px;
     }
     .playlistName {
       font-size: 1.2rem;
-      width: 15vh;
+      font-weight: bold;
       margin: 10px;
-      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      white-space: unset;
+      word-break: break-word;
     }
   }
   .arrow {
