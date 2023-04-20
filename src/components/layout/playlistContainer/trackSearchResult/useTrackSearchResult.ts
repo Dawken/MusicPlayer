@@ -1,7 +1,6 @@
 import { store, useAppSelector } from '../../../../redux/store'
 import { setPhotoColor, setTrack } from '../../../../redux/user'
-import { FastAverageColor } from 'fast-average-color'
-import chroma from 'chroma-js'
+import getColorFromImage from '../../../sharedFunctions/getColorFromImage'
 
 const useTrackSearchResult = () => {
 	const playingSongColor = useAppSelector(
@@ -13,16 +12,9 @@ const useTrackSearchResult = () => {
 	}
 
 	const handleHover = (imageUrl: string) => {
-		const fac = new FastAverageColor()
-		fac
-			.getColorAsync(imageUrl, { mode: 'precision' })
-			.then((color) => {
-				const colorHex = chroma(color.rgb).saturate(2).hex()
-				store.dispatch(setPhotoColor({ photoColor: colorHex }))
-			})
-			.catch((error) => {
-				console.error(error)
-			})
+		getColorFromImage(imageUrl, (color: string) => {
+			store.dispatch(setPhotoColor({ photoColor: color }))
+		})
 	}
 
 	const handleMouseLeave = () => {

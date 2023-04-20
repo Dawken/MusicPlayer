@@ -9,7 +9,7 @@ import {
 	setPlayingSongColor,
 	setPlayingSongId,
 } from '../../../redux/user'
-import useSongColor from '../../../customHooks/useSongColor'
+import getColorFromImage from '../../sharedFunctions/getColorFromImage'
 
 const MusicPlayer = () => {
 	const spotify = useAuth()
@@ -17,12 +17,13 @@ const MusicPlayer = () => {
 	const songNumber = useAppSelector((state) => state.auth.songNumber)
 	const [imageUrl, setImageUrl] = useState('')
 
-	const color = useSongColor(imageUrl)
-
 	useEffect(() => {
-		store.dispatch(setPhotoColor({ photoColor: color }))
-		store.dispatch(setPlayingSongColor({ playingSongColor: color }))
-	}, [color])
+		if (imageUrl !== '')
+			getColorFromImage(imageUrl, (color: string) => {
+				store.dispatch(setPhotoColor({ photoColor: color }))
+				store.dispatch(setPlayingSongColor({ playingSongColor: color }))
+			})
+	}, [imageUrl])
 
 	if (!spotify.accessToken) return null
 
