@@ -18,7 +18,6 @@ module.exports = {
 	},
 	plugins: ['react', '@typescript-eslint'],
 	rules: {
-		indent: ['error', 'tab'],
 		quotes: ['error', 'single'],
 		semi: ['error', 'never'],
 	},

@@ -1,0 +1,82 @@
+.playlistSong {
+  display: grid;
+  grid-template-columns: 5% 40% 40% 10% 5%;
+  grid-auto-flow: column;
+  align-items: center;
+  .equalizer {
+    height: 15px;
+    padding: 30px;
+  }
+  .songNumber {
+    font-size: 20px;
+    padding:  0 0 0 30px;
+  }
+  .playIcon {
+    font-size: 25px;
+    padding:  0 0 0 20px;
+  }
+  .songContainer {
+    display: flex;
+    align-items: center;
+    margin: 10px 15px;
+    width: 100%;
+    .songPhoto {
+      width: 7vh;
+      border-radius: 8px;
+    }
+    .songData {
+      margin: 10px 15px;
+      .songName {
+        font-weight: bold;
+        font-size: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        white-space: unset;
+      }
+      .artistName {
+        font-size: 18px;
+      }
+    }
+  }
+  .albumName {
+    font-size: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    white-space: unset;
+    word-break: break-word;
+  }
+  .songDurationTime {
+    font-size: 18px;
+    text-align: center;
+    margin: 5px 5px;
+  }
+}
+.playlistSong:hover {
+  background-color: #131313;
+  transition-duration: 0.5s;
+}
+@media only screen and (max-width: 650px) {
+  .playlistSong {
+    grid-template-columns: 10% 30% 25% 20%;
+    .equalizer {
+      padding: 15px;
+    }
+    .albumName {
+      visibility: hidden;
+      width: 0;
+    }
+    .songNumber {
+      padding: 20px;
+    }
+    .playIcon {
+      font-size: 25px;
+      padding:  0 0 0 10px;
+    }
+  }
+}

@@ -19,18 +19,34 @@ const Playlists = () => {
 						<div className={styles.playlistsNotFoundText}>
 							Playlists not found
 						</div>
-						<Link to={'/createPlaylist'} className={styles.createPlaylist}>
-							<AddBoxOutlinedIcon className={styles.createPlaylistButton} />
-							<div className={styles.createPlaylistText}>Create playlist</div>
+						<Link
+							to={'/createPlaylist'}
+							className={styles.createPlaylist}
+						>
+							<AddBoxOutlinedIcon
+								className={styles.createPlaylistButton}
+							/>
+							<div className={styles.createPlaylistText}>
+								Create playlist
+							</div>
 						</Link>
 					</section>
 				) : (
 					<section className={styles.playlists}>
 						<div className={styles.yourPlaylists}>
-							<div className={styles.yourPlaylistsText}>Your playlists</div>
-							<Link to={'/createPlaylist'} className={styles.createPlaylist}>
-								<AddBoxOutlinedIcon className={styles.createPlaylistButton} />
-								<div className={styles.createPlaylistText}>Create playlist</div>
+							<div className={styles.yourPlaylistsText}>
+								Your playlists
+							</div>
+							<Link
+								to={'/createPlaylist'}
+								className={styles.createPlaylist}
+							>
+								<AddBoxOutlinedIcon
+									className={styles.createPlaylistButton}
+								/>
+								<div className={styles.createPlaylistText}>
+									Create playlist
+								</div>
 							</Link>
 						</div>
 						{!playlists
@@ -38,7 +54,12 @@ const Playlists = () => {
 									<SkeletonPlaylistItem key={i} />
 							  ))
 							: playlists?.items.map((item) => {
-									return <PlaylistItem item={item} key={item.id} />
+									return (
+										<PlaylistItem
+											item={item}
+											key={item.id}
+										/>
+									)
 							  })}
 					</section>
 				)}
