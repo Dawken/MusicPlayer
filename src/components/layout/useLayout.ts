@@ -4,18 +4,16 @@ import spotifyApi from '../../shared/spotifyApi'
 import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import TrackObjectFull = SpotifyApi.TrackObjectFull
-import { useAppSelector } from '../../redux/store'
+import ListOfUsersPlaylistsResponse = SpotifyApi.ListOfUsersPlaylistsResponse
 
 const useLayout = () => {
 	const spotify = useAuth()
 	const { accessToken } = spotify
 
-	const imageColor = useAppSelector((state) => state.auth.photoColor)
-
-	const [color, setColor] = useState('')
 	const [search, setSearch] = useState('')
 	const [searchResult, setSearchResult] = useState<TrackObjectFull[]>([])
 	const [artists, setArtists] = useState<ArtistObjectFull[]>()
+	const [playlists, setPlayLists] = useState<ListOfUsersPlaylistsResponse>()
 
 	useEffect(() => {
 		if (!search) return setSearchResult([])
@@ -35,16 +33,23 @@ const useLayout = () => {
 			})
 		}
 	}, [search])
-
 	useEffect(() => {
-		setColor(imageColor)
-	}, [imageColor])
+		if (accessToken) {
+			spotifyApi.setAccessToken(spotify.accessToken)
+			spotifyApi.getUserPlaylists().then((data) => {
+				if (data.body) {
+					setPlayLists(data.body)
+				}
+			})
+		}
+	}, [accessToken])
+
 	return {
 		setSearch,
 		search,
 		searchResult,
 		artists,
-		color,
+		playlists,
 	}
 }
 export default useLayout

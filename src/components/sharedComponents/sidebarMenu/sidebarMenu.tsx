@@ -7,7 +7,7 @@ import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark'
 import CollectionsBookmarkOutlinedIcon from '@mui/icons-material/CollectionsBookmarkOutlined'
 import LibraryAddSharpIcon from '@mui/icons-material/LibraryAddSharp'
 import LibraryAddOutlinedIcon from '@mui/icons-material/LibraryAddOutlined'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const SidebarMenu = () => {
 	const params = useLocation()
@@ -16,40 +16,40 @@ const SidebarMenu = () => {
 
 	return (
 		<nav className={styles.sidebarMenuContainer}>
-			<div className={styles.homePage}>
+			<Link to={'/'} className={styles.homePage}>
 				<img src={SpotifyLogo} className={styles.spotifyLogo} />
 				<div className={styles.spotifyText}>Spotify</div>
-			</div>
+			</Link>
 			<ul className={styles.optionsList}>
 				<li>
-					<div className={styles.listOption}>
+					<Link to={'/'} className={styles.listOption}>
 						{pathname === '/' ? (
 							<HomeIcon className={styles.icon} />
 						) : (
 							<HomeOutlinedIcon className={styles.icon} />
 						)}
 						<div className={styles.listOptionText}>Home</div>
-					</div>
+					</Link>
 				</li>
 				<li>
-					<div className={styles.listOption}>
+					<Link to={'/createPlaylist'} className={styles.listOption}>
 						{pathname === '/createplaylist' ? (
 							<LibraryAddSharpIcon className={styles.icon} />
 						) : (
 							<LibraryAddOutlinedIcon className={styles.icon} />
 						)}
 						<div className={styles.listOptionText}>Create playlist</div>
-					</div>
+					</Link>
 				</li>
 				<li>
-					<div className={styles.listOption}>
+					<Link to={'/playlists'} className={styles.listOption}>
 						{pathname === '/playlists' ? (
 							<CollectionsBookmarkIcon className={styles.icon} />
 						) : (
 							<CollectionsBookmarkOutlinedIcon className={styles.icon} />
 						)}
 						<div className={styles.listOptionText}>My playlists</div>
-					</div>
+					</Link>
 				</li>
 			</ul>
 		</nav>

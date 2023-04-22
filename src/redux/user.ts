@@ -3,8 +3,12 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 export const initialState = {
 	isLoggedIn: false,
 	track: '',
+	songNumber: 0,
 	isUserTyping: false,
-	photoColor: '',
+	photoColor: '#1f19d9',
+	playingSongColor: '',
+	isPlaying: false,
+	playingSongId: '',
 }
 
 export const user = createSlice({
@@ -20,6 +24,9 @@ export const user = createSlice({
 		setTrack: (state, action: PayloadAction<{ track: string }>) => {
 			state.track = action.payload.track
 		},
+		setSongNumber: (state, action: PayloadAction<{ songNumber: number }>) => {
+			state.songNumber = action.payload.songNumber
+		},
 		setIsUserTyping: (
 			state,
 			action: PayloadAction<{ isUserTyping: boolean }>
@@ -29,8 +36,31 @@ export const user = createSlice({
 		setPhotoColor: (state, action: PayloadAction<{ photoColor: string }>) => {
 			state.photoColor = action.payload.photoColor
 		},
+		setPlayingSongColor: (
+			state,
+			action: PayloadAction<{ playingSongColor: string }>
+		) => {
+			state.playingSongColor = action.payload.playingSongColor
+		},
+		setIsPlaying: (state, action: PayloadAction<{ isPlaying: boolean }>) => {
+			state.isPlaying = action.payload.isPlaying
+		},
+		setPlayingSongId: (
+			state,
+			action: PayloadAction<{ playingSongId: string }>
+		) => {
+			state.playingSongId = action.payload.playingSongId
+		},
 	},
 })
 
-export const { getClientResponse, setTrack, setIsUserTyping, setPhotoColor } =
-	user.actions
+export const {
+	getClientResponse,
+	setTrack,
+	setSongNumber,
+	setIsUserTyping,
+	setPhotoColor,
+	setPlayingSongColor,
+	setIsPlaying,
+	setPlayingSongId,
+} = user.actions
