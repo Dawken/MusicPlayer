@@ -12,7 +12,6 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    font-family: 'Rajdhani', sans-serif;
     .playlistsNotFound {
       margin-top: 100px;
       .playlistsNotFoundText {
@@ -33,6 +32,7 @@
         .yourPlaylistsText {
           margin: 10px;
           font-size: 2rem;
+          font-family: 'Montserrat', sans-serif;
         }
       }
     }
@@ -45,6 +45,7 @@
   margin:15px;
   color: white;
   text-decoration: none;
+  font-family: 'Montserrat', sans-serif;
   .createPlaylistButton {
     font-size: 40px;
     margin: 10px;

@@ -1,19 +1,21 @@
 .playlistSong {
   display: grid;
-  grid-template-columns: 5% 40% 40% 10% 5%;
+  grid-template-columns: 5% 40% 40% 5% 10%;
   grid-auto-flow: column;
   align-items: center;
+  font-family: 'Rajdhani', sans-serif;
   .equalizer {
     height: 15px;
-    padding: 30px;
+    padding:  0 0 0 3vh;
   }
   .songNumber {
     font-size: 20px;
-    padding:  0 0 0 30px;
+    padding:  0 0 0 3vh;
   }
   .playIcon {
     font-size: 25px;
-    padding:  0 0 0 20px;
+    padding:  0 0 0 2vh;
+    cursor: pointer;
   }
   .songContainer {
     display: flex;
@@ -61,7 +63,7 @@
   background-color: #131313;
   transition-duration: 0.5s;
 }
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 900px) {
   .playlistSong {
     grid-template-columns: 10% 30% 25% 20%;
     .equalizer {

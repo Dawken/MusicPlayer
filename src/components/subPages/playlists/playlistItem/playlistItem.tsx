@@ -1,51 +1,71 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './playlistItem.module.scss'
 import loading from '../../../../animations/skeletonLoading/skeletonLoading.module.scss'
 import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDownOutlined'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import SpotifyApi from 'spotify-web-api-node'
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
-import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
-import spotifyApi from '../../../../shared/spotifyApi'
 import DropdownPlaylistMenu from './dropdownPlaylistMenu/dropdownPlaylistMenu'
-import { store } from '../../../../redux/store'
-import { setSongNumber, setTrack } from '../../../../redux/user'
+import { CircularProgress } from '@mui/material'
+import PlayArrowIcon from '@mui/icons-material/PlayArrow'
+import usePlaylistItem from './usePlaylistItem'
 
 interface ItemType {
 	item: PlaylistObjectSimplified
 }
 
 const PlaylistItem = ({ item }: ItemType) => {
-	const [isActive, setIsActive] = useState(false)
-	const [playlistData, setPlaylistData] = useState<PlaylistTrackObject[]>([])
+	const {
+		isActive,
+		setIsActive,
+		playlistData,
+		isPlaying,
+		trackId,
+		showSongs,
+		playPlaylist,
+	} = usePlaylistItem()
 
-	const showSongs = (id: string) => {
-		spotifyApi.getPlaylistTracks(id).then((data) => {
-			if (data.body.items) {
-				setPlaylistData(data.body.items)
-			}
-		})
-		setIsActive((prevState) => !prevState)
-	}
-	const playPlaylist = () => {
-		store.dispatch(setTrack({ track: item.uri }))
-		store.dispatch(setSongNumber({ songNumber: 0 }))
-	}
 	return (
 		<>
-			<div className={styles.playlist} onClick={() => showSongs(item.id)}>
+			<div className={styles.playlist}>
 				<div className={styles.playlistData}>
+					<div className={styles.playlistPlayState}>
+						{trackId === item.uri && isPlaying ? (
+							<img
+								className={styles.equalizer}
+								src='https://open.spotifycdn.com/cdn/images/equaliser-animated-green.f5eb96f2.gif'
+							/>
+						) : (
+							<PlayArrowIcon
+								className={styles.playIcon}
+								onClick={() => playPlaylist(item)}
+							/>
+						)}
+					</div>
 					<img
-						onClick={playPlaylist}
 						className={`${styles.playlistPhoto} ${loading.skeleton}`}
 						src={item.images[0]?.url}
 					/>
 					<span className={styles.playlistName}>{item.name}</span>
 				</div>
 				{isActive ? (
-					<KeyboardArrowUpIcon className={styles.arrow} />
+					playlistData.length === 0 ? (
+						<div className={styles.loader}>
+							<CircularProgress size={30} />
+						</div>
+					) : (
+						<KeyboardArrowUpIcon
+							className={styles.arrow}
+							onClick={() =>
+								setIsActive((prevState) => !prevState)
+							}
+						/>
+					)
 				) : (
-					<KeyboardArrowDownOutlinedIcon className={styles.arrow} />
+					<KeyboardArrowDownOutlinedIcon
+						className={styles.arrow}
+						onClick={() => showSongs(item.id)}
+					/>
 				)}
 			</div>
 			<div
@@ -55,7 +75,12 @@ const PlaylistItem = ({ item }: ItemType) => {
 						: `${styles.dropdownMenu}`
 				}
 			>
-				<DropdownPlaylistMenu playlistData={playlistData} uri={item.uri} />
+				{playlistData.length > 0 && (
+					<DropdownPlaylistMenu
+						playlistData={playlistData}
+						uri={item.uri}
+					/>
+				)}
 			</div>
 		</>
 	)

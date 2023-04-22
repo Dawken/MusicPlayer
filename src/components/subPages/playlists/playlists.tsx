@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './playlists.module.scss'
 import useLayout from '../../layout/useLayout'
-import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined'
+import AddIcon from '@mui/icons-material/Add'
 import { Link } from 'react-router-dom'
 import BackgroundImageColor from '../../sharedComponents/backgroundImageColor/backgroundImageColor'
 import PlaylistItem from './playlistItem/playlistItem'
@@ -23,9 +23,7 @@ const Playlists = () => {
 							to={'/createPlaylist'}
 							className={styles.createPlaylist}
 						>
-							<AddBoxOutlinedIcon
-								className={styles.createPlaylistButton}
-							/>
+							<AddIcon className={styles.createPlaylistButton} />
 							<div className={styles.createPlaylistText}>
 								Create playlist
 							</div>
@@ -41,7 +39,7 @@ const Playlists = () => {
 								to={'/createPlaylist'}
 								className={styles.createPlaylist}
 							>
-								<AddBoxOutlinedIcon
+								<AddIcon
 									className={styles.createPlaylistButton}
 								/>
 								<div className={styles.createPlaylistText}>

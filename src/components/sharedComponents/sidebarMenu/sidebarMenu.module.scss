@@ -2,7 +2,7 @@
   background-color: black;
   width: 250px;
   grid-area: sidebar;
-  height: 100vh;
+  height: 100%;
   position: fixed;
   .homePage {
     display: flex;
@@ -49,6 +49,7 @@
 @media screen and (max-width: 1100px) {
   .sidebarMenuContainer {
     width: 67px;
+    height: 100%;
     .homePage {
       justify-content: center;
       .spotifyText {
