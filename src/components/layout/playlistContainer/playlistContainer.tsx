@@ -8,6 +8,8 @@ import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import SkeletonTrackSearchResult from '../../../animations/skeletonLoading/skeletonTrackSearchResult'
 import SkeletonArtistSearchResult from '../../../animations/skeletonLoading/skeletonArtistSearchResult'
+import ScrollContainer from 'react-indiana-drag-scroll'
+import 'react-responsive-carousel/lib/styles/carousel.min.css'
 
 interface SearchResultType {
 	searchResult: TrackObjectFull[]
@@ -15,7 +17,7 @@ interface SearchResultType {
 }
 
 const PlaylistContainer = ({ searchResult, artists }: SearchResultType) => {
-	const { tracks, isTyping, visibleItems } = usePlaylistContainer()
+	const { tracks, isTyping } = usePlaylistContainer()
 
 	return (
 		<div className={styles.mainContainer}>
@@ -24,29 +26,57 @@ const PlaylistContainer = ({ searchResult, artists }: SearchResultType) => {
 					<section className={styles.bestResults}>
 						<div className={styles.sectionText}>Best results</div>
 						<div className={styles.bestResultsTracks}>
-							{isTyping
-								? Array.from({ length: visibleItems }, (_, i) => (
+							{isTyping ? (
+								<ScrollContainer
+									horizontal={true}
+									style={{ display: 'flex' }}
+								>
+									{Array.from({ length: 8 }, (_, i) => (
 										<SkeletonTrackSearchResult key={i} />
-								  ))
-								: searchResult
-										.slice(0, visibleItems)
-										.map((item: TrackObjectFull) => (
-											<TrackSearchResult item={item} key={item.id} />
-										))}
+									))}
+								</ScrollContainer>
+							) : (
+								<ScrollContainer
+									horizontal={true}
+									style={{ display: 'flex' }}
+								>
+									{searchResult.map(
+										(item: TrackObjectFull) => (
+											<TrackSearchResult
+												item={item}
+												key={item.id}
+											/>
+										)
+									)}
+								</ScrollContainer>
+							)}
 						</div>
 					</section>
 					<section className={styles.bestArtists}>
 						<div className={styles.sectionText}>Best artists</div>
 						<div className={styles.bestResultsArtists}>
-							{isTyping
-								? Array.from({ length: visibleItems }, (_, i) => (
+							{isTyping ? (
+								<ScrollContainer
+									horizontal={true}
+									style={{ display: 'flex' }}
+								>
+									{Array.from({ length: 8 }, (_, i) => (
 										<SkeletonArtistSearchResult key={i} />
-								  ))
-								: artists
-										?.slice(0, visibleItems)
-										.map((item: ArtistObjectFull) => (
-											<ArtistSearchResult item={item} key={item.id} />
-										))}
+									))}
+								</ScrollContainer>
+							) : (
+								<ScrollContainer
+									horizontal={true}
+									style={{ display: 'flex' }}
+								>
+									{artists?.map((item: ArtistObjectFull) => (
+										<ArtistSearchResult
+											item={item}
+											key={item.id}
+										/>
+									))}
+								</ScrollContainer>
+							)}
 						</div>
 					</section>
 				</>
@@ -54,15 +84,30 @@ const PlaylistContainer = ({ searchResult, artists }: SearchResultType) => {
 			<section className={styles.lastPlayed}>
 				<div className={styles.sectionText}>Last Played</div>
 				<div className={styles.lastPlayedTracks}>
-					{!tracks.length
-						? Array.from({ length: visibleItems }, (_, i) => (
+					{!tracks.length ? (
+						<ScrollContainer
+							horizontal={true}
+							style={{ display: 'flex' }}
+						>
+							{Array.from({ length: 8 }, (_, i) => (
 								<SkeletonTrackSearchResult key={i} />
-						  ))
-						: tracks
-								.slice(0, visibleItems)
-								.map((item: TrackObjectFull) => (
-									<TrackSearchResult item={item} key={item.id} />
+							))}
+						</ScrollContainer>
+					) : (
+						<div>
+							<ScrollContainer
+								horizontal={true}
+								style={{ display: 'flex' }}
+							>
+								{tracks.map((item: TrackObjectFull) => (
+									<TrackSearchResult
+										item={item}
+										key={item.id}
+									/>
 								))}
+							</ScrollContainer>
+						</div>
+					)}
 				</div>
 			</section>
 		</div>

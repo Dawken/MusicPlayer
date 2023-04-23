@@ -15,7 +15,6 @@ const MusicPlayer = () => {
 	const spotify = useAuth()
 	const track = useAppSelector((state) => state.auth.track)
 	const songNumber = useAppSelector((state) => state.auth.songNumber)
-	const photoColor = useAppSelector((state) => state.auth.photoColor)
 	const [imageUrl, setImageUrl] = useState('')
 
 	useEffect(() => {
@@ -34,13 +33,13 @@ const MusicPlayer = () => {
 				key={songNumber}
 				token={spotify.accessToken}
 				styles={{
-					activeColor: `${photoColor}`,
+					activeColor: '#b9b9b9',
 					bgColor: '#1f1f1f',
-					color: `${photoColor}`,
-					loaderColor: '#fff',
-					sliderColor: `${photoColor}`,
+					color: '#b9b9b9',
+					loaderColor: '#b9b9b9',
+					sliderColor: '#b9b9b9',
 					trackArtistColor: '#c0c0c0',
-					trackNameColor: '#fff',
+					trackNameColor: '#b9b9b9',
 				}}
 				initialVolume={0.5}
 				play
