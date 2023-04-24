@@ -1,31 +1,33 @@
 import React from 'react'
-import TrackSearchResult from './trackSearchResult/trackSearchResult'
-import usePlaylistContainer from './usePlaylistContainer'
-import styles from './playlistContainer.module.scss'
+import TrackSearchResult from './trackCard/trackCard'
+import useResultsLayout from './useResultsLayout'
+import styles from './resultsLayout.module.scss'
 import ArtistSearchResult from './artistsSearchResult/artistSearchResult'
 import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import TrackObjectFull = SpotifyApi.TrackObjectFull
+import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
 import SkeletonTrackSearchResult from '../../../animations/skeletonLoading/skeletonTrackSearchResult'
 import SkeletonArtistSearchResult from '../../../animations/skeletonLoading/skeletonArtistSearchResult'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
+import TrackCard from './trackCard/trackCard'
 
 interface SearchResultType {
 	searchResult: TrackObjectFull[]
 	artists?: ArtistObjectFull[]
 }
 
-const PlaylistContainer = ({ searchResult, artists }: SearchResultType) => {
-	const { tracks, isTyping } = usePlaylistContainer()
+const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
+	const { tracks, isTyping, recommendations } = useResultsLayout()
 
 	return (
 		<div className={styles.mainContainer}>
 			{searchResult.length > 0 && (
 				<>
-					<section className={styles.bestResults}>
+					<section>
 						<div className={styles.sectionText}>Best results</div>
-						<div className={styles.bestResultsTracks}>
+						<div className={styles.cardsContainer}>
 							{isTyping ? (
 								<ScrollContainer
 									horizontal={true}
@@ -42,7 +44,7 @@ const PlaylistContainer = ({ searchResult, artists }: SearchResultType) => {
 								>
 									{searchResult.map(
 										(item: TrackObjectFull) => (
-											<TrackSearchResult
+											<TrackCard
 												item={item}
 												key={item.id}
 											/>
@@ -52,9 +54,9 @@ const PlaylistContainer = ({ searchResult, artists }: SearchResultType) => {
 							)}
 						</div>
 					</section>
-					<section className={styles.bestArtists}>
+					<section>
 						<div className={styles.sectionText}>Best artists</div>
-						<div className={styles.bestResultsArtists}>
+						<div className={styles.cardsContainer}>
 							{isTyping ? (
 								<ScrollContainer
 									horizontal={true}
@@ -81,9 +83,9 @@ const PlaylistContainer = ({ searchResult, artists }: SearchResultType) => {
 					</section>
 				</>
 			)}
-			<section className={styles.lastPlayed}>
+			<section>
 				<div className={styles.sectionText}>Last Played</div>
-				<div className={styles.lastPlayedTracks}>
+				<div className={styles.cardsContainer}>
 					{!tracks.length ? (
 						<ScrollContainer
 							horizontal={true}
@@ -94,23 +96,47 @@ const PlaylistContainer = ({ searchResult, artists }: SearchResultType) => {
 							))}
 						</ScrollContainer>
 					) : (
-						<div>
-							<ScrollContainer
-								horizontal={true}
-								style={{ display: 'flex' }}
-							>
-								{tracks.map((item: TrackObjectFull) => (
+						<ScrollContainer
+							horizontal={true}
+							style={{ display: 'flex' }}
+						>
+							{tracks.map((item: TrackObjectFull) => (
+								<TrackCard item={item} key={item.id} />
+							))}
+						</ScrollContainer>
+					)}
+				</div>
+			</section>
+			<section>
+				<div className={styles.sectionText}>Recommendations</div>
+				<div className={styles.cardsContainer}>
+					{!recommendations.length ? (
+						<ScrollContainer
+							horizontal={true}
+							style={{ display: 'flex' }}
+						>
+							{Array.from({ length: 8 }, (_, i) => (
+								<SkeletonTrackSearchResult key={i} />
+							))}
+						</ScrollContainer>
+					) : (
+						<ScrollContainer
+							horizontal={true}
+							style={{ display: 'flex' }}
+						>
+							{recommendations.map(
+								(item: RecommendationTrackObject) => (
 									<TrackSearchResult
 										item={item}
 										key={item.id}
 									/>
-								))}
-							</ScrollContainer>
-						</div>
+								)
+							)}
+						</ScrollContainer>
 					)}
 				</div>
 			</section>
 		</div>
 	)
 }
-export default PlaylistContainer
+export default ResultsLayout

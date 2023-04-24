@@ -2,7 +2,7 @@ import { store, useAppSelector } from '../../../../redux/store'
 import { setPhotoColor, setTrack } from '../../../../redux/user'
 import getColorFromImage from '../../../sharedFunctions/getColorFromImage'
 
-const useTrackSearchResult = () => {
+const useTrackCard = () => {
 	const playingSongColor = useAppSelector(
 		(state) => state.auth.playingSongColor
 	)
@@ -26,4 +26,4 @@ const useTrackSearchResult = () => {
 		handleMouseLeave,
 	}
 }
-export default useTrackSearchResult
+export default useTrackCard

@@ -6,9 +6,10 @@ export const initialState = {
 	songNumber: 0,
 	isUserTyping: false,
 	photoColor: '#1f19d9',
-	playingSongColor: '',
+	playingSongColor: '#1f19d9',
 	isPlaying: false,
 	playingSongId: '',
+	playingSongPhoto: '',
 }
 
 export const user = createSlice({
@@ -24,7 +25,10 @@ export const user = createSlice({
 		setTrack: (state, action: PayloadAction<{ track: string }>) => {
 			state.track = action.payload.track
 		},
-		setSongNumber: (state, action: PayloadAction<{ songNumber: number }>) => {
+		setSongNumber: (
+			state,
+			action: PayloadAction<{ songNumber: number }>
+		) => {
 			state.songNumber = action.payload.songNumber
 		},
 		setIsUserTyping: (
@@ -33,7 +37,10 @@ export const user = createSlice({
 		) => {
 			state.isUserTyping = action.payload.isUserTyping
 		},
-		setPhotoColor: (state, action: PayloadAction<{ photoColor: string }>) => {
+		setPhotoColor: (
+			state,
+			action: PayloadAction<{ photoColor: string }>
+		) => {
 			state.photoColor = action.payload.photoColor
 		},
 		setPlayingSongColor: (
@@ -42,7 +49,10 @@ export const user = createSlice({
 		) => {
 			state.playingSongColor = action.payload.playingSongColor
 		},
-		setIsPlaying: (state, action: PayloadAction<{ isPlaying: boolean }>) => {
+		setIsPlaying: (
+			state,
+			action: PayloadAction<{ isPlaying: boolean }>
+		) => {
 			state.isPlaying = action.payload.isPlaying
 		},
 		setPlayingSongId: (
@@ -50,6 +60,12 @@ export const user = createSlice({
 			action: PayloadAction<{ playingSongId: string }>
 		) => {
 			state.playingSongId = action.payload.playingSongId
+		},
+		setPlayingSongPhoto: (
+			state,
+			action: PayloadAction<{ playingSongPhoto: string }>
+		) => {
+			state.playingSongPhoto = action.payload.playingSongPhoto
 		},
 	},
 })
@@ -63,4 +79,5 @@ export const {
 	setPlayingSongColor,
 	setIsPlaying,
 	setPlayingSongId,
+	setPlayingSongPhoto,
 } = user.actions

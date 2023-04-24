@@ -1,0 +1,19 @@
+.mainContainer {
+  margin: 80px 0;
+  section {
+    .sectionText {
+      font-size: 25px;
+      color: white;
+      padding: 20px 35px 0;
+      display: flex;
+      justify-content: flex-start;
+      font-family: 'Fira Sans', sans-serif;
+    }
+    .cardsContainer {
+      margin: 5px 15px;
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+    }
+  }
+}

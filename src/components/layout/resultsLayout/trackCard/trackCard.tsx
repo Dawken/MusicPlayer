@@ -1,16 +1,17 @@
 import React from 'react'
-import styles from './trackSearchResult.module.scss'
+import styles from './trackCard.module.scss'
 import loading from '../../../../animations/skeletonLoading/skeletonLoading.module.scss'
 import SpotifyApi from 'spotify-web-api-node'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
-import useTrackSearchResult from './useTrackSearchResult'
+import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
+import useTrackCard from './useTrackCard'
 
 interface TrackSearchResultProps {
-	item: TrackObjectFull
+	item: TrackObjectFull | RecommendationTrackObject
 }
 
-const TrackSearchResult = ({ item }: TrackSearchResultProps) => {
-	const { setSong, handleHover, handleMouseLeave } = useTrackSearchResult()
+const TrackCard = ({ item }: TrackSearchResultProps) => {
+	const { setSong, handleHover, handleMouseLeave } = useTrackCard()
 
 	return (
 		<div
@@ -27,9 +28,11 @@ const TrackSearchResult = ({ item }: TrackSearchResultProps) => {
 			</div>
 			<div className={styles.artistName}>{item.artists[0].name}</div>
 			<div className={styles.songName}>
-				{item.name.length > 30 ? item.name.slice(0, 30) + '...' : item.name}
+				{item.name.length > 30
+					? item.name.slice(0, 30) + '...'
+					: item.name}
 			</div>
 		</div>
 	)
 }
-export default TrackSearchResult
+export default TrackCard

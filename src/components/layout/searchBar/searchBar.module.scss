@@ -1,7 +1,9 @@
 .searchBarContainer {
   display: flex;
   justify-content: flex-start;
-  padding: 1.5rem;
+  margin: 0 0 0 30px;
+  z-index: 2;
+  position: fixed;
   .searchBar {
     width: 30vh;
     height: 40px;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import useAuth from '../../../customHooks/useAuth'
 import styles from './musicPlayer.module.scss'
 import SpotifyPlayer from 'react-spotify-web-playback'
@@ -8,6 +8,7 @@ import {
 	setPhotoColor,
 	setPlayingSongColor,
 	setPlayingSongId,
+	setPlayingSongPhoto,
 } from '../../../redux/user'
 import getColorFromImage from '../../sharedFunctions/getColorFromImage'
 
@@ -15,15 +16,20 @@ const MusicPlayer = () => {
 	const spotify = useAuth()
 	const track = useAppSelector((state) => state.auth.track)
 	const songNumber = useAppSelector((state) => state.auth.songNumber)
-	const [imageUrl, setImageUrl] = useState('')
+	const playingSongColor = useAppSelector(
+		(state) => state.auth.playingSongColor
+	)
+	const playingSongPhoto = useAppSelector(
+		(state) => state.auth.playingSongPhoto
+	)
 
 	useEffect(() => {
-		if (imageUrl !== '')
-			getColorFromImage(imageUrl, (color: string) => {
+		if (playingSongPhoto !== '')
+			getColorFromImage(playingSongPhoto, (color: string) => {
 				store.dispatch(setPhotoColor({ photoColor: color }))
 				store.dispatch(setPlayingSongColor({ playingSongColor: color }))
 			})
-	}, [imageUrl])
+	}, [playingSongPhoto])
 
 	if (!spotify.accessToken) return null
 
@@ -34,10 +40,10 @@ const MusicPlayer = () => {
 				token={spotify.accessToken}
 				styles={{
 					activeColor: '#b9b9b9',
-					bgColor: '#1f1f1f',
-					color: '#b9b9b9',
+					bgColor: '#0a0a0a',
+					color: playingSongColor,
 					loaderColor: '#b9b9b9',
-					sliderColor: '#b9b9b9',
+					sliderColor: playingSongColor,
 					trackArtistColor: '#c0c0c0',
 					trackNameColor: '#b9b9b9',
 				}}
@@ -55,7 +61,11 @@ const MusicPlayer = () => {
 					store.dispatch(
 						setPlayingSongId({ playingSongId: state.track.id })
 					)
-					setImageUrl(state.track.image)
+					store.dispatch(
+						setPlayingSongPhoto({
+							playingSongPhoto: state.track.image,
+						})
+					)
 				}}
 			/>
 		</div>

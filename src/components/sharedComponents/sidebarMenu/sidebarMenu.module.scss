@@ -4,6 +4,7 @@
   grid-area: sidebar;
   height: 100%;
   position: fixed;
+  z-index: 2;
   .homePage {
     display: flex;
     margin: 20px 1rem;
@@ -45,11 +46,21 @@
       margin: 10px
     }
   }
+  .playingSongPhoto {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    bottom: 0;
+    left: 0;
+    margin-bottom: 80px;
+    position: absolute;
+  }
 }
 @media screen and (max-width: 1100px) {
   .sidebarMenuContainer {
     width: 67px;
     height: 100%;
+    z-index: 2;
     .homePage {
       justify-content: center;
       .spotifyText {
