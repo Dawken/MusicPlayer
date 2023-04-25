@@ -16,7 +16,13 @@ const TrackCard = ({ item }: TrackSearchResultProps) => {
 	return (
 		<div
 			className={styles.songContainer}
-			onClick={() => setSong(item.album.images[1]?.url, item.uri)}
+			onClick={() =>
+				setSong(
+					item.album.images[1]?.url,
+					item.album.uri,
+					item.track_number - 1
+				)
+			}
 			onMouseEnter={() => handleHover(item.album.images[1]?.url)}
 			onMouseLeave={() => handleMouseLeave()}
 		>

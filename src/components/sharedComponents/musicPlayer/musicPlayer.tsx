@@ -5,12 +5,10 @@ import SpotifyPlayer from 'react-spotify-web-playback'
 import { store, useAppSelector } from '../../../redux/store'
 import {
 	setIsPlaying,
-	setPhotoColor,
-	setPlayingSongColor,
 	setPlayingSongId,
 	setPlayingSongPhoto,
 } from '../../../redux/user'
-import getColorFromImage from '../../sharedFunctions/getColorFromImage'
+import spotifyApi from '../../../shared/spotifyApi'
 
 const MusicPlayer = () => {
 	const spotify = useAuth()
@@ -19,24 +17,19 @@ const MusicPlayer = () => {
 	const playingSongColor = useAppSelector(
 		(state) => state.auth.playingSongColor
 	)
-	const playingSongPhoto = useAppSelector(
-		(state) => state.auth.playingSongPhoto
-	)
 
 	useEffect(() => {
-		if (playingSongPhoto !== '')
-			getColorFromImage(playingSongPhoto, (color: string) => {
-				store.dispatch(setPhotoColor({ photoColor: color }))
-				store.dispatch(setPlayingSongColor({ playingSongColor: color }))
-			})
-	}, [playingSongPhoto])
+		spotifyApi.play({
+			context_uri: track,
+			offset: { position: songNumber },
+		})
+	}, [songNumber])
 
 	if (!spotify.accessToken) return null
 
 	return (
 		<div className={styles.footer}>
 			<SpotifyPlayer
-				key={songNumber}
 				token={spotify.accessToken}
 				styles={{
 					activeColor: '#b9b9b9',
@@ -51,7 +44,7 @@ const MusicPlayer = () => {
 				play
 				showSaveIcon
 				uris={track ? [track] : []}
-				offset={songNumber ? songNumber : undefined}
+				offset={songNumber}
 				callback={(state) => {
 					if (state.isPlaying) {
 						store.dispatch(setIsPlaying({ isPlaying: true }))
