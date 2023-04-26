@@ -1,18 +1,18 @@
 .songContainer {
-  width: 20vh;
+  width: 25vh;
   background-color: #151515;
   border-radius: 10px;
   text-align: center;
   color: white;
-  margin: 20px 40px;
+  margin: 20px 20px;
   transition: 0.3s;
   .songPhotoContainer {
     display: flex;
     justify-content: center;
     .songPhoto {
-      width: 15vh;
-      height: 15vh;
-      margin: 15px;
+      width: 19vh;
+      height: 19vh;
+      margin: 10px;
       border-radius: 12px;
       -webkit-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
       -moz-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
@@ -21,24 +21,30 @@
   }
   .artistName {
     font-family: 'Fira Sans', sans-serif;
-    margin: 0 10px;
+    margin: 10px 20px;
     font-weight: bold;
     font-size: 1rem;
     border-radius: 15px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    text-align: left;
   }
   .songName {
     font-family: 'Fira Sans', sans-serif;
-    padding: 20px 10px;
+    margin: 10px 20px;
     font-weight: 200;
     font-size: 0.9rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: unset;
+    text-align: left;
   }
 }
 .songContainer:hover {
-  background-color: #343434;
+  background-color: #1f1f1f;
   transition: 0.3s;
   cursor: pointer;
   .playIcon {

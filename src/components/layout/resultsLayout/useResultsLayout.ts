@@ -4,16 +4,20 @@ import spotifyApi from '../../../shared/spotifyApi'
 import SpotifyApi from 'spotify-web-api-node'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import PlayHistoryObject = SpotifyApi.PlayHistoryObject
+import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
 import { useAppSelector } from '../../../redux/store'
 
 type TracksType = SpotifyApi.PlayHistoryObject[]
 
-const usePlaylistContainer = () => {
+const useResultsLayout = () => {
 	const spotify = useAuth()
 	const isTyping = useAppSelector((state) => state.auth.isUserTyping)
 
 	const [tracks, setTracks] = useState<TrackObjectFull[]>([])
-	const [visibleItems, setVisibleItems] = useState(6)
+	const [seedTracks, setSeedTracks] = useState<string[]>([])
+	const [recommendations, setRecommendations] = useState<
+		RecommendationTrackObject[]
+	>([])
 
 	const { accessToken } = spotify
 
@@ -26,50 +30,44 @@ const usePlaylistContainer = () => {
 					const uniqueTracks = data.body.items.filter(
 						(item, index, self) =>
 							index ===
-							self.findIndex((tracks) => tracks.track.id === item.track.id)
+							self.findIndex(
+								(tracks) => tracks.track.id === item.track.id
+							)
 					)
 					const convertedTracks = uniqueTracks.map(
 						(item: PlayHistoryObject) => item.track
 					)
 					setTracks(convertedTracks)
+					data.body.items.slice(0, 4).map((item) => {
+						setSeedTracks((prevState) => [
+							...prevState,
+							item.track.id,
+						])
+					})
 				})
 		}
 	}, [accessToken])
 
 	useEffect(() => {
-		const handleResize = () => {
-			const windowWidth = window.innerWidth
-			switch (true) {
-				case windowWidth <= 1820 && windowWidth >= 1650:
-					setVisibleItems(6)
-					break
-				case windowWidth <= 1650 && windowWidth >= 1420:
-					setVisibleItems(5)
-					break
-				case windowWidth < 1420 && windowWidth >= 1200:
-					setVisibleItems(4)
-					break
-				case windowWidth < 1200 && windowWidth >= 800:
-					setVisibleItems(3)
-					break
-				case windowWidth < 800:
-					setVisibleItems(2)
-					break
-				default:
-					setVisibleItems(6)
-			}
+		if (accessToken) {
+			spotifyApi.setAccessToken(accessToken)
+			spotifyApi
+				.getRecommendations({ seed_tracks: seedTracks })
+				.then((data) => {
+					data.body.tracks.map((item) => {
+						setRecommendations((prevState) => [...prevState, item])
+					})
+				})
+				.catch((error) => {
+					console.log(error)
+				})
 		}
-		handleResize()
-		window.addEventListener('resize', handleResize)
-		return () => {
-			window.removeEventListener('resize', handleResize)
-		}
-	}, [])
+	}, [seedTracks])
 
 	return {
 		tracks,
 		isTyping,
-		visibleItems,
+		recommendations,
 	}
 }
-export default usePlaylistContainer
+export default useResultsLayout

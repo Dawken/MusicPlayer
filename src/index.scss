@@ -5,3 +5,11 @@ body {
   height: 100%;
   background-color: #111111;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
