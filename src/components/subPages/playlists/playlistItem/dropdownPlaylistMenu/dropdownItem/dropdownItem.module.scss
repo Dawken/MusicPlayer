@@ -37,6 +37,11 @@
         -webkit-box-orient: vertical;
         display: -webkit-box;
         white-space: unset;
+        text-decoration: none;
+        color: white;
+      }
+      .songName:hover {
+        text-decoration: underline;
       }
       .artistName {
         font-size: 18px;
@@ -58,6 +63,10 @@
     text-align: center;
     margin: 5px 5px;
   }
+}
+.optionsText {
+  text-decoration: none;
+  color: white;
 }
 .playlistSong:hover {
   background-color: #131313;

@@ -19,6 +19,7 @@ import {
 	Popper,
 } from '@mui/material'
 import PopupState, { bindPopper, bindToggle } from 'material-ui-popup-state'
+import { Link } from 'react-router-dom'
 
 type ItemType = {
 	item: PlaylistTrackObject
@@ -56,7 +57,12 @@ const DropdownItem = ({ item, index, uri }: ItemType) => {
 					src={item.track?.album.images[2].url}
 				/>
 				<div className={styles.songData}>
-					<div className={styles.songName}>{item.track?.name}</div>
+					<Link
+						to={`/track/${item.track?.id}`}
+						className={styles.songName}
+					>
+						{item.track?.name}
+					</Link>
 					<div className={styles.artistName}>
 						{item.track?.artists[0].name}
 					</div>
@@ -105,7 +111,12 @@ const DropdownItem = ({ item, index, uri }: ItemType) => {
 													style={{ color: '#fff' }}
 												/>
 											</ListItemIcon>
-											Go to the song
+											<Link
+												to={`/track/${item.track?.id}`}
+												className={styles.optionsText}
+											>
+												Go to the song
+											</Link>
 										</MenuItem>
 										<MenuItem sx={{ p: 2 }}>
 											<ListItemIcon>

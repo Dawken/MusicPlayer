@@ -5,6 +5,7 @@ import SpotifyApi from 'spotify-web-api-node'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
 import useTrackCard from './useTrackCard'
+import { Link } from 'react-router-dom'
 
 interface TrackSearchResultProps {
 	item: TrackObjectFull | RecommendationTrackObject
@@ -33,11 +34,11 @@ const TrackCard = ({ item }: TrackSearchResultProps) => {
 				/>
 			</div>
 			<div className={styles.artistName}>{item.artists[0].name}</div>
-			<div className={styles.songName}>
+			<Link to={`/track/${item.id}`} className={styles.songName}>
 				{item.name.length > 30
 					? item.name.slice(0, 30) + '...'
 					: item.name}
-			</div>
+			</Link>
 		</div>
 	)
 }

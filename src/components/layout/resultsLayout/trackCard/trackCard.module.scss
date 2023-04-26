@@ -41,6 +41,11 @@
     -webkit-box-orient: vertical;
     white-space: unset;
     text-align: left;
+    text-decoration: none;
+    color: white;
+  }
+  .songName:hover {
+    text-decoration: underline;
   }
 }
 .songContainer:hover {
