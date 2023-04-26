@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useAuth from '../../../customHooks/useAuth'
 import styles from './musicPlayer.module.scss'
 import SpotifyPlayer from 'react-spotify-web-playback'
@@ -17,12 +17,19 @@ const MusicPlayer = () => {
 	const playingSongColor = useAppSelector(
 		(state) => state.auth.playingSongColor
 	)
+	const [album, setAlbum] = useState('')
 
 	useEffect(() => {
-		spotifyApi.play({
-			context_uri: track,
-			offset: { position: songNumber },
-		})
+		setAlbum(track)
+		if (spotify.accessToken) {
+			spotifyApi.setAccessToken(spotify.accessToken)
+			if (track === album) {
+				spotifyApi.play({
+					context_uri: track,
+					offset: { position: songNumber },
+				})
+			}
+		}
 	}, [songNumber])
 
 	if (!spotify.accessToken) return null
@@ -43,7 +50,7 @@ const MusicPlayer = () => {
 				initialVolume={0.5}
 				play
 				showSaveIcon
-				uris={track ? [track] : []}
+				uris={track}
 				offset={songNumber}
 				callback={(state) => {
 					if (state.isPlaying) {
