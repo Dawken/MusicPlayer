@@ -10,7 +10,7 @@ const Layout = () => {
 
 	return (
 		<div className={styles.layoutContainer}>
-			<BackgroundImageColor />
+			<BackgroundImageColor color={undefined} />
 			<div className={styles.mainContainer}>
 				<SearchBar search={search} setSearch={setSearch} />
 				<ResultsLayout searchResult={searchResult} artists={artists} />
