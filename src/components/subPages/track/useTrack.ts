@@ -37,8 +37,6 @@ const useTrack = () => {
 		}
 	}, [id, spotify.accessToken])
 
-	console.log(imageColor)
-
 	return {
 		trackData,
 		artist,
