@@ -6,6 +6,8 @@ import SpotifyApi from 'spotify-web-api-node'
 import SingleTrackResponse = SpotifyApi.SingleTrackResponse
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
 import getColorFromImage from '../../sharedFunctions/getColorFromImage'
+import { useMutation, useQuery } from 'react-query'
+import musicPlayerBackend from '../../../config/axiosConfig'
 
 const useTrack = () => {
 	const { id } = useParams()
@@ -14,6 +16,16 @@ const useTrack = () => {
 	const [trackData, setTrackData] = useState<SingleTrackResponse>()
 	const [artist, setArtist] = useState<SingleArtistResponse>()
 	const [imageColor, setImageColor] = useState('')
+
+	console.log(trackData)
+
+	const { isLoading, data } = useQuery(['lyrics', artist?.name], async () => {
+		const response = await musicPlayerBackend.get('/api/lyrics', {
+			params: { artist: artist?.name, track: trackData?.name },
+		})
+		return response.data.lyrics
+	})
+	const lyrics = data?.split(/\r?\n/)
 
 	useEffect(() => {
 		if (spotify.accessToken) {
@@ -41,6 +53,7 @@ const useTrack = () => {
 		trackData,
 		artist,
 		imageColor,
+		lyrics,
 	}
 }
 export default useTrack

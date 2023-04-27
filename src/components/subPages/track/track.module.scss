@@ -15,7 +15,7 @@
     .trackData {
       display: flex;
       justify-content: flex-start;
-      gap: 25px;
+      gap: 1vh;
       margin: 100px 0 0 2vw;
       .track {
         display: flex;
@@ -31,7 +31,6 @@
           text-overflow: ellipsis;
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
-          display: -webkit-box;
           white-space: unset;
           word-break: break-word;
         }
@@ -80,6 +79,18 @@
       min-height: 65vh;
       margin-top: 30px;
       padding-bottom: 15vh;
+      display: flex;
+      .lyrics {
+        height: 100%;
+        color: rgba(255, 255, 255, 0.8);
+        width: 30%;
+        font-size: 18px;
+        margin: 0 35px;
+        .text {
+          font-size: 35px;
+          color:white;
+        }
+      }
     }
   }
 }
@@ -87,11 +98,9 @@
   .layout {
     display: grid;
     grid-template-columns: 67px;
-
     .trackContainer {
       grid-area: main;
       width: 100%;
-
       .trackData {
         .track {
           .trackName {

@@ -5,7 +5,7 @@ import useTrack from './useTrack'
 import dayjs from 'dayjs'
 
 const Track = () => {
-	const { trackData, artist, imageColor } = useTrack()
+	const { trackData, artist, imageColor, lyrics } = useTrack()
 
 	return (
 		<div className={styles.layout}>
@@ -20,7 +20,7 @@ const Track = () => {
 						<div className={styles.trackName}>
 							{trackData?.name}
 						</div>
-						<div className={styles.artist}>
+						<section className={styles.artist}>
 							<img
 								src={artist?.images[2].url}
 								className={styles.artistImage}
@@ -31,10 +31,17 @@ const Track = () => {
 							<span className={styles.songDurationTime}>
 								{dayjs(trackData?.duration_ms).format('mm:ss')}
 							</span>
-						</div>
+						</section>
 					</div>
 				</div>
-				<div className={styles.lyricsContainer}></div>
+				<div className={styles.lyricsContainer}>
+					<div className={styles.lyrics}>
+						<p className={styles.text}>Text</p>
+						{lyrics?.map((line: string, index: number) => (
+							<p key={index}>{line}</p>
+						))}
+					</div>
+				</div>
 			</div>
 		</div>
 	)

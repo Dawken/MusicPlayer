@@ -10,7 +10,6 @@ import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
 import SkeletonTrackSearchResult from '../../../animations/skeletonLoading/skeletonTrackSearchResult'
 import SkeletonArtistSearchResult from '../../../animations/skeletonLoading/skeletonArtistSearchResult'
 import ScrollContainer from 'react-indiana-drag-scroll'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import TrackCard from './trackCard/trackCard'
 
 interface SearchResultType {
