@@ -39,8 +39,8 @@
           justify-content: flex-start;
           align-items: center;
           .artistImage {
-            width: 3vh;
-            height: 3vh;
+            width: 4vh;
+            height: 4vh;
             border-radius: 50%;
           }
           .artistName:before {
@@ -67,10 +67,14 @@
           }
         }
       }
-      .trackImage {
-        min-width: 14vh;
-        max-width: 16%;
-        height: auto;
+      .trackImageSkeleton {
+        width: 13vw;
+        min-width: 15vh;
+        height: 13vw;
+        min-height: 15vh;
+        .trackImage {
+          height: 100%;
+        }
       }
     }
     .background {

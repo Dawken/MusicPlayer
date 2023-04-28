@@ -5,6 +5,7 @@
   height: 100%;
   position: fixed;
   z-index: 2;
+  font-family: 'Kanit', sans-serif;
   .homePage {
     display: flex;
     margin: 20px 1rem;
@@ -17,16 +18,13 @@
     .spotifyText {
       color: white;
       font-size: 25px;
-      font-family: 'Open Sans', sans-serif;
-      font-weight: 400;
     }
   }
   .optionsList {
-    font-family: 'Poppins', sans-serif;
     color: white;
     list-style: none;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 300;
     margin: 50px 1rem;
     padding: 0;
     .listOption {

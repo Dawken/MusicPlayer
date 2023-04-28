@@ -8,7 +8,7 @@
   }
 }
 .skeleton {
-  opacity: 0.7;
+  opacity: 1;
   background: linear-gradient(270deg,#111111, #3d3d3d,#3d3d3d,#111111);
   background-size: 400% 100%;
   animation: skeletonLoading 6s linear infinite;
@@ -25,9 +25,29 @@
   margin: 5px 20px;
   border-radius: 12px;
 }
+.skeletonTrackText {
+   width: 20vw;
+   min-width: 20vh;
+   height: 4vw;
+   min-height: 5vh;
+   border-radius: 15px;
+ }
 .skeletonArtist {
   width: 50%;
   height: 15px;
   margin: 0 0 20px;
   border-radius: 12px;
 }
+.skeletonSmallText {
+  width: 5vh;
+  height: 15px;
+  margin: 0 5px;
+  border-radius: 12px;
+}
+
+.skeletonLyricsText {
+  height: 10px;
+  margin: 15px 0;
+  border-radius: 12px;
+}
+
