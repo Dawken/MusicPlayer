@@ -4,20 +4,9 @@ import { setSongNumber, setTrack } from '../../../../redux/user'
 import spotifyApi from '../../../../shared/spotifyApi'
 import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
-import { useQuery } from 'react-query'
-import musicPlayerBackend from '../../../../config/axiosConfig'
-import SpotifyApi from 'spotify-web-api-node'
-import SingleTrackResponse = SpotifyApi.SingleTrackResponse
-import SingleArtistResponse = SpotifyApi.SingleArtistResponse
 import useAuth from '../../../../customHooks/useAuth'
 
-const useLyricsSection = ({
-	trackData,
-	artist,
-}: {
-	trackData: SingleTrackResponse | undefined
-	artist: SingleArtistResponse | undefined
-}) => {
+const useLyricsSection = () => {
 	const spotify = useAuth()
 	const { id } = useParams()
 	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
@@ -71,17 +60,7 @@ const useLyricsSection = ({
 		}
 	}
 
-	const { data: songLyrics, isLoading } = useQuery(
-		['lyrics', artist?.name],
-		async () => {
-			const response = await musicPlayerBackend.get('/api/lyrics', {
-				params: { artist: artist?.name, track: trackData?.name },
-			})
-			return response.data.lyrics
-		}
-	)
 	return {
-		songLyrics,
 		setSong,
 		pauseSong,
 		isPlaying,
@@ -90,7 +69,6 @@ const useLyricsSection = ({
 		addToSavedTracks,
 		removeFromSavedTracks,
 		lyricsWidth,
-		isLoading,
 		isTrackFollowed,
 	}
 }

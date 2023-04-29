@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from '../../components/layout/resultsLayout/trackCard/trackCard.module.scss'
+import styles from '../../components/sharedComponents/trackCard/trackCard.module.scss'
 import loading from './skeletonLoading.module.scss'
 
-const SkeletonTrackSearchResult = () => {
+const SkeletonTrackCard = () => {
 	return (
 		<div className={styles.songContainer}>
 			<div className={styles.songPhotoContainer}>
@@ -21,4 +21,4 @@ const SkeletonTrackSearchResult = () => {
 		</div>
 	)
 }
-export default SkeletonTrackSearchResult
+export default SkeletonTrackCard

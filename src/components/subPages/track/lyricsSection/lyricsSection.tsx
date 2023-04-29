@@ -8,17 +8,21 @@ import React from 'react'
 import useLyricsSection from './useLyricsSection'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleTrackResponse = SpotifyApi.SingleTrackResponse
-import SingleArtistResponse = SpotifyApi.SingleArtistResponse
 
 type TrackType = {
 	trackData: SingleTrackResponse | undefined
-	artist: SingleArtistResponse | undefined
+	songLyrics: string
+	isLoading: boolean
 	imageColor: string
 }
 
-const LyricsSection = ({ trackData, artist, imageColor }: TrackType) => {
+const LyricsSection = ({
+	songLyrics,
+	isLoading,
+	trackData,
+	imageColor,
+}: TrackType) => {
 	const {
-		songLyrics,
 		setSong,
 		pauseSong,
 		isPlaying,
@@ -27,11 +31,12 @@ const LyricsSection = ({ trackData, artist, imageColor }: TrackType) => {
 		addToSavedTracks,
 		removeFromSavedTracks,
 		lyricsWidth,
-		isLoading,
 		isTrackFollowed,
-	} = useLyricsSection({ trackData, artist })
+	} = useLyricsSection()
+
+	console.log(songLyrics)
 	return (
-		<div className={styles.background}>
+		<>
 			<div className={styles.songActions}>
 				{id === playingSongId && isPlaying ? (
 					<PauseCircleIcon
@@ -86,7 +91,7 @@ const LyricsSection = ({ trackData, artist, imageColor }: TrackType) => {
 								))}
 				</div>
 			</section>
-		</div>
+		</>
 	)
 }
 export default LyricsSection

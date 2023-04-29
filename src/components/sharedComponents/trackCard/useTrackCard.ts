@@ -1,6 +1,6 @@
-import { store, useAppSelector } from '../../../../redux/store'
-import { setPhotoColor, setSongNumber, setTrack } from '../../../../redux/user'
-import getColorFromImage from '../../../sharedFunctions/getColorFromImage'
+import { store, useAppSelector } from '../../../redux/store'
+import { setPhotoColor, setSongNumber, setTrack } from '../../../redux/user'
+import getColorFromImage from '../../sharedFunctions/getColorFromImage'
 
 const useTrackCard = () => {
 	const playingSongColor = useAppSelector(

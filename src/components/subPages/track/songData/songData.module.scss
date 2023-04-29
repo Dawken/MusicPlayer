@@ -3,20 +3,26 @@
   justify-content: flex-start;
   gap: 1vh;
   margin: 100px 0 0 2vw;
+  .trackImageSkeleton {
+    width: 14vw;
+    height: 14vw;
+    .trackImage {
+      height: 100%;
+    }
+  }
   .track {
     display: flex;
+    justify-content: flex-end;
     flex-direction: column;
     .trackName {
       font-size: 4vw;
-      display: flex;
       justify-content: center;
-      align-items: center;
-      height: 100%;
       font-weight: bold;
       overflow: hidden;
       text-overflow: ellipsis;
-      -webkit-line-clamp: 2;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
+      display: -webkit-box;
       white-space: unset;
       word-break: break-word;
     }
@@ -25,8 +31,8 @@
       justify-content: flex-start;
       align-items: center;
       .artistImage {
-        width: 4vh;
-        height: 4vh;
+        width: 35px;
+        height: 35px;
         border-radius: 50%;
       }
       .artistName:before {
@@ -53,18 +59,13 @@
       }
     }
   }
-  .trackImageSkeleton {
-    width: 13vw;
-    min-width: 15vh;
-    height: 13vw;
-    min-height: 15vh;
-    .trackImage {
-      height: 100%;
-    }
-  }
 }
 @media only screen and (max-width: 1100px) {
       .trackData {
+        .trackImageSkeleton {
+          width: 20vh;
+          height: 20vh;
+        }
         .track {
           .trackName {
             font-size: 4vh;

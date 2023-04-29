@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './trackCard.module.scss'
-import loading from '../../../../animations/skeletonLoading/skeletonLoading.module.scss'
+import loading from '../../../animations/skeletonLoading/skeletonLoading.module.scss'
 import SpotifyApi from 'spotify-web-api-node'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject

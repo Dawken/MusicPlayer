@@ -1,5 +1,5 @@
 import React from 'react'
-import TrackSearchResult from './trackCard/trackCard'
+import TrackSearchResult from '../../sharedComponents/trackCard/trackCard'
 import useResultsLayout from './useResultsLayout'
 import styles from './resultsLayout.module.scss'
 import ArtistSearchResult from './artistsSearchResult/artistSearchResult'
@@ -7,10 +7,10 @@ import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
-import SkeletonTrackSearchResult from '../../../animations/skeletonLoading/skeletonTrackSearchResult'
+import SkeletonTrackCard from '../../../animations/skeletonLoading/skeletonTrackCard'
 import SkeletonArtistSearchResult from '../../../animations/skeletonLoading/skeletonArtistSearchResult'
 import ScrollContainer from 'react-indiana-drag-scroll'
-import TrackCard from './trackCard/trackCard'
+import TrackCard from '../../sharedComponents/trackCard/trackCard'
 
 interface SearchResultType {
 	searchResult: TrackObjectFull[]
@@ -33,7 +33,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
 									style={{ display: 'flex' }}
 								>
 									{Array.from({ length: 8 }, (_, i) => (
-										<SkeletonTrackSearchResult key={i} />
+										<SkeletonTrackCard key={i} />
 									))}
 								</ScrollContainer>
 							) : (
@@ -91,7 +91,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
 							style={{ display: 'flex' }}
 						>
 							{Array.from({ length: 8 }, (_, i) => (
-								<SkeletonTrackSearchResult key={i} />
+								<SkeletonTrackCard key={i} />
 							))}
 						</ScrollContainer>
 					) : (
@@ -115,7 +115,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
 							style={{ display: 'flex' }}
 						>
 							{Array.from({ length: 8 }, (_, i) => (
-								<SkeletonTrackSearchResult key={i} />
+								<SkeletonTrackCard key={i} />
 							))}
 						</ScrollContainer>
 					) : (
