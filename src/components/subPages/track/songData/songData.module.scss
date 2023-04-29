@@ -1,0 +1,76 @@
+.trackData {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1vh;
+  margin: 100px 0 0 2vw;
+  .track {
+    display: flex;
+    flex-direction: column;
+    .trackName {
+      font-size: 4vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      font-weight: bold;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      white-space: unset;
+      word-break: break-word;
+    }
+    .artist {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      .artistImage {
+        width: 4vh;
+        height: 4vh;
+        border-radius: 50%;
+      }
+      .artistName:before {
+        content: "•";
+        margin: 0 4px;
+      }
+      .artistName {
+        font-size: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        white-space: unset;
+        word-break: break-word;
+      }
+      .songDurationTime:before {
+        content: "•";
+        margin: 0 4px;
+      }
+      .songDurationTime {
+        font-size: 1rem;
+        margin-right: 2vh;
+      }
+    }
+  }
+  .trackImageSkeleton {
+    width: 13vw;
+    min-width: 15vh;
+    height: 13vw;
+    min-height: 15vh;
+    .trackImage {
+      height: 100%;
+    }
+  }
+}
+@media only screen and (max-width: 1100px) {
+      .trackData {
+        .track {
+          .trackName {
+            font-size: 4vh;
+
+          }
+        }
+      }
+}
+
