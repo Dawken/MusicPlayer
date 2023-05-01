@@ -8,6 +8,7 @@ import React from 'react'
 import useLyricsSection from './useLyricsSection'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleTrackResponse = SpotifyApi.SingleTrackResponse
+import setSong from '../../../sharedFunctions/setSong'
 
 type TrackType = {
 	trackData: SingleTrackResponse | undefined
@@ -23,7 +24,7 @@ const LyricsSection = ({
 	imageColor,
 }: TrackType) => {
 	const {
-		setSong,
+		trackId,
 		pauseSong,
 		isPlaying,
 		playingSongId,
@@ -34,7 +35,6 @@ const LyricsSection = ({
 		isTrackFollowed,
 	} = useLyricsSection()
 
-	console.log(songLyrics)
 	return (
 		<>
 			<div className={styles.songActions}>
@@ -51,9 +51,9 @@ const LyricsSection = ({
 						onClick={() => {
 							trackData &&
 								setSong(
-									trackData.album.images[1]?.url,
 									trackData.album.uri,
-									trackData.track_number - 1
+									trackData.track_number - 1,
+									trackId
 								)
 						}}
 					/>

@@ -20,6 +20,7 @@ import {
 } from '@mui/material'
 import PopupState, { bindPopper, bindToggle } from 'material-ui-popup-state'
 import { Link } from 'react-router-dom'
+import setSong from '../../../../../sharedFunctions/setSong'
 
 type ItemType = {
 	item: PlaylistTrackObject
@@ -28,7 +29,7 @@ type ItemType = {
 }
 
 const DropdownItem = ({ item, index, uri }: ItemType) => {
-	const { isPlaying, playingSongId, isHovering, setIsHovering, playSong } =
+	const { isPlaying, playingSongId, isHovering, setIsHovering, trackId } =
 		useDropdownItem()
 
 	return (
@@ -46,7 +47,7 @@ const DropdownItem = ({ item, index, uri }: ItemType) => {
 			) : isHovering ? (
 				<PlayArrowIcon
 					className={styles.playIcon}
-					onClick={() => playSong(item, index, uri)}
+					onClick={() => setSong(uri, index, trackId)}
 				/>
 			) : (
 				<div className={styles.songNumber}>{index + 1}</div>

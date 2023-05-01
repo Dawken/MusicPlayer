@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
-import { store, useAppSelector } from '../../../../redux/store'
-import { setSongNumber, setTrack } from '../../../../redux/user'
+import { useAppSelector } from '../../../../redux/store'
 import spotifyApi from '../../../../shared/spotifyApi'
 import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
@@ -11,6 +10,7 @@ const useLyricsSection = () => {
 	const { id } = useParams()
 	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
 	const playingSongId = useAppSelector((state) => state.auth.playingSongId)
+	const trackId = useAppSelector((state) => state.auth.track)
 	const lyricsWidth = [
 		200, 50, 108, 60, 240, 160, 80, 220, 200, 70, 180, 240, 50, 160, 220,
 		60, 200, 100, 240, 160, 220, 200, 180, 240, 160, 220,
@@ -25,19 +25,6 @@ const useLyricsSection = () => {
 			})
 		}
 	}, [id, spotify.accessToken])
-
-	const setSong = (imageUrl: string, item: string, index: number) => {
-		store.dispatch(setTrack({ track: item }))
-		store.dispatch(setSongNumber({ songNumber: index }))
-		if (playingSongId === id) {
-			spotifyApi.play()
-		} else {
-			spotifyApi.play({
-				context_uri: item,
-				offset: { position: index },
-			})
-		}
-	}
 
 	const pauseSong = () => {
 		spotifyApi.pause()
@@ -61,7 +48,7 @@ const useLyricsSection = () => {
 	}
 
 	return {
-		setSong,
+		trackId,
 		pauseSong,
 		isPlaying,
 		playingSongId,

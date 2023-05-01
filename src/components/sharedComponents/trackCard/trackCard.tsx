@@ -6,23 +6,20 @@ import TrackObjectFull = SpotifyApi.TrackObjectFull
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
 import useTrackCard from './useTrackCard'
 import { Link } from 'react-router-dom'
+import setSong from '../../sharedFunctions/setSong'
 
 interface TrackSearchResultProps {
 	item: TrackObjectFull | RecommendationTrackObject
 }
 
 const TrackCard = ({ item }: TrackSearchResultProps) => {
-	const { setSong, handleHover, handleMouseLeave } = useTrackCard()
+	const { trackId, handleHover, handleMouseLeave } = useTrackCard()
 
 	return (
 		<div
 			className={styles.songContainer}
 			onClick={() =>
-				setSong(
-					item.album.images[1]?.url,
-					item.album.uri,
-					item.track_number - 1
-				)
+				setSong(item.album.uri, item.track_number - 1, trackId)
 			}
 			onMouseEnter={() => handleHover(item.album.images[1]?.url)}
 			onMouseLeave={() => handleMouseLeave()}
@@ -35,9 +32,7 @@ const TrackCard = ({ item }: TrackSearchResultProps) => {
 			</div>
 			<div className={styles.artistName}>{item.artists[0].name}</div>
 			<Link to={`/track/${item.id}`} className={styles.songName}>
-				{item.name.length > 30
-					? item.name.slice(0, 30) + '...'
-					: item.name}
+				{item.name}
 			</Link>
 		</div>
 	)

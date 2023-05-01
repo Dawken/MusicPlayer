@@ -48,6 +48,11 @@
         display: -webkit-box;
         white-space: unset;
         word-break: break-word;
+        color: white;
+        text-decoration: none;
+      }
+      .artistName:hover {
+        text-decoration: underline;
       }
       .songDurationTime:before {
         content: "•";

@@ -5,6 +5,7 @@ import React from 'react'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleTrackResponse = SpotifyApi.SingleTrackResponse
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
+import { Link } from 'react-router-dom'
 
 type TrackType = {
 	trackData: SingleTrackResponse | undefined
@@ -43,9 +44,12 @@ const SongData = ({ trackData, artist }: TrackType) => {
 						></div>
 					)}
 					{trackData?.artists[0].name ? (
-						<div className={styles.artistName}>
+						<Link
+							to={`/artist/${artist?.id}`}
+							className={styles.artistName}
+						>
 							{trackData?.artists[0].name}
-						</div>
+						</Link>
 					) : (
 						<div
 							className={`${loading.skeleton} ${loading.skeletonSmallText}`}

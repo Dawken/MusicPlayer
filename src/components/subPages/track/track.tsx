@@ -4,7 +4,7 @@ import styles from './track.module.scss'
 import useTrack from './useTrack'
 import SongData from './songData/songData'
 import LyricsSection from './lyricsSection/lyricsSection'
-import PopularSongs from './popularSongs/popularSongs'
+import PopularSongsAlbums from './popularSongsAlbums/popularSongsAlbums'
 
 const Track = () => {
 	const { trackData, artist, imageColor, songLyrics, isLoading } = useTrack()
@@ -21,8 +21,7 @@ const Track = () => {
 						trackData={trackData}
 						imageColor={imageColor}
 					/>
-					<div className={styles.sectionText}>Popular Songs</div>
-					<PopularSongs artist={artist} />
+					<PopularSongsAlbums artist={artist} />
 				</div>
 			</div>
 		</div>
