@@ -5,6 +5,7 @@ import useTrack from './useTrack'
 import SongData from './songData/songData'
 import LyricsSection from './lyricsSection/lyricsSection'
 import PopularSongsAlbums from './popularSongsAlbums/popularSongsAlbums'
+import Albums from './albums/albums'
 
 const Track = () => {
 	const { trackData, artist, imageColor, songLyrics, isLoading } = useTrack()
@@ -20,6 +21,10 @@ const Track = () => {
 						isLoading={isLoading}
 						trackData={trackData}
 						imageColor={imageColor}
+					/>
+					<Albums
+						trackData={trackData}
+						albumId={trackData?.album.uri}
 					/>
 					<PopularSongsAlbums artist={artist} />
 				</div>

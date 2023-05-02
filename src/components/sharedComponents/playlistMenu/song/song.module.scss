@@ -49,6 +49,8 @@
     }
   }
   .albumName {
+    color:white;
+    text-decoration: none;
     font-size: 1rem;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -57,6 +59,9 @@
     display: -webkit-box;
     white-space: unset;
     word-break: break-word;
+  }
+  .albumName:hover {
+    text-decoration: underline;
   }
   .songDurationTime {
     font-size: 18px;
