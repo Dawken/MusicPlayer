@@ -1,10 +1,10 @@
 .songContainer {
   width: 25vh;
   background-color: #151515;
-  border-radius: 10px;
+  border-radius: 8px;
   text-align: center;
   color: white;
-  margin: 20px 20px;
+  margin: 20px 10px;
   transition: 0.3s;
   .songPhotoContainer {
     display: flex;
@@ -13,7 +13,7 @@
       width: 19vh;
       height: 19vh;
       margin: 10px;
-      border-radius: 12px;
+      border-radius: 8px;
       -webkit-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
       -moz-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
       box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
@@ -41,6 +41,11 @@
     -webkit-box-orient: vertical;
     white-space: unset;
     text-align: left;
+    text-decoration: none;
+    color: white;
+  }
+  .songName:hover {
+    text-decoration: underline;
   }
 }
 .songContainer:hover {

@@ -5,10 +5,12 @@ import KeyboardArrowDownOutlinedIcon from '@mui/icons-material/KeyboardArrowDown
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import SpotifyApi from 'spotify-web-api-node'
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
-import DropdownPlaylistMenu from './dropdownPlaylistMenu/dropdownPlaylistMenu'
+import PlaylistMenu from '../../../sharedComponents/playlistMenu/playlistMenu'
 import { CircularProgress } from '@mui/material'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import usePlaylistItem from './usePlaylistItem'
+import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
+import TrackObjectFull = SpotifyApi.TrackObjectFull
 
 interface ItemType {
 	item: PlaylistObjectSimplified
@@ -76,8 +78,14 @@ const PlaylistItem = ({ item }: ItemType) => {
 				}
 			>
 				{playlistData.length > 0 && (
-					<DropdownPlaylistMenu
-						playlistData={playlistData}
+					<PlaylistMenu
+						playlistData={
+							playlistData as
+								| (PlaylistTrackObject & {
+										track?: TrackObjectFull | undefined
+								  })[]
+								| TrackObjectFull[]
+						}
 						uri={item.uri}
 					/>
 				)}

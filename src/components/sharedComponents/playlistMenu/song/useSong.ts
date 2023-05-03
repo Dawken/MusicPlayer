@@ -1,29 +1,30 @@
-import { store, useAppSelector } from '../../../../../../redux/store'
+import { store, useAppSelector } from '../../../../redux/store'
 import { useState } from 'react'
-import { setSongNumber, setTrack } from '../../../../../../redux/user'
 import SpotifyApi from 'spotify-web-api-node'
-import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
+import TrackObjectFull = SpotifyApi.TrackObjectFull
+import { setSongNumber, setTrack } from '../../../../redux/user'
 
-const useDropdownItem = () => {
+const useSong = () => {
 	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
 	const playingSongId = useAppSelector((state) => state.auth.playingSongId)
+	const playingSongColor = useAppSelector(
+		(state) => state.auth.playingSongColor
+	)
 
 	const [isHovering, setIsHovering] = useState(false)
 
-	const playSong = (
-		item: PlaylistTrackObject,
-		index: number,
-		uri: string
-	) => {
+	const playSong = (item: TrackObjectFull, index: number, uri: string) => {
 		store.dispatch(setTrack({ track: uri }))
 		store.dispatch(setSongNumber({ songNumber: index }))
 	}
+
 	return {
 		isPlaying,
 		playingSongId,
 		isHovering,
 		setIsHovering,
 		playSong,
+		playingSongColor,
 	}
 }
-export default useDropdownItem
+export default useSong
