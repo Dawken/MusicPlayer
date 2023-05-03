@@ -3,7 +3,6 @@ import { useState } from 'react'
 import SpotifyApi from 'spotify-web-api-node'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import { setSongNumber, setTrack } from '../../../../redux/user'
-import { useLocation } from 'react-router-dom'
 
 const useSong = () => {
 	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
@@ -11,9 +10,6 @@ const useSong = () => {
 	const playingSongColor = useAppSelector(
 		(state) => state.auth.playingSongColor
 	)
-	const id = useLocation()
-
-	const path = id.pathname.split('/')[1]
 
 	const [isHovering, setIsHovering] = useState(false)
 
@@ -29,7 +25,6 @@ const useSong = () => {
 		setIsHovering,
 		playSong,
 		playingSongColor,
-		path,
 	}
 }
 export default useSong

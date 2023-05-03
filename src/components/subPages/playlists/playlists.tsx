@@ -1,14 +1,14 @@
 import React from 'react'
 import styles from './playlists.module.scss'
-import useLayout from '../../layout/useLayout'
 import AddIcon from '@mui/icons-material/Add'
 import { Link } from 'react-router-dom'
 import BackgroundImageColor from '../../sharedComponents/backgroundImageColor/backgroundImageColor'
 import PlaylistItem from './playlistItem/playlistItem'
 import SkeletonPlaylistItem from '../../../animations/skeletonLoading/skeletonPlaylistItem'
+import usePlaylists from './usePlaylists'
 
 const Playlists = () => {
-	const { playlists } = useLayout()
+	const { playlists } = usePlaylists()
 
 	return (
 		<div className={styles.layout}>

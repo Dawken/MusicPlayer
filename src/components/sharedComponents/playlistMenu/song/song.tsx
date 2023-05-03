@@ -4,30 +4,19 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import dayjs from 'dayjs'
 import SpotifyApi from 'spotify-web-api-node'
 import useSong from './useSong'
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
-import DeleteIcon from '@mui/icons-material/Delete'
-import AlbumIcon from '@mui/icons-material/Album'
-import MusicNoteIcon from '@mui/icons-material/MusicNote'
-import PersonIcon from '@mui/icons-material/Person'
-import {
-	Button,
-	Fade,
-	ListItemIcon,
-	MenuItem,
-	Paper,
-	Popper,
-} from '@mui/material'
-import PopupState, { bindPopper, bindToggle } from 'material-ui-popup-state'
 import { Link } from 'react-router-dom'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
+import SongOptionsMenu from '../../songOptionsMenu/songOptionsMenu'
+import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
 
 type ItemType = {
 	item: TrackObjectFull
 	index: number
 	uri: string | undefined
+	userPlaylists: PlaylistObjectSimplified[] | undefined
 }
 
-const Song = ({ item, index, uri }: ItemType) => {
+const Song = ({ item, index, uri, userPlaylists }: ItemType) => {
 	const {
 		isPlaying,
 		playingSongId,
@@ -35,7 +24,6 @@ const Song = ({ item, index, uri }: ItemType) => {
 		setIsHovering,
 		playSong,
 		playingSongColor,
-		path,
 	} = useSong()
 
 	return (
@@ -84,87 +72,11 @@ const Song = ({ item, index, uri }: ItemType) => {
 			<div className={styles.songDurationTime}>
 				{dayjs(item.duration_ms).format('mm:ss')}
 			</div>
-			<PopupState variant='popper' popupId='demo-popup-popper'>
-				{(popupState) => (
-					<div>
-						<Button {...bindToggle(popupState)}>
-							<MoreHorizIcon style={{ color: '#fff' }} />
-						</Button>
-						<Popper {...bindPopper(popupState)} transition>
-							{({ TransitionProps }) => (
-								<Fade {...TransitionProps} timeout={350}>
-									<Paper
-										style={{
-											background: '#1c1c1c',
-											color: '#ffffff',
-											borderRadius: '12px',
-											justifyContent: 'space-between',
-										}}
-									>
-										<Link
-											to={`/artist/${item.artists[0].id}`}
-											className={styles.optionsText}
-										>
-											<MenuItem sx={{ p: 2 }}>
-												<ListItemIcon>
-													<PersonIcon
-														style={{
-															color: '#fff',
-														}}
-													/>
-												</ListItemIcon>
-												Show artist
-											</MenuItem>
-										</Link>
-										<Link
-											to={`/album/${item.album.id}`}
-											className={styles.optionsText}
-										>
-											<MenuItem sx={{ p: 2 }}>
-												<ListItemIcon>
-													<AlbumIcon
-														style={{
-															color: '#fff',
-														}}
-													/>
-												</ListItemIcon>
-												Show album
-											</MenuItem>
-										</Link>
-										<Link
-											to={`/track/${item.id}`}
-											className={styles.optionsText}
-										>
-											<MenuItem sx={{ p: 2 }}>
-												<ListItemIcon>
-													<MusicNoteIcon
-														style={{
-															color: '#fff',
-														}}
-													/>
-												</ListItemIcon>
-												Go to the song
-											</MenuItem>
-										</Link>
-										{path === 'playlists' && (
-											<MenuItem sx={{ p: 2 }}>
-												<ListItemIcon>
-													<DeleteIcon
-														style={{
-															color: '#fff',
-														}}
-													/>
-												</ListItemIcon>
-												Delete song
-											</MenuItem>
-										)}
-									</Paper>
-								</Fade>
-							)}
-						</Popper>
-					</div>
-				)}
-			</PopupState>
+			<SongOptionsMenu
+				item={item}
+				userPlaylists={userPlaylists}
+				playlistId={uri}
+			/>
 		</div>
 	)
 }
