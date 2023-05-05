@@ -28,6 +28,11 @@
     display: flex;
     justify-content: flex-start;
     text-align: left;
+    color: white;
+    text-decoration: none;
+  }
+  .artistName:hover{
+    text-decoration: underline;
   }
   .songName {
     font-family: 'Fira Sans', sans-serif;

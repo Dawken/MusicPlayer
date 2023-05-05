@@ -1,0 +1,33 @@
+.layout {
+  color: white;
+  font-size: 30px;
+  display: grid;
+  grid-template-columns: 250px;
+  grid-template-rows: auto;
+  grid-template-areas: "sidebar main";
+  font-family: 'Kanit', sans-serif;
+  .artist {
+    grid-area: main;
+    width: 100%;
+    justify-content: center;
+    align-items: flex-start;
+    .artistBackgroundImage {
+      width: 70%;
+      height: 640px;
+      position: absolute;
+    }
+    .background {
+      background-color: rgba(0, 0, 0, 0.2);
+      width: 100%;
+      min-height: 65vh;
+      margin-top: 30px;
+      padding-bottom: 15vh;
+    }
+  }
+}
+@media only screen and (max-width: 1100px) {
+  .layout {
+    display: grid;
+    grid-template-columns: 67px;
+  }
+}

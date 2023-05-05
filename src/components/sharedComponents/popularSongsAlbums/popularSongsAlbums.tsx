@@ -15,11 +15,13 @@ const PopularSongsAlbums = ({
 }) => {
 	const { popular } = usePopularSongsAlbums(artist)
 
+	console.log(!popular.songs.length)
+
 	return (
 		<>
 			<div className={styles.sectionText}>Popular Songs</div>
 			<section className={styles.popularSongs}>
-				{!popular.songs ? (
+				{!popular.songs.length ? (
 					<ScrollContainer
 						horizontal={true}
 						style={{ display: 'flex' }}
@@ -41,7 +43,7 @@ const PopularSongsAlbums = ({
 			</section>
 			<div className={styles.sectionText}>Popular Albums</div>
 			<section className={styles.popularAlbums}>
-				{!popular.albums ? (
+				{!popular.albums.length ? (
 					<ScrollContainer
 						horizontal={true}
 						style={{ display: 'flex' }}
