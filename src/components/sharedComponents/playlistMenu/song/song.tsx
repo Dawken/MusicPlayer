@@ -47,7 +47,7 @@ const Song = ({ item, index, uri, userPlaylists }: ItemType) => {
 			) : isHovering && uri ? (
 				<PlayArrowIcon
 					className={styles.playIcon}
-					onClick={() => playSong(item, index, uri)}
+					onClick={() => playSong(index, uri)}
 				/>
 			) : (
 				<div className={styles.songNumber}>{index + 1}</div>

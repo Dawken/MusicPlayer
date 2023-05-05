@@ -11,6 +11,7 @@ import SidebarMenu from './components/sharedComponents/sidebarMenu/sidebarMenu'
 import Track from './components/subPages/track/track'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import Artist from './components/subPages/artist/artist'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -30,6 +31,7 @@ const App = () => {
 						<Route path='/' element={<Layout />} />
 						<Route path='/playlists' element={<Playlists />} />
 						<Route path='/track/:id' element={<Track />} />
+						<Route path='/artist/:id' element={<Artist />} />
 					</Route>
 					<Route path='/login' element={<Login />} />
 				</Routes>

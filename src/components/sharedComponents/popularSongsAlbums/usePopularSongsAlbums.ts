@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import spotifyApi from '../../../../shared/spotifyApi'
+import spotifyApi from '../../../shared/spotifyApi'
 import SpotifyApi from 'spotify-web-api-node'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import { useParams } from 'react-router-dom'

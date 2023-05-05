@@ -4,7 +4,7 @@ import SpotifyApi from 'spotify-web-api-node'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import SingleTrackResponse = SpotifyApi.SingleTrackResponse
 
-const useAlbums = (trackData: SingleTrackResponse | undefined) => {
+const useAlbumSongs = (trackData: SingleTrackResponse | undefined) => {
 	const [album, setAlbum] = useState<TrackObjectFull[]>([])
 	useEffect(() => {
 		if (trackData)
@@ -21,11 +21,11 @@ const useAlbums = (trackData: SingleTrackResponse | undefined) => {
 					setAlbum(tracks)
 				})
 				.catch((err) => {
-					console.log('Error getting albums tracks:', err)
+					console.log('Error getting albumSongs tracks:', err)
 				})
 	}, [trackData])
 	return {
 		album,
 	}
 }
-export default useAlbums
+export default useAlbumSongs

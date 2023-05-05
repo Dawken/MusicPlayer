@@ -1,9 +1,10 @@
 import { useParams } from 'react-router-dom'
-import { useAppSelector } from '../../../../redux/store'
+import { store, useAppSelector } from '../../../../redux/store'
 import spotifyApi from '../../../../shared/spotifyApi'
 import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import useAuth from '../../../../customHooks/useAuth'
+import { setSongNumber, setTrack } from '../../../../redux/user'
 
 const useLyricsSection = () => {
 	const spotify = useAuth()
@@ -29,6 +30,14 @@ const useLyricsSection = () => {
 	const pauseSong = () => {
 		spotifyApi.pause()
 	}
+	const playSong = (index: number, uri: string) => {
+		store.dispatch(setTrack({ track: uri }))
+		store.dispatch(setSongNumber({ songNumber: index }))
+		spotifyApi.play({
+			context_uri: uri,
+			offset: { position: index },
+		})
+	}
 
 	const addToSavedTracks = () => {
 		if (id) {
@@ -50,6 +59,7 @@ const useLyricsSection = () => {
 	return {
 		trackId,
 		pauseSong,
+		playSong,
 		isPlaying,
 		playingSongId,
 		id,

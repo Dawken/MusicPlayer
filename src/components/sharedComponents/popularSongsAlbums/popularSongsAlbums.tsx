@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from './popularSongsAlbums.module.scss'
 import ScrollContainer from 'react-indiana-drag-scroll'
-import SkeletonTrackCard from '../../../../animations/skeletonLoading/skeletonTrackCard'
-import TrackCard from '../../../sharedComponents/trackCard/trackCard'
+import SkeletonTrackCard from '../../../animations/skeletonLoading/skeletonTrackCard'
+import TrackCard from '../trackCard/trackCard'
 import usePopularSongsAlbums from './usePopularSongsAlbums'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
-import AlbumCard from '../../../sharedComponents/albumCard/albumCard'
+import AlbumCard from '../albumCard/albumCard'
 
 const PopularSongsAlbums = ({
 	artist,

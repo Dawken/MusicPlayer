@@ -2,16 +2,16 @@ import React from 'react'
 import PlaylistMenu from '../../../sharedComponents/playlistMenu/playlistMenu'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleTrackResponse = SpotifyApi.SingleTrackResponse
-import useAlbums from './useAlbums'
+import useAlbumSongs from './useAlbumSongs'
 
-const Albums = ({
+const AlbumSongs = ({
 	trackData,
 	albumId,
 }: {
 	trackData: SingleTrackResponse | undefined
 	albumId: string | undefined
 }) => {
-	const { album } = useAlbums(trackData)
+	const { album } = useAlbumSongs(trackData)
 	return <PlaylistMenu playlistData={album} uri={albumId} />
 }
-export default Albums
+export default AlbumSongs
