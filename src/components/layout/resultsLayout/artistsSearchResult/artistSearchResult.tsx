@@ -3,6 +3,7 @@ import styles from './artistSearchResult.module.scss'
 import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import loading from '../../../../animations/skeletonLoading/skeletonLoading.module.scss'
+import { Link } from 'react-router-dom'
 
 interface ArtistsSearchResultProps {
 	item: ArtistObjectFull
@@ -10,7 +11,7 @@ interface ArtistsSearchResultProps {
 
 const ArtistSearchResult = ({ item }: ArtistsSearchResultProps) => {
 	return (
-		<div className={styles.artistContainer}>
+		<Link to={`/artist/${item.id}`} className={styles.artistContainer}>
 			<div className={styles.artistPhotoContainer}>
 				<img
 					className={`${styles.artistPhoto} ${loading.skeleton}`}
@@ -22,7 +23,7 @@ const ArtistSearchResult = ({ item }: ArtistsSearchResultProps) => {
 				/>
 			</div>
 			<div className={styles.artistName}>{item.name}</div>
-		</div>
+		</Link>
 	)
 }
 export default ArtistSearchResult

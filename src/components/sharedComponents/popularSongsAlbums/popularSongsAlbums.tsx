@@ -15,8 +15,6 @@ const PopularSongsAlbums = ({
 }) => {
 	const { popular } = usePopularSongsAlbums(artist)
 
-	console.log(!popular.songs.length)
-
 	return (
 		<>
 			<div className={styles.sectionText}>Popular Songs</div>

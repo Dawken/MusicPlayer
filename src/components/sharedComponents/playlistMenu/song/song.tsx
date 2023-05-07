@@ -61,9 +61,12 @@ const Song = ({ item, index, uri, userPlaylists }: ItemType) => {
 					<Link to={`/track/${item.id}`} className={styles.songName}>
 						{item.name}
 					</Link>
-					<div className={styles.artistName}>
+					<Link
+						to={`/artist/${item.artists[0].id}`}
+						className={styles.artistName}
+					>
 						{item.artists[0].name}
-					</div>
+					</Link>
 				</div>
 			</div>
 			<Link to={`/album/${item.album.id}`} className={styles.albumName}>

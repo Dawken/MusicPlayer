@@ -4,6 +4,7 @@ import useAuth from '../../../customHooks/useAuth'
 import { useParams } from 'react-router-dom'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
+import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import getColorFromImage from '../../sharedFunctions/getColorFromImage'
 
 const useArtist = () => {
@@ -11,6 +12,8 @@ const useArtist = () => {
 
 	const { id } = useParams()
 	const [artist, setArtist] = useState<SingleArtistResponse>()
+	const [recommendedArtists, setRecommendedArtists] =
+		useState<ArtistObjectFull[]>()
 	const [imageColor, setImageColor] = useState('')
 
 	useEffect(() => {
@@ -26,12 +29,16 @@ const useArtist = () => {
 						}
 					)
 				})
+				spotifyApi
+					.getArtistRelatedArtists(id)
+					.then((data) => setRecommendedArtists(data.body.artists))
 			}
 		}
 	}, [id, spotify.accessToken])
 	return {
 		artist,
 		imageColor,
+		recommendedArtists,
 	}
 }
 export default useArtist

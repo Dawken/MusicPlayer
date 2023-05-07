@@ -22,6 +22,29 @@
       min-height: 65vh;
       margin-top: 30px;
       padding-bottom: 15vh;
+      .playIcon {
+        font-size: 70px;
+        transition: 0.2s;
+        cursor: pointer;
+        margin: 10px 0 0 20px;
+      }
+      .playIcon:hover {
+        transform: scale(1.1);
+        transition: 0.2s;
+      }
+      .sectionText {
+        font-size: 35px;
+        color: white;
+        padding: 40px 35px 0;
+        display: flex;
+        justify-content: flex-start;
+      }
+      .recommendedArtists {
+        margin: 5px 15px;
+        display: grid;
+        justify-content: center;
+        grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+      }
     }
   }
 }
