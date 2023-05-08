@@ -4,8 +4,8 @@ import styles from './track.module.scss'
 import useTrack from './useTrack'
 import SongData from './songData/songData'
 import LyricsSection from './lyricsSection/lyricsSection'
-import PopularSongsAlbums from './popularSongsAlbums/popularSongsAlbums'
-import Albums from './albums/albums'
+import PopularSongsAlbums from '../../sharedComponents/popularSongsAlbums/popularSongsAlbums'
+import AlbumSongs from './albumSongs/albumSongs'
 
 const Track = () => {
 	const { trackData, artist, imageColor, songLyrics, isLoading } = useTrack()
@@ -22,7 +22,7 @@ const Track = () => {
 						trackData={trackData}
 						imageColor={imageColor}
 					/>
-					<Albums
+					<AlbumSongs
 						trackData={trackData}
 						albumId={trackData?.album.uri}
 					/>

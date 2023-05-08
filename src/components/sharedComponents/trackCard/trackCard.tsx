@@ -30,7 +30,12 @@ const TrackCard = ({ item }: TrackSearchResultProps) => {
 					src={item.album.images[1]?.url}
 				/>
 			</div>
-			<div className={styles.artistName}>{item.artists[0].name}</div>
+			<Link
+				to={`/artist/${item.artists[0].id}`}
+				className={styles.artistName}
+			>
+				{item.artists[0].name}
+			</Link>
 			<Link to={`/track/${item.id}`} className={styles.songName}>
 				{item.name}
 			</Link>

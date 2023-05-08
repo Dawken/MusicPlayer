@@ -1,7 +1,5 @@
 import { store, useAppSelector } from '../../../../redux/store'
 import { useState } from 'react'
-import SpotifyApi from 'spotify-web-api-node'
-import TrackObjectFull = SpotifyApi.TrackObjectFull
 import { setSongNumber, setTrack } from '../../../../redux/user'
 
 const useSong = () => {
@@ -13,7 +11,7 @@ const useSong = () => {
 
 	const [isHovering, setIsHovering] = useState(false)
 
-	const playSong = (item: TrackObjectFull, index: number, uri: string) => {
+	const playSong = (index: number, uri: string) => {
 		store.dispatch(setTrack({ track: uri }))
 		store.dispatch(setSongNumber({ songNumber: index }))
 	}
