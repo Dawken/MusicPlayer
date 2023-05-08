@@ -1,11 +1,11 @@
-import useAuth from '../../customHooks/useAuth'
 import { useEffect, useState } from 'react'
-import spotifyApi from '../../shared/spotifyApi'
+import spotifyApi from '../../../shared/spotifyApi'
+import useAuth from '../../../customHooks/useAuth'
 import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 
-const useLayout = () => {
+const useSearchBar = () => {
 	const spotify = useAuth()
 	const { accessToken } = spotify
 
@@ -39,4 +39,4 @@ const useLayout = () => {
 		artists,
 	}
 }
-export default useLayout
+export default useSearchBar
