@@ -7,14 +7,16 @@ import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark'
 import CollectionsBookmarkOutlinedIcon from '@mui/icons-material/CollectionsBookmarkOutlined'
 import LibraryAddSharpIcon from '@mui/icons-material/LibraryAddSharp'
 import LibraryAddOutlinedIcon from '@mui/icons-material/LibraryAddOutlined'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../../../redux/store'
+import spotifyApi from '../../../shared/spotifyApi'
 
 const SidebarMenu = () => {
 	const playingSongPhoto = useAppSelector(
 		(state) => state.auth.playingSongPhoto
 	)
 	const params = useLocation()
+	const navigate = useNavigate()
 
 	const { pathname } = params
 
@@ -22,6 +24,12 @@ const SidebarMenu = () => {
 
 	const handleResize = () => {
 		setWindowWidth(window.innerWidth)
+	}
+
+	const createPlaylist = () => {
+		spotifyApi
+			.createPlaylist('My playlist')
+			.then((data) => navigate(`/playlist/${data.body.id}`))
 	}
 
 	window.addEventListener('resize', handleResize)
@@ -44,8 +52,8 @@ const SidebarMenu = () => {
 					</Link>
 				</li>
 				<li>
-					<Link to={'/createPlaylist'} className={styles.listOption}>
-						{pathname === '/createplaylist' ? (
+					<div onClick={createPlaylist} className={styles.listOption}>
+						{pathname === '/playlist' ? (
 							<LibraryAddSharpIcon className={styles.icon} />
 						) : (
 							<LibraryAddOutlinedIcon className={styles.icon} />
@@ -53,7 +61,7 @@ const SidebarMenu = () => {
 						<div className={styles.listOptionText}>
 							Create playlist
 						</div>
-					</Link>
+					</div>
 				</li>
 				<li>
 					<Link to={'/playlists'} className={styles.listOption}>

@@ -20,7 +20,7 @@ const Playlists = () => {
 							Playlists not found
 						</div>
 						<Link
-							to={'/createPlaylist'}
+							to={'/playlist'}
 							className={styles.createPlaylist}
 						>
 							<AddIcon className={styles.createPlaylistButton} />
@@ -36,7 +36,7 @@ const Playlists = () => {
 								Your playlists
 							</div>
 							<Link
-								to={'/createPlaylist'}
+								to={'/playlist'}
 								className={styles.createPlaylist}
 							>
 								<AddIcon
