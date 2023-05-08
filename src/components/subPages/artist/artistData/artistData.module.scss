@@ -34,12 +34,14 @@
     }
     .followers {
       font-size: 1.2rem;
-      justify-content: center;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
       overflow: hidden;
       text-overflow: ellipsis;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
-      display: -webkit-box;
       white-space: unset;
       word-break: break-word;
     }

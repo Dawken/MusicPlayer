@@ -3,6 +3,7 @@ import loading from '../../../../animations/skeletonLoading/skeletonLoading.modu
 import React from 'react'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
 const ArtistData = ({
 	artist,
@@ -30,6 +31,7 @@ const ArtistData = ({
 					)}
 				</div>
 				<div className={styles.followers}>
+					<AccountCircleIcon />
 					{artist?.followers.total ? (
 						artist.followers.total
 							.toLocaleString()
