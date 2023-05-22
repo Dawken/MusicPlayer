@@ -14,9 +14,18 @@ type ItemType = {
 	index: number
 	uri: string | undefined
 	userPlaylists: PlaylistObjectSimplified[] | undefined
+	isCreatingPlaylist?: boolean
+	playlist?: PlaylistObjectSimplified
 }
 
-const Song = ({ item, index, uri, userPlaylists }: ItemType) => {
+const Song = ({
+	item,
+	index,
+	uri,
+	userPlaylists,
+	isCreatingPlaylist,
+	playlist,
+}: ItemType) => {
 	const {
 		isPlaying,
 		playingSongId,
@@ -24,7 +33,10 @@ const Song = ({ item, index, uri, userPlaylists }: ItemType) => {
 		setIsHovering,
 		playSong,
 		playingSongColor,
+		addSongToPlaylist,
 	} = useSong()
+
+	console.log(uri)
 
 	return (
 		<div
@@ -50,12 +62,14 @@ const Song = ({ item, index, uri, userPlaylists }: ItemType) => {
 					onClick={() => playSong(index, uri)}
 				/>
 			) : (
-				<div className={styles.songNumber}>{index + 1}</div>
+				<div className={styles.songNumber}>
+					{!isCreatingPlaylist && index + 1}
+				</div>
 			)}
 			<div className={styles.songContainer}>
 				<img
 					className={styles.songPhoto}
-					src={item.album.images[2].url}
+					src={item.album.images[0].url}
 				/>
 				<div className={styles.songData}>
 					<Link to={`/track/${item.id}`} className={styles.songName}>
@@ -75,11 +89,20 @@ const Song = ({ item, index, uri, userPlaylists }: ItemType) => {
 			<div className={styles.songDurationTime}>
 				{dayjs(item.duration_ms).format('mm:ss')}
 			</div>
-			<SongOptionsMenu
-				item={item}
-				userPlaylists={userPlaylists}
-				playlistId={uri}
-			/>
+			{isCreatingPlaylist && uri && playlist ? (
+				<button
+					className={styles.addSong}
+					onClick={() => addSongToPlaylist(playlist, [uri])}
+				>
+					Add
+				</button>
+			) : (
+				<SongOptionsMenu
+					item={item}
+					userPlaylists={userPlaylists}
+					playlistId={uri}
+				/>
+			)}
 		</div>
 	)
 }

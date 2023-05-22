@@ -1,6 +1,7 @@
 import { store, useAppSelector } from '../../../../redux/store'
 import { useState } from 'react'
 import { setSongNumber, setTrack } from '../../../../redux/user'
+import addSongToPlaylist from '../../../sharedFunctions/addSongToPlaylist'
 
 const useSong = () => {
 	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
@@ -23,6 +24,7 @@ const useSong = () => {
 		setIsHovering,
 		playSong,
 		playingSongColor,
+		addSongToPlaylist,
 	}
 }
 export default useSong

@@ -5,10 +5,12 @@ import SpotifyApi from 'spotify-web-api-node'
 import SinglePlaylistResponse = SpotifyApi.SinglePlaylistResponse
 import useAuth from '../../../customHooks/useAuth'
 import getColorFromImage from '../../sharedFunctions/getColorFromImage'
+import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
 
 const usePlaylist = () => {
 	const [imageColor, setImageColor] = useState('#424242')
 	const [playlist, setPlaylist] = useState<SinglePlaylistResponse>()
+	const [playlistSongs, setPlaylistSongs] = useState<PlaylistTrackObject[]>()
 
 	const { id } = useParams()
 
@@ -27,12 +29,16 @@ const usePlaylist = () => {
 					)
 				}
 			})
+			spotifyApi
+				.getPlaylistTracks(id)
+				.then((data) => setPlaylistSongs(data.body.items))
 		}
 	}, [id, spotify.accessToken])
 
 	return {
 		imageColor,
 		playlist,
+		playlistSongs,
 	}
 }
 export default usePlaylist

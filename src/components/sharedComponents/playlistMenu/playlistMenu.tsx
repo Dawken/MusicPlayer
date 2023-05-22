@@ -13,7 +13,8 @@ type PlaylistDataType = {
 	playlistData:
 		| (PlaylistTrackObject & { track?: TrackObjectFull })[]
 		| TrackObjectFull[]
-	uri: string | undefined
+	uri?: string | undefined
+	isCreatingPlaylist?: boolean
 }
 
 const isPlaylistTrackObject = (
@@ -22,7 +23,11 @@ const isPlaylistTrackObject = (
 	return (item as PlaylistTrackObject).track !== undefined
 }
 
-const PlaylistMenu = ({ playlistData, uri }: PlaylistDataType) => {
+const PlaylistMenu = ({
+	playlistData,
+	uri,
+	isCreatingPlaylist,
+}: PlaylistDataType) => {
 	const [userPlaylists, setUserPlaylists] =
 		useState<PlaylistObjectSimplified[]>()
 
@@ -42,7 +47,7 @@ const PlaylistMenu = ({ playlistData, uri }: PlaylistDataType) => {
 	}, [spotify.accessToken])
 
 	return (
-		<div className={styles.dropdownContainer}>
+		<div className={styles.playlistMenu}>
 			<div className={styles.playlistInfo}>
 				<span>#</span>
 				<span>Title</span>
@@ -55,9 +60,10 @@ const PlaylistMenu = ({ playlistData, uri }: PlaylistDataType) => {
 					<Song
 						item={track}
 						index={index}
-						uri={uri}
+						uri={uri ?? track.id}
 						key={index}
 						userPlaylists={userPlaylists}
+						isCreatingPlaylist={isCreatingPlaylist}
 					/>
 				)
 			})}

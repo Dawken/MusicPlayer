@@ -73,6 +73,19 @@
     text-align: center;
     margin: 5px 5px;
   }
+  .addSong {
+    width: 7vh;
+    height: 3vh;
+    border-radius: 22px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid #818181;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: white;
+  }
 }
 .optionsText {
   text-decoration: none;
@@ -84,13 +97,13 @@
 }
 @media only screen and (max-width: 900px) {
   .playlistSong {
-    grid-template-columns: 10% 30% 25% 20%;
+    grid-template-columns: 10% 45% 20% 25%;
     .equalizer {
       padding: 15px;
     }
     .albumName {
       visibility: hidden;
-      width: 0;
+      display: none;
     }
     .songNumber {
       padding: 20px;
