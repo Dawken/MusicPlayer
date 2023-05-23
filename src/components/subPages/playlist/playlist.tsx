@@ -14,6 +14,7 @@ import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
 import setSong from '../../sharedFunctions/setSong'
 import spotifyApi from '../../../shared/spotifyApi'
+import SkeletonPlaylistSongItem from '../../../animations/skeletonLoading/skeletonPlaylistSongItem'
 
 const Playlist = () => {
 	const {
@@ -23,7 +24,9 @@ const Playlist = () => {
 		playlistId,
 		isPlaying,
 		recommendedTracks,
+		isTyping,
 	} = usePlaylist()
+
 	const { setSearch, search, searchResult } = useSearchBar()
 
 	return (
@@ -48,7 +51,7 @@ const Playlist = () => {
 							}}
 						/>
 					)}
-					{playlistSongs && playlist && (
+					{playlistSongs && playlist ? (
 						<PlaylistMenu
 							playlistData={
 								playlistSongs as
@@ -59,37 +62,51 @@ const Playlist = () => {
 							}
 							uri={playlist.uri}
 						/>
+					) : (
+						Array.from({ length: 5 }, (_, i) => {
+							return <SkeletonPlaylistSongItem key={i} />
+						})
 					)}
 					<div className={styles.searchBar}>
 						<div className={styles.sectionText}>Add new songs</div>
 						<SearchBar search={search} setSearch={setSearch} />
-						{searchResult.map((item, index) => {
-							return (
-								<Song
-									item={item}
-									index={0}
-									uri={item.uri}
-									key={index}
-									userPlaylists={undefined}
-									isCreatingPlaylist={true}
-									playlist={playlist}
-								/>
-							)
-						})}
-						{recommendedTracks &&
-							recommendedTracks.map((item, index) => {
-								return (
-									<Song
-										item={item}
-										index={0}
-										uri={item.uri}
-										key={index}
-										userPlaylists={undefined}
-										isCreatingPlaylist={true}
-										playlist={playlist}
-									/>
-								)
-							})}
+						{isTyping
+							? Array.from({ length: 5 }, (_, i) => {
+									return <SkeletonPlaylistSongItem key={i} />
+							  })
+							: searchResult.map((item, index) => {
+									return (
+										<Song
+											item={item}
+											index={0}
+											uri={item.uri}
+											key={index}
+											userPlaylists={undefined}
+											isCreatingPlaylist={true}
+											playlist={playlist}
+										/>
+									)
+							  })}
+						<div className={styles.sectionText}>
+							You may also like
+						</div>
+						{recommendedTracks
+							? recommendedTracks.map((item, index) => {
+									return (
+										<Song
+											item={item}
+											index={0}
+											uri={item.uri}
+											key={index}
+											userPlaylists={undefined}
+											isCreatingPlaylist={true}
+											playlist={playlist}
+										/>
+									)
+							  })
+							: Array.from({ length: 5 }, (_, i) => {
+									return <SkeletonPlaylistSongItem key={i} />
+							  })}
 					</div>
 				</div>
 			</div>

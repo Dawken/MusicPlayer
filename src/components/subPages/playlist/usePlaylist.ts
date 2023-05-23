@@ -18,10 +18,12 @@ const usePlaylist = () => {
 
 	const playlistId = useAppSelector((state) => state.auth.track)
 	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
+	const isTyping = useAppSelector((state) => state.auth.isUserTyping)
 
 	const { id } = useParams()
 
 	const spotify = useAuth()
+
 	useEffect(() => {
 		if (spotify.accessToken && id) {
 			spotifyApi.setAccessToken(spotify.accessToken)
@@ -61,6 +63,7 @@ const usePlaylist = () => {
 		playlistId,
 		isPlaying,
 		recommendedTracks,
+		isTyping,
 	}
 }
 export default usePlaylist
