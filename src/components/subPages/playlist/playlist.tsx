@@ -10,10 +10,18 @@ import SpotifyApi from 'spotify-web-api-node'
 import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import Song from '../../sharedComponents/playlistMenu/song/song'
+import PauseCircleIcon from '@mui/icons-material/PauseCircle'
+import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
+import { useAppSelector } from '../../../redux/store'
+import setSong from '../../sharedFunctions/setSong'
+import spotifyApi from '../../../shared/spotifyApi'
 
 const Playlist = () => {
 	const { imageColor, playlist, playlistSongs } = usePlaylist()
 	const { setSearch, search, searchResult } = useSearchBar()
+
+	const playlistId = useAppSelector((state) => state.auth.track)
+	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
 
 	return (
 		<div className={styles.layout}>
@@ -21,18 +29,38 @@ const Playlist = () => {
 			<div className={styles.playlist}>
 				<PlaylistData playlist={playlist} />
 				<div className={styles.background}>
-					{playlistSongs && playlist && (
-						<PlaylistMenu
-							playlistData={
-								playlistSongs as
-									| (PlaylistTrackObject & {
-											track?: TrackObjectFull | undefined
-									  })[]
-									| TrackObjectFull[]
-							}
-							uri={playlist.uri}
+					{isPlaying && playlist?.uri === playlistId ? (
+						<PauseCircleIcon
+							style={{ color: imageColor }}
+							className={styles.playIcon}
+							onClick={() => spotifyApi.pause()}
+						/>
+					) : (
+						<PlayCircleFilledIcon
+							style={{ color: imageColor }}
+							className={styles.playIcon}
+							onClick={() => {
+								playlist &&
+									setSong(playlist.uri, 0, playlist.uri)
+							}}
 						/>
 					)}
+					<div className={styles.playlistSongs}>
+						{playlistSongs && playlist && (
+							<PlaylistMenu
+								playlistData={
+									playlistSongs as
+										| (PlaylistTrackObject & {
+												track?:
+													| TrackObjectFull
+													| undefined
+										  })[]
+										| TrackObjectFull[]
+								}
+								uri={playlist.uri}
+							/>
+						)}
+					</div>
 					<div className={styles.searchBar}>
 						<SearchBar search={search} setSearch={setSearch} />
 						{searchResult.map((item, index) => {

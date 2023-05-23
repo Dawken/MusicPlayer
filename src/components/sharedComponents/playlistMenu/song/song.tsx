@@ -36,8 +36,6 @@ const Song = ({
 		addSongToPlaylist,
 	} = useSong()
 
-	console.log(uri)
-
 	return (
 		<div
 			className={styles.playlistSong}
