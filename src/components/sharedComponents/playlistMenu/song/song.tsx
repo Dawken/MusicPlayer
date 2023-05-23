@@ -8,9 +8,10 @@ import { Link } from 'react-router-dom'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import SongOptionsMenu from '../../songOptionsMenu/songOptionsMenu'
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
+import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
 
 type ItemType = {
-	item: TrackObjectFull
+	item: TrackObjectFull | RecommendationTrackObject
 	index: number
 	uri: string | undefined
 	userPlaylists: PlaylistObjectSimplified[] | undefined

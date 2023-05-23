@@ -12,16 +12,19 @@ import TrackObjectFull = SpotifyApi.TrackObjectFull
 import Song from '../../sharedComponents/playlistMenu/song/song'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
-import { useAppSelector } from '../../../redux/store'
 import setSong from '../../sharedFunctions/setSong'
 import spotifyApi from '../../../shared/spotifyApi'
 
 const Playlist = () => {
-	const { imageColor, playlist, playlistSongs } = usePlaylist()
+	const {
+		imageColor,
+		playlist,
+		playlistSongs,
+		playlistId,
+		isPlaying,
+		recommendedTracks,
+	} = usePlaylist()
 	const { setSearch, search, searchResult } = useSearchBar()
-
-	const playlistId = useAppSelector((state) => state.auth.track)
-	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
 
 	return (
 		<div className={styles.layout}>
@@ -45,23 +48,20 @@ const Playlist = () => {
 							}}
 						/>
 					)}
-					<div className={styles.playlistSongs}>
-						{playlistSongs && playlist && (
-							<PlaylistMenu
-								playlistData={
-									playlistSongs as
-										| (PlaylistTrackObject & {
-												track?:
-													| TrackObjectFull
-													| undefined
-										  })[]
-										| TrackObjectFull[]
-								}
-								uri={playlist.uri}
-							/>
-						)}
-					</div>
+					{playlistSongs && playlist && (
+						<PlaylistMenu
+							playlistData={
+								playlistSongs as
+									| (PlaylistTrackObject & {
+											track?: TrackObjectFull | undefined
+									  })[]
+									| TrackObjectFull[]
+							}
+							uri={playlist.uri}
+						/>
+					)}
 					<div className={styles.searchBar}>
+						<div className={styles.sectionText}>Add new songs</div>
 						<SearchBar search={search} setSearch={setSearch} />
 						{searchResult.map((item, index) => {
 							return (
@@ -76,6 +76,20 @@ const Playlist = () => {
 								/>
 							)
 						})}
+						{recommendedTracks &&
+							recommendedTracks.map((item, index) => {
+								return (
+									<Song
+										item={item}
+										index={0}
+										uri={item.uri}
+										key={index}
+										userPlaylists={undefined}
+										isCreatingPlaylist={true}
+										playlist={playlist}
+									/>
+								)
+							})}
 					</div>
 				</div>
 			</div>

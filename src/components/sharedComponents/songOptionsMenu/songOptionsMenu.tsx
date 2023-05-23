@@ -21,9 +21,10 @@ import useSongOptionsMenu from './useSongOptionsMenu'
 import SpotifyApi from 'spotify-web-api-node'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
+import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
 
 type SongOptionMenuType = {
-	item: TrackObjectFull
+	item: TrackObjectFull | RecommendationTrackObject
 	userPlaylists: PlaylistObjectSimplified[] | undefined
 	playlistId?: string
 }

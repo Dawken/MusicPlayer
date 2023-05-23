@@ -4,6 +4,7 @@
   grid-auto-flow: column;
   align-items: center;
   font-family: 'Rajdhani', sans-serif;
+  transition: background 0.3s linear;
   .equalizer {
     height: 15px;
     padding:  0 0 0 3vh;
@@ -76,6 +77,7 @@
   .addSong {
     width: 7vh;
     height: 3vh;
+    margin: 0 0 0 2vh;
     border-radius: 22px;
     font-size: 1rem;
     font-weight: bold;
