@@ -103,26 +103,29 @@ const SongOptionsMenu = ({
 												Go to the song
 											</MenuItem>
 										</Link>
-										{path === 'playlists' && (
-											<MenuItem
-												sx={{ p: 2 }}
-												onClick={() =>
-													deleteSongFromPlaylist(
-														playlistId?.slice(17),
-														item.uri
-													)
-												}
-											>
-												<ListItemIcon>
-													<DeleteIcon
-														style={{
-															color: '#fff',
-														}}
-													/>
-												</ListItemIcon>
-												Delete song
-											</MenuItem>
-										)}
+										{path === 'playlists' ||
+											(path === 'playlist' && (
+												<MenuItem
+													sx={{ p: 2 }}
+													onClick={() =>
+														deleteSongFromPlaylist(
+															playlistId?.slice(
+																17
+															),
+															item.uri
+														)
+													}
+												>
+													<ListItemIcon>
+														<DeleteIcon
+															style={{
+																color: '#fff',
+															}}
+														/>
+													</ListItemIcon>
+													Delete song
+												</MenuItem>
+											))}
 										<PopupState
 											variant='popper'
 											popupId='demo-popup-popper'
