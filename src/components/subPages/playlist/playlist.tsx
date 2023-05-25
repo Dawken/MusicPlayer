@@ -81,7 +81,6 @@ const Playlist = () => {
 											index={0}
 											uri={item.uri}
 											key={index}
-											userPlaylists={undefined}
 											isCreatingPlaylist={true}
 											playlist={playlist}
 										/>
@@ -98,7 +97,6 @@ const Playlist = () => {
 											index={0}
 											uri={item.uri}
 											key={index}
-											userPlaylists={undefined}
 											isCreatingPlaylist={true}
 											playlist={playlist}
 										/>

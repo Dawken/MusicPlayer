@@ -22,17 +22,21 @@ import SpotifyApi from 'spotify-web-api-node'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
+import TrackObjectSimplified = SpotifyApi.TrackObjectSimplified
+import AlbumObjectSimplified = SpotifyApi.AlbumObjectSimplified
 
 type SongOptionMenuType = {
-	item: TrackObjectFull | RecommendationTrackObject
+	item: TrackObjectFull | RecommendationTrackObject | TrackObjectSimplified
 	userPlaylists: PlaylistObjectSimplified[] | undefined
 	playlistId?: string
+	album: AlbumObjectSimplified | undefined
 }
 
 const SongOptionsMenu = ({
 	item,
 	userPlaylists,
 	playlistId,
+	album,
 }: SongOptionMenuType) => {
 	const { path, addSongToPlaylist, deleteSongFromPlaylist } =
 		useSongOptionsMenu()
@@ -71,9 +75,9 @@ const SongOptionsMenu = ({
 												Show artist
 											</MenuItem>
 										</Link>
-										{path !== 'album' && (
+										{album && (
 											<Link
-												to={`/album/${item.album.id}`}
+												to={`/album/${album.id}`}
 												className={styles.optionsText}
 											>
 												<MenuItem sx={{ p: 2 }}>
