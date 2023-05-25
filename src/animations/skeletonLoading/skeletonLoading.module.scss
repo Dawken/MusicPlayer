@@ -19,6 +19,23 @@
   margin: 5px 0;
   border-radius: 12px;
 }
+.skeletonPlaylistSongText {
+  width: 100px;
+  height: 10px;
+  margin: 15px 0 24px 0;
+  border-radius: 12px;
+}
+.skeletonPlaylistArtistNameText {
+  width: 70px;
+  height: 10px;
+  border-radius: 12px;
+  margin: 15px 0 0;
+}
+.skeletonPlaylistAlbumNameText {
+  width: 170px;
+  height: 10px;
+  border-radius: 12px;
+}
 .skeletonAlbumText {
   width: 15%;
   height: 15px;

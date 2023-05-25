@@ -11,6 +11,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import usePlaylistItem from './usePlaylistItem'
 import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
 import TrackObjectFull = SpotifyApi.TrackObjectFull
+import { Link } from 'react-router-dom'
 
 interface ItemType {
 	item: PlaylistObjectSimplified
@@ -48,7 +49,12 @@ const PlaylistItem = ({ item }: ItemType) => {
 						className={`${styles.playlistPhoto} ${loading.skeleton}`}
 						src={item.images[0]?.url}
 					/>
-					<span className={styles.playlistName}>{item.name}</span>
+					<Link
+						to={`/playlist/${item.id}`}
+						className={styles.playlistName}
+					>
+						{item.name}
+					</Link>
 				</div>
 				{isActive ? (
 					playlistData.length === 0 ? (

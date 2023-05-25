@@ -44,6 +44,11 @@
       white-space: unset;
       word-break: break-word;
       font-family: 'Rajdhani', sans-serif;
+      color:white;
+      text-decoration: none;
+    }
+    .playlistName:hover {
+      text-decoration: underline;
     }
   }
   .loader {

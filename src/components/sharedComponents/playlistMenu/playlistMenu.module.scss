@@ -1,4 +1,4 @@
-.dropdownContainer {
+.playlistMenu {
   overflow: visible;
   .playlistInfo {
     display: grid;
@@ -17,12 +17,12 @@
   }
 }
 @media only screen and (max-width: 900px) {
-  .dropdownContainer {
+  .playlistMenu {
     .playlistInfo {
-      grid-template-columns: 28% 45% 3% 10%;
+      grid-template-columns: 35% 27% 38%;
       .album {
         visibility: hidden;
-        width: 0;
+        display: none;
       }
     }
   }
