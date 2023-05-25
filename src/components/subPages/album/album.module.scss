@@ -17,6 +17,22 @@
       min-height: 65vh;
       margin-top: 30px;
       padding-bottom: 15vh;
+      .playIcon {
+        width: 8vh;
+        height: 8vh;
+        margin: 20px;
+        cursor: pointer;
+      }
+      .searchBar {
+        padding: 20px 0 0 0;
+        .sectionText {
+          font-size: 35px;
+          color: white;
+          padding: 40px 35px 0;
+          display: flex;
+          justify-content: flex-start;
+        }
+      }
     }
   }
 }

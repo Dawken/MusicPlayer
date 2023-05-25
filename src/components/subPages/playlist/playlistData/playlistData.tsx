@@ -4,11 +4,12 @@ import React from 'react'
 import SpotifyApi from 'spotify-web-api-node'
 import SinglePlaylistResponse = SpotifyApi.SinglePlaylistResponse
 import MusicNoteIcon from '@mui/icons-material/MusicNote'
+import SingleAlbumResponse = SpotifyApi.SingleAlbumResponse
 
 const PlaylistData = ({
 	playlist,
 }: {
-	playlist: SinglePlaylistResponse | undefined
+	playlist: SinglePlaylistResponse | SingleAlbumResponse | undefined
 }) => {
 	return (
 		<div className={styles.playlistData}>
