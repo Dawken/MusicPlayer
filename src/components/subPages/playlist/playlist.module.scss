@@ -17,6 +17,12 @@
       min-height: 65vh;
       margin-top: 30px;
       padding-bottom: 15vh;
+      .playIcon {
+        width: 8vh;
+        height: 8vh;
+        margin: 20px;
+        cursor: pointer;
+      }
     }
   }
 }
