@@ -2,12 +2,22 @@ import styles from '../../components/sharedComponents/playlistMenu/song/song.mod
 import React from 'react'
 import loading from './skeletonLoading.module.scss'
 
-const SkeletonPlaylistSongItem = () => {
+const SkeletonPlaylistSongItem = ({
+	isAlbumTrack,
+}: {
+	isAlbumTrack?: boolean
+}) => {
 	return (
 		<div className={styles.playlistSong}>
 			<div />
 			<div className={styles.songContainer}>
-				<div className={`${styles.songPhoto} ${loading.skeleton}`} />
+				{isAlbumTrack ? (
+					<div />
+				) : (
+					<div
+						className={`${styles.songPhoto} ${loading.skeleton}`}
+					/>
+				)}
 				<div className={styles.songData}>
 					<div
 						className={`${loading.skeleton} ${loading.skeletonPlaylistSongText}`}
@@ -17,9 +27,13 @@ const SkeletonPlaylistSongItem = () => {
 					></div>
 				</div>
 			</div>
-			<div
-				className={`${loading.skeleton} ${loading.skeletonPlaylistAlbumNameText}`}
-			></div>
+			{isAlbumTrack ? (
+				<div />
+			) : (
+				<div
+					className={`${loading.skeleton} ${loading.skeletonPlaylistAlbumNameText}`}
+				></div>
+			)}
 			<div
 				className={`${loading.skeleton} ${loading.skeletonSmallText}`}
 			></div>

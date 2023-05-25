@@ -9,6 +9,7 @@ import spotifyApi from '../../../shared/spotifyApi'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
 import setSong from '../../sharedFunctions/setSong'
 import PopularSongsAlbums from '../../sharedComponents/popularSongsAlbums/popularSongsAlbums'
+import SkeletonPlaylistSongItem from '../../../animations/skeletonLoading/skeletonPlaylistSongItem'
 
 const Album = () => {
 	const { imageColor, album, playlistId, isPlaying } = useAlbum()
@@ -34,17 +35,25 @@ const Album = () => {
 							}}
 						/>
 					)}
-					{album &&
-						album.tracks.items.map((item, i) => {
-							return (
-								<Song
-									item={item}
-									index={i}
-									uri={album.uri}
-									key={i}
-								/>
-							)
-						})}
+					{album
+						? album.tracks.items.map((item, i) => {
+								return (
+									<Song
+										item={item}
+										index={i}
+										uri={album.uri}
+										key={i}
+									/>
+								)
+						  })
+						: Array.from({ length: 5 }, (_, i) => {
+								return (
+									<SkeletonPlaylistSongItem
+										key={i}
+										isAlbumTrack={true}
+									/>
+								)
+						  })}
 					<PopularSongsAlbums artist={album?.artists[0]} />
 				</div>
 			</div>
