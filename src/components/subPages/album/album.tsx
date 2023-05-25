@@ -4,27 +4,47 @@ import BackgroundImageColor from '../../sharedComponents/backgroundImageColor/ba
 import PlaylistData from '../playlist/playlistData/playlistData'
 import useAlbum from './useAlbum'
 import Song from '../../sharedComponents/playlistMenu/song/song'
+import PauseCircleIcon from '@mui/icons-material/PauseCircle'
+import spotifyApi from '../../../shared/spotifyApi'
+import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
+import setSong from '../../sharedFunctions/setSong'
 
 const Album = () => {
-	const { imageColor, album } = useAlbum()
+	const { imageColor, album, playlistId, isPlaying } = useAlbum()
 
 	return (
 		<div className={styles.layout}>
 			<BackgroundImageColor color={imageColor} />
 			<div className={styles.playlist}>
 				<PlaylistData playlist={album} />
-				<div className={styles.background}></div>
-				{album &&
-					album.tracks.items.map((item, i) => {
-						return (
-							<Song
-								item={item}
-								index={i}
-								uri={album.uri}
-								key={i}
-							/>
-						)
-					})}
+				<div className={styles.background}>
+					{isPlaying && album?.uri === playlistId ? (
+						<PauseCircleIcon
+							style={{ color: imageColor }}
+							className={styles.playIcon}
+							onClick={() => spotifyApi.pause()}
+						/>
+					) : (
+						<PlayCircleFilledIcon
+							style={{ color: imageColor }}
+							className={styles.playIcon}
+							onClick={() => {
+								album && setSong(album.uri, 0, album.uri)
+							}}
+						/>
+					)}
+					{album &&
+						album.tracks.items.map((item, i) => {
+							return (
+								<Song
+									item={item}
+									index={i}
+									uri={album.uri}
+									key={i}
+								/>
+							)
+						})}
+				</div>
 			</div>
 		</div>
 	)

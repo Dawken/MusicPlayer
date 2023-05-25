@@ -5,10 +5,14 @@ import spotifyApi from '../../../shared/spotifyApi'
 import getColorFromImage from '../../sharedFunctions/getColorFromImage'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleAlbumResponse = SpotifyApi.SingleAlbumResponse
+import { useAppSelector } from '../../../redux/store'
 
 const useAlbum = () => {
 	const [imageColor, setImageColor] = useState('#424242')
 	const [album, setAlbum] = useState<SingleAlbumResponse>()
+
+	const playlistId = useAppSelector((state) => state.auth.track)
+	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
 
 	const { id } = useParams()
 
@@ -33,6 +37,8 @@ const useAlbum = () => {
 	return {
 		imageColor,
 		album,
+		playlistId,
+		isPlaying,
 	}
 }
 export default useAlbum
