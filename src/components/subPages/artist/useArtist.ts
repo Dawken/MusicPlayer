@@ -6,6 +6,7 @@ import SpotifyApi from 'spotify-web-api-node'
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import getColorFromImage from '../../sharedFunctions/getColorFromImage'
+import { useAppSelector } from '../../../redux/store'
 
 const useArtist = () => {
 	const spotify = useAuth()
@@ -15,6 +16,10 @@ const useArtist = () => {
 	const [recommendedArtists, setRecommendedArtists] =
 		useState<ArtistObjectFull[]>()
 	const [imageColor, setImageColor] = useState('')
+	const [playingSongArtistId, setPlayingSongArtistId] = useState('')
+
+	const playingSongId = useAppSelector((state) => state.auth.playingSongId)
+	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
 
 	useEffect(() => {
 		if (spotify.accessToken) {
@@ -35,10 +40,22 @@ const useArtist = () => {
 			}
 		}
 	}, [id, spotify.accessToken])
+
+	useEffect(() => {
+		if (spotify.accessToken) {
+			spotifyApi.setAccessToken(spotify.accessToken)
+			spotifyApi
+				.getTrack(playingSongId)
+				.then((data) => setPlayingSongArtistId(data.body.artists[0].id))
+		}
+	}, [playingSongId, id])
+
 	return {
 		artist,
 		imageColor,
 		recommendedArtists,
+		playingSongArtistId,
+		isPlaying,
 	}
 }
 export default useArtist
