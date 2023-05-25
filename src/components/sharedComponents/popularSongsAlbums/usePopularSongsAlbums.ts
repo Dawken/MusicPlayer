@@ -5,13 +5,16 @@ import TrackObjectFull = SpotifyApi.TrackObjectFull
 import { useParams } from 'react-router-dom'
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
 import AlbumObjectSimplified = SpotifyApi.AlbumObjectSimplified
+import ArtistObjectSimplified = SpotifyApi.ArtistObjectSimplified
 
 type PopularType = {
 	songs: TrackObjectFull[]
 	albums: AlbumObjectSimplified[]
 }
 
-const usePopularSongsAlbums = (artist: SingleArtistResponse | undefined) => {
+const usePopularSongsAlbums = (
+	artist: SingleArtistResponse | ArtistObjectSimplified | undefined
+) => {
 	const { id } = useParams()
 
 	const [popular, setPopular] = useState<PopularType>({

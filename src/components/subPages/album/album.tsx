@@ -8,6 +8,7 @@ import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import spotifyApi from '../../../shared/spotifyApi'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
 import setSong from '../../sharedFunctions/setSong'
+import PopularSongsAlbums from '../../sharedComponents/popularSongsAlbums/popularSongsAlbums'
 
 const Album = () => {
 	const { imageColor, album, playlistId, isPlaying } = useAlbum()
@@ -44,6 +45,7 @@ const Album = () => {
 								/>
 							)
 						})}
+					<PopularSongsAlbums artist={album?.artists[0]} />
 				</div>
 			</div>
 		</div>
