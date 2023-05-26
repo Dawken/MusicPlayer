@@ -5,6 +5,7 @@
   grid-template-columns: 250px;
   grid-template-rows: auto;
   grid-template-areas: "sidebar main";
+  font-family: 'Rajdhani', sans-serif;
   .playlistsContainer {
     grid-area: main;
     width: 100%;
@@ -27,12 +28,13 @@
       padding-bottom: 15vh;
       .yourPlaylists {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
+        flex-wrap: wrap;
+        gap: 10vh;
         .yourPlaylistsText {
           margin: 10px;
           font-size: 2rem;
-          font-family: 'Montserrat', sans-serif;
         }
       }
     }
@@ -40,12 +42,13 @@
 }
 .createPlaylist {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   margin:15px;
   color: white;
   text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: bold;
   .createPlaylistButton {
     font-size: 40px;
     margin: 10px;

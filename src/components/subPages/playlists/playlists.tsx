@@ -1,14 +1,13 @@
 import React from 'react'
 import styles from './playlists.module.scss'
 import AddIcon from '@mui/icons-material/Add'
-import { Link } from 'react-router-dom'
 import BackgroundImageColor from '../../sharedComponents/backgroundImageColor/backgroundImageColor'
-import PlaylistItem from './playlistItem/playlistItem'
 import SkeletonPlaylistItem from '../../../animations/skeletonLoading/skeletonPlaylistItem'
 import usePlaylists from './usePlaylists'
+import AlbumCard from '../../sharedComponents/albumCard/albumCard'
 
 const Playlists = () => {
-	const { playlists } = usePlaylists()
+	const { playlists, createPlaylist } = usePlaylists()
 
 	return (
 		<div className={styles.layout}>
@@ -19,46 +18,42 @@ const Playlists = () => {
 						<div className={styles.playlistsNotFoundText}>
 							Playlists not found
 						</div>
-						<Link
-							to={'/playlist'}
+						<div
+							onClick={() => createPlaylist()}
 							className={styles.createPlaylist}
 						>
 							<AddIcon className={styles.createPlaylistButton} />
 							<div className={styles.createPlaylistText}>
 								Create playlist
 							</div>
-						</Link>
+						</div>
 					</section>
 				) : (
 					<section className={styles.playlists}>
-						<div className={styles.yourPlaylists}>
-							<div className={styles.yourPlaylistsText}>
-								Your playlists
+						<div
+							onClick={() => createPlaylist()}
+							className={styles.createPlaylist}
+						>
+							<AddIcon className={styles.createPlaylistButton} />
+							<div className={styles.createPlaylistText}>
+								Create playlist
 							</div>
-							<Link
-								to={'/playlist'}
-								className={styles.createPlaylist}
-							>
-								<AddIcon
-									className={styles.createPlaylistButton}
-								/>
-								<div className={styles.createPlaylistText}>
-									Create playlist
-								</div>
-							</Link>
 						</div>
-						{!playlists
-							? Array.from({ length: 5 }, (_, i) => (
-									<SkeletonPlaylistItem key={i} />
-							  ))
-							: playlists?.items.map((item) => {
-									return (
-										<PlaylistItem
-											item={item}
-											key={item.id}
-										/>
-									)
-							  })}
+						<div className={styles.yourPlaylists}>
+							{!playlists
+								? Array.from({ length: 5 }, (_, i) => (
+										<SkeletonPlaylistItem key={i} />
+								  ))
+								: playlists?.items.map((item) => {
+										return (
+											<AlbumCard
+												item={item}
+												key={item.id}
+												route={'playlist'}
+											/>
+										)
+								  })}
+						</div>
 					</section>
 				)}
 			</div>

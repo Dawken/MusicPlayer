@@ -32,70 +32,15 @@ const PlaylistItem = ({ item }: ItemType) => {
 		<>
 			<div className={styles.playlist}>
 				<div className={styles.playlistData}>
-					<div className={styles.playlistPlayState}>
-						{trackId === item.uri && isPlaying ? (
-							<img
-								className={styles.equalizer}
-								src='https://open.spotifycdn.com/cdn/images/equaliser-animated-green.f5eb96f2.gif'
-							/>
-						) : (
-							<PlayArrowIcon
-								className={styles.playIcon}
-								onClick={() => playPlaylist(item)}
-							/>
-						)}
-					</div>
 					<img
 						className={`${styles.playlistPhoto} ${loading.skeleton}`}
 						src={item.images[0]?.url}
 					/>
-					<Link
-						to={`/playlist/${item.id}`}
-						className={styles.playlistName}
-					>
-						{item.name}
-					</Link>
 				</div>
-				{isActive ? (
-					playlistData.length === 0 ? (
-						<div className={styles.loader}>
-							<CircularProgress size={30} />
-						</div>
-					) : (
-						<KeyboardArrowUpIcon
-							className={styles.arrow}
-							onClick={() =>
-								setIsActive((prevState) => !prevState)
-							}
-						/>
-					)
-				) : (
-					<KeyboardArrowDownOutlinedIcon
-						className={styles.arrow}
-						onClick={() => showSongs(item.id)}
-					/>
-				)}
 			</div>
-			<div
-				className={
-					isActive
-						? `${styles.dropdownMenu} ${styles.active}`
-						: `${styles.dropdownMenu}`
-				}
-			>
-				{playlistData.length > 0 && (
-					<PlaylistMenu
-						playlistData={
-							playlistData as
-								| (PlaylistTrackObject & {
-										track?: TrackObjectFull | undefined
-								  })[]
-								| TrackObjectFull[]
-						}
-						uri={item.uri}
-					/>
-				)}
-			</div>
+			<Link to={`/playlist/${item.id}`} className={styles.playlistName}>
+				{item.name}
+			</Link>
 		</>
 	)
 }

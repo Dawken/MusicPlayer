@@ -19,6 +19,7 @@ const usePlaylist = () => {
 	const playlistId = useAppSelector((state) => state.auth.track)
 	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
 	const isTyping = useAppSelector((state) => state.auth.isUserTyping)
+	const track = useAppSelector((state) => state.auth.track)
 
 	const { id } = useParams()
 
@@ -64,6 +65,7 @@ const usePlaylist = () => {
 		isPlaying,
 		recommendedTracks,
 		isTyping,
+		track,
 	}
 }
 export default usePlaylist

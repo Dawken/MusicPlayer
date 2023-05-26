@@ -25,6 +25,7 @@ const Playlist = () => {
 		isPlaying,
 		recommendedTracks,
 		isTyping,
+		track,
 	} = usePlaylist()
 
 	const { setSearch, search, searchResult } = useSearchBar()
@@ -46,8 +47,7 @@ const Playlist = () => {
 							style={{ color: imageColor }}
 							className={styles.playIcon}
 							onClick={() => {
-								playlist &&
-									setSong(playlist.uri, 0, playlist.uri)
+								playlist && setSong(playlist.uri, 0, track)
 							}}
 						/>
 					)}

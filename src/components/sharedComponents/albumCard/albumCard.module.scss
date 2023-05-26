@@ -35,12 +35,13 @@
   .albumName {
     text-decoration: none;
     color: white;
+    width: 20vh;
     margin-top: 30px;
     font-size: 1rem;
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     display: -webkit-box;
     white-space: unset;
