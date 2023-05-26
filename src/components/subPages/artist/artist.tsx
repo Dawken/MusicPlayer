@@ -21,6 +21,7 @@ const Artist = () => {
 		recommendedArtists,
 		playingSongArtistId,
 		isPlaying,
+		track,
 	} = useArtist()
 
 	return (
@@ -40,7 +41,7 @@ const Artist = () => {
 							style={{ color: imageColor }}
 							className={styles.playIcon}
 							onClick={() => {
-								artist && setSong(artist.uri, 0, artist.uri)
+								artist && setSong(artist.uri, 0, track)
 							}}
 						/>
 					)}

@@ -12,7 +12,7 @@ import PopularSongsAlbums from '../../sharedComponents/popularSongsAlbums/popula
 import SkeletonPlaylistSongItem from '../../../animations/skeletonLoading/skeletonPlaylistSongItem'
 
 const Album = () => {
-	const { imageColor, album, playlistId, isPlaying } = useAlbum()
+	const { imageColor, album, playlistId, isPlaying, track } = useAlbum()
 
 	return (
 		<div className={styles.layout}>
@@ -31,7 +31,7 @@ const Album = () => {
 							style={{ color: imageColor }}
 							className={styles.playIcon}
 							onClick={() => {
-								album && setSong(album.uri, 0, album.uri)
+								album && setSong(album.uri, 0, track)
 							}}
 						/>
 					)}

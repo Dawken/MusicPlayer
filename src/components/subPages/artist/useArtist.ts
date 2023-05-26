@@ -20,6 +20,7 @@ const useArtist = () => {
 
 	const playingSongId = useAppSelector((state) => state.auth.playingSongId)
 	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
+	const track = useAppSelector((state) => state.auth.track)
 
 	useEffect(() => {
 		if (spotify.accessToken) {
@@ -56,6 +57,7 @@ const useArtist = () => {
 		recommendedArtists,
 		playingSongArtistId,
 		isPlaying,
+		track,
 	}
 }
 export default useArtist
