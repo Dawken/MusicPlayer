@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import useAuth from '../../../customHooks/useAuth'
 import styles from './musicPlayer.module.scss'
 import SpotifyPlayer from 'react-spotify-web-playback'
@@ -8,7 +8,6 @@ import {
 	setPlayingSongId,
 	setPlayingSongPhoto,
 } from '../../../redux/user'
-import spotifyApi from '../../../shared/spotifyApi'
 
 const MusicPlayer = () => {
 	const spotify = useAuth()
@@ -17,20 +16,6 @@ const MusicPlayer = () => {
 	const playingSongColor = useAppSelector(
 		(state) => state.auth.playingSongColor
 	)
-	const [album, setAlbum] = useState('')
-
-	useEffect(() => {
-		setAlbum(track)
-		if (spotify.accessToken) {
-			spotifyApi.setAccessToken(spotify.accessToken)
-			if (track === album) {
-				spotifyApi.play({
-					context_uri: track,
-					offset: { position: songNumber },
-				})
-			}
-		}
-	}, [songNumber])
 
 	if (!spotify.accessToken) return null
 

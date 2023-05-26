@@ -6,7 +6,6 @@ import BackgroundImageColor from '../../sharedComponents/backgroundImageColor/ba
 import ArtistData from './artistData/artistData'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
-import { useAppSelector } from '../../../redux/store'
 import setSong from '../../sharedFunctions/setSong'
 import spotifyApi from '../../../shared/spotifyApi'
 import ScrollContainer from 'react-indiana-drag-scroll'
@@ -16,9 +15,14 @@ import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 
 const Artist = () => {
-	const { artist, imageColor, recommendedArtists } = useArtist()
-
-	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
+	const {
+		artist,
+		imageColor,
+		recommendedArtists,
+		playingSongArtistId,
+		isPlaying,
+		track,
+	} = useArtist()
 
 	return (
 		<div className={styles.layout}>
@@ -26,7 +30,7 @@ const Artist = () => {
 			<div className={styles.artist}>
 				<ArtistData artist={artist} />
 				<div className={styles.background}>
-					{isPlaying ? (
+					{isPlaying && playingSongArtistId === artist?.id ? (
 						<PauseCircleIcon
 							style={{ color: imageColor }}
 							className={styles.playIcon}
@@ -37,7 +41,7 @@ const Artist = () => {
 							style={{ color: imageColor }}
 							className={styles.playIcon}
 							onClick={() => {
-								artist && setSong(artist.uri, 0, artist.uri)
+								artist && setSong(artist.uri, 0, track)
 							}}
 						/>
 					)}

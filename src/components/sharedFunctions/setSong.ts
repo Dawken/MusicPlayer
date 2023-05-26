@@ -3,15 +3,11 @@ import { setSongNumber, setTrack } from '../../redux/user'
 import spotifyApi from '../../shared/spotifyApi'
 
 const setSong = (item: string, index: number, trackId: string) => {
-	store.dispatch(setTrack({ track: item }))
-	store.dispatch(setSongNumber({ songNumber: index }))
-	if (item === trackId) {
-		spotifyApi.play()
+	if (item !== trackId) {
+		store.dispatch(setTrack({ track: item }))
+		store.dispatch(setSongNumber({ songNumber: index }))
 	} else {
-		spotifyApi.play({
-			context_uri: item,
-			offset: { position: index },
-		})
+		spotifyApi.play()
 	}
 }
 export default setSong

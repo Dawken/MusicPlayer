@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './song.module.scss'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import dayjs from 'dayjs'
@@ -9,24 +9,25 @@ import TrackObjectFull = SpotifyApi.TrackObjectFull
 import SongOptionsMenu from '../../songOptionsMenu/songOptionsMenu'
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
+import TrackObjectSimplified = SpotifyApi.TrackObjectSimplified
+import useAuth from '../../../../customHooks/useAuth'
+import spotifyApi from '../../../../shared/spotifyApi'
 
 type ItemType = {
-	item: TrackObjectFull | RecommendationTrackObject
+	item: TrackObjectFull | RecommendationTrackObject | TrackObjectSimplified
 	index: number
 	uri: string | undefined
-	userPlaylists: PlaylistObjectSimplified[] | undefined
 	isCreatingPlaylist?: boolean
 	playlist?: PlaylistObjectSimplified
 }
 
-const Song = ({
-	item,
-	index,
-	uri,
-	userPlaylists,
-	isCreatingPlaylist,
-	playlist,
-}: ItemType) => {
+const isAlbum = (
+	item: TrackObjectSimplified | TrackObjectFull
+): item is TrackObjectFull => {
+	return (item as TrackObjectFull).album !== undefined
+}
+
+const Song = ({ item, index, uri, isCreatingPlaylist, playlist }: ItemType) => {
 	const {
 		isPlaying,
 		playingSongId,
@@ -36,6 +37,26 @@ const Song = ({
 		playingSongColor,
 		addSongToPlaylist,
 	} = useSong()
+
+	const album = isAlbum(item) ? item.album : undefined
+
+	const [userPlaylists, setUserPlaylists] =
+		useState<PlaylistObjectSimplified[]>()
+
+	const spotify = useAuth()
+
+	useEffect(() => {
+		if (spotify.accessToken) {
+			spotifyApi.setAccessToken(spotify.accessToken)
+			spotifyApi
+				.getMe()
+				.then((data) =>
+					spotifyApi
+						.getUserPlaylists(data.body.id)
+						.then((data) => setUserPlaylists(data.body.items))
+				)
+		}
+	}, [spotify.accessToken])
 
 	return (
 		<div
@@ -66,10 +87,12 @@ const Song = ({
 				</div>
 			)}
 			<div className={styles.songContainer}>
-				<img
-					className={styles.songPhoto}
-					src={item.album.images[0].url}
-				/>
+				{album && (
+					<img
+						className={styles.songPhoto}
+						src={album.images[0].url}
+					/>
+				)}
 				<div className={styles.songData}>
 					<Link to={`/track/${item.id}`} className={styles.songName}>
 						{item.name}
@@ -82,8 +105,8 @@ const Song = ({
 					</Link>
 				</div>
 			</div>
-			<Link to={`/album/${item.album.id}`} className={styles.albumName}>
-				{item.album.name}
+			<Link to={`/album/${album?.id}`} className={styles.albumName}>
+				{album?.name}
 			</Link>
 			<div className={styles.songDurationTime}>
 				{dayjs(item.duration_ms).format('mm:ss')}
@@ -100,6 +123,7 @@ const Song = ({
 					item={item}
 					userPlaylists={userPlaylists}
 					playlistId={uri}
+					album={album}
 				/>
 			)}
 		</div>

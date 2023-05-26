@@ -7,11 +7,12 @@ import usePopularSongsAlbums from './usePopularSongsAlbums'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
 import AlbumCard from '../albumCard/albumCard'
+import ArtistObjectSimplified = SpotifyApi.ArtistObjectSimplified
 
 const PopularSongsAlbums = ({
 	artist,
 }: {
-	artist: SingleArtistResponse | undefined
+	artist: SingleArtistResponse | ArtistObjectSimplified | undefined
 }) => {
 	const { popular } = usePopularSongsAlbums(artist)
 

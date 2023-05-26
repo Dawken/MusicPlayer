@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import Artist from './components/subPages/artist/artist'
 import Playlist from './components/subPages/playlist/playlist'
+import Album from './components/subPages/album/album'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -34,6 +35,7 @@ const App = () => {
 						<Route path='/track/:id' element={<Track />} />
 						<Route path='/artist/:id' element={<Artist />} />
 						<Route path='/playlist/:id' element={<Playlist />} />
+						<Route path='/album/:id' element={<Album />} />
 					</Route>
 					<Route path='/login' element={<Login />} />
 				</Routes>
