@@ -9,6 +9,7 @@ import spotifyApi from '../../../shared/spotifyApi'
 import setSong from '../../sharedFunctions/setSong'
 import useAlbumCard from './useAlbumCard'
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
+import NotFoundPhoto from '../../../assets/notFound.png'
 
 type CardProps = {
 	item: AlbumObjectSimplified | PlaylistObjectSimplified
@@ -22,7 +23,9 @@ const AlbumCard = ({ item, route }: CardProps) => {
 		<div className={styles.albumCard}>
 			<Link to={`/${route}/${item.id}`}>
 				<img
-					src={item.images[0]?.url}
+					src={
+						item.images[0]?.url ? item.images[0].url : NotFoundPhoto
+					}
 					className={styles.albumImage}
 					style={{
 						boxShadow: `10px 10px 0 2px rgba(${rgbaColor.slice(

@@ -27,11 +27,11 @@
       margin-top: 165px;
       padding-bottom: 15vh;
       .yourPlaylists {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 10vh;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 200px);
+        justify-content: center;
+        grid-gap: 15vh;
+        align-content: center;
         .yourPlaylistsText {
           margin: 10px;
           font-size: 2rem;
@@ -44,7 +44,7 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  margin:15px;
+  margin: 2vh 5vh 2vh 0;
   color: white;
   text-decoration: none;
   font-family: 'Rajdhani', sans-serif;
