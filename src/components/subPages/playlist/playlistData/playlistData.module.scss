@@ -36,8 +36,8 @@
       -webkit-box-orient: vertical;
       display: -webkit-box;
       white-space: unset;
-      word-break: break-all;
-      height: auto;
+      word-break: break-word;
+      text-align: left;
     }
   }
 }

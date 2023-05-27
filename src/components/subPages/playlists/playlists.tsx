@@ -11,8 +11,8 @@ const Playlists = () => {
 
 	return (
 		<div className={styles.layout}>
+			<BackgroundImageColor color={undefined} />
 			<div className={styles.playlistsContainer}>
-				<BackgroundImageColor color={undefined} />
 				{playlists?.items.length === 0 ? (
 					<section className={styles.playlistsNotFound}>
 						<div className={styles.playlistsNotFoundText}>

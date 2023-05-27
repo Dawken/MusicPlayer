@@ -31,12 +31,13 @@ const SkeletonPlaylistSongItem = ({
 				<div />
 			) : (
 				<div
-					className={`${loading.skeleton} ${loading.skeletonPlaylistAlbumNameText}`}
+					className={`${loading.skeleton} ${loading.skeletonPlaylistAlbumNameText} ${styles.albumName}`}
 				></div>
 			)}
 			<div
-				className={`${loading.skeleton} ${loading.skeletonSmallText}`}
+				className={`${loading.skeleton} ${loading.skeletonSmallText} ${styles.songDurationTime}`}
 			></div>
+			<div />
 		</div>
 	)
 }

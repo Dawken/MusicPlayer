@@ -20,7 +20,7 @@
   border-radius: 12px;
 }
 .skeletonPlaylistSongText {
-  width: 100px;
+  width: 50px;
   height: 10px;
   margin: 15px 0 24px 0;
   border-radius: 12px;
@@ -57,10 +57,12 @@
   border-radius: 12px;
 }
 .skeletonSmallText {
-  width: 5vh;
+  width: 7vh;
   height: 15px;
-  margin: 0 5px;
+  margin: 0 15px;
   border-radius: 12px;
+  display: flex;
+  justify-content: center;
 }
 
 .skeletonLyricsText {
