@@ -2,8 +2,8 @@ import React from 'react'
 import styles from './playlists.module.scss'
 import AddIcon from '@mui/icons-material/Add'
 import BackgroundImageColor from '../../sharedComponents/backgroundImageColor/backgroundImageColor'
-import SkeletonPlaylistItem from '../../../animations/skeletonLoading/skeletonPlaylistItem'
 import usePlaylists from './usePlaylists'
+import SkeletonAlbumCard from '../../../animations/skeletonLoading/skeletonAlbumCard'
 import AlbumCard from '../../sharedComponents/albumCard/albumCard'
 
 const Playlists = () => {
@@ -41,8 +41,8 @@ const Playlists = () => {
 						</div>
 						<div className={styles.yourPlaylists}>
 							{!playlists
-								? Array.from({ length: 5 }, (_, i) => (
-										<SkeletonPlaylistItem key={i} />
+								? Array.from({ length: 10 }, (_, i) => (
+										<SkeletonAlbumCard key={i} />
 								  ))
 								: playlists?.items.map((item) => {
 										return (
