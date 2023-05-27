@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import spotifyApi from '../../../shared/spotifyApi'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import SpotifyApi from 'spotify-web-api-node'
 import SinglePlaylistResponse = SpotifyApi.SinglePlaylistResponse
 import useAuth from '../../../customHooks/useAuth'
@@ -13,6 +13,8 @@ const usePlaylist = () => {
 	const [imageColor, setImageColor] = useState('#424242')
 	const [playlist, setPlaylist] = useState<SinglePlaylistResponse>()
 	const [playlistSongs, setPlaylistSongs] = useState<PlaylistTrackObject[]>()
+	const [open, setOpen] = useState(false)
+
 	const [recommendedTracks, setRecommendedTracks] =
 		useState<RecommendationTrackObject[]>()
 
@@ -22,6 +24,7 @@ const usePlaylist = () => {
 	const track = useAppSelector((state) => state.auth.track)
 
 	const { id } = useParams()
+	const navigate = useNavigate()
 
 	const spotify = useAuth()
 
@@ -57,6 +60,20 @@ const usePlaylist = () => {
 		}
 	}, [id, spotify.accessToken])
 
+	const handleClickOpen = () => {
+		setOpen(true)
+	}
+
+	const handleClose = () => {
+		setOpen(false)
+	}
+
+	const deletePlaylist = () => {
+		if (id) {
+			spotifyApi.unfollowPlaylist(id).then(() => navigate('/playlists'))
+		}
+	}
+
 	return {
 		imageColor,
 		playlist,
@@ -66,6 +83,10 @@ const usePlaylist = () => {
 		recommendedTracks,
 		isTyping,
 		track,
+		open,
+		handleClickOpen,
+		handleClose,
+		deletePlaylist,
 	}
 }
 export default usePlaylist

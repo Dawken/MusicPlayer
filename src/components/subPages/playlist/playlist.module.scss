@@ -17,11 +17,20 @@
       min-height: 65vh;
       margin-top: 30px;
       padding-bottom: 15vh;
-      .playIcon {
-        width: 8vh;
-        height: 8vh;
-        margin: 20px;
-        cursor: pointer;
+      .actionButtons {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .playIcon {
+          width: 8vh;
+          height: 8vh;
+          margin: 20px;
+          cursor: pointer;
+        }
+        .deletePlaylist {
+          font-size: 4vh;
+          cursor: pointer;
+        }
       }
     }
   }
