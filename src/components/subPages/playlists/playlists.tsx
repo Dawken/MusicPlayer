@@ -5,6 +5,7 @@ import BackgroundImageColor from '../../sharedComponents/backgroundImageColor/ba
 import usePlaylists from './usePlaylists'
 import SkeletonAlbumCard from '../../../animations/skeletonLoading/skeletonAlbumCard'
 import AlbumCard from '../../sharedComponents/albumCard/albumCard'
+import { Button } from '@mui/material'
 
 const Playlists = () => {
 	const { playlists, createPlaylist } = usePlaylists()
@@ -18,26 +19,26 @@ const Playlists = () => {
 						<div className={styles.playlistsNotFoundText}>
 							Playlists not found
 						</div>
-						<div
-							onClick={() => createPlaylist()}
-							className={styles.createPlaylist}
-						>
-							<AddIcon className={styles.createPlaylistButton} />
-							<div className={styles.createPlaylistText}>
-								Create playlist
-							</div>
+						<div className={styles.createPlaylist}>
+							<Button
+								variant='outlined'
+								startIcon={<AddIcon />}
+								onClick={() => createPlaylist()}
+							>
+								Add new playlist
+							</Button>
 						</div>
 					</section>
 				) : (
 					<section className={styles.playlists}>
-						<div
-							onClick={() => createPlaylist()}
-							className={styles.createPlaylist}
-						>
-							<AddIcon className={styles.createPlaylistButton} />
-							<div className={styles.createPlaylistText}>
-								Create playlist
-							</div>
+						<div className={styles.createPlaylist}>
+							<Button
+								variant='outlined'
+								startIcon={<AddIcon />}
+								onClick={() => createPlaylist()}
+							>
+								Add new playlist
+							</Button>
 						</div>
 						<div className={styles.yourPlaylists}>
 							{!playlists
