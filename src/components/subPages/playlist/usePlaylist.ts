@@ -22,6 +22,7 @@ const usePlaylist = () => {
 	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
 	const isTyping = useAppSelector((state) => state.auth.isUserTyping)
 	const track = useAppSelector((state) => state.auth.track)
+	const actionTrackUri = useAppSelector((state) => state.auth.actionTrackUri)
 
 	const { id } = useParams()
 	const navigate = useNavigate()
@@ -58,7 +59,7 @@ const usePlaylist = () => {
 					.then((data) => setRecommendedTracks(data.body.tracks))
 			})
 		}
-	}, [id, spotify.accessToken])
+	}, [id, spotify.accessToken, actionTrackUri])
 
 	const handleClickOpen = () => {
 		setOpen(true)

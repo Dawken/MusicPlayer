@@ -2,6 +2,8 @@ import { useLocation } from 'react-router-dom'
 import spotifyApi from '../../../shared/spotifyApi'
 import { toast } from 'react-toastify'
 import addSongToPlaylist from '../../sharedFunctions/addSongToPlaylist'
+import { store } from '../../../redux/store'
+import { setActionTrackUri } from '../../../redux/user'
 
 const useSongOptionsMenu = () => {
 	const id = useLocation()
@@ -17,6 +19,11 @@ const useSongOptionsMenu = () => {
 				.removeTracksFromPlaylist(playlist, [{ uri: trackUri }])
 				.then(() => {
 					toast('Song has been removed from playlist')
+				})
+				.then(() => {
+					store.dispatch(
+						setActionTrackUri({ actionTrackUri: trackUri })
+					)
 				})
 				.catch(() => {
 					toast.error("Can't remove song from playlist!")
