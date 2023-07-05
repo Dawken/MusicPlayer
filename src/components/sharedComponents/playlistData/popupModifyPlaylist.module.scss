@@ -1,0 +1,34 @@
+.playlist {
+  display: flex;
+  justify-content: center;
+  width: 470px;
+  .playlistImage {
+    margin: 20px;
+    height: 205px;
+  }
+  .playlistData {
+    margin: 20px 20px 20px 0;
+    .playlistName {
+      background-color: #101010;
+      margin: 0 0 10px;
+      width: 200px;
+      height: 30px;
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      color:white;
+    }
+    .playlistDescription {
+      height: 150px;
+      width: 200px;
+      outline: none;
+      border: none;
+      background-color: #101010;
+      border-radius: 5px;
+      margin: 10px 0 0;
+      color: white;
+      resize: none;
+    }
+  }
+}
+
