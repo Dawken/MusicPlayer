@@ -1,8 +1,10 @@
-import { Button, Dialog, IconButton } from '@mui/material'
+import { Button, Dialog } from '@mui/material'
 import React, { useState } from 'react'
 import styles from './popupModifyPlaylist.module.scss'
 import SpotifyApi from 'spotify-web-api-node'
 import SinglePlaylistResponse = SpotifyApi.SinglePlaylistResponse
+import spotifyApi from '../../../shared/spotifyApi'
+import { toast } from 'react-toastify'
 
 type PopupDeletePlaylistProps = {
 	open: boolean
@@ -20,6 +22,21 @@ const PopupModifyPlaylist: React.FC<PopupDeletePlaylistProps> = ({
 	const [playlistDescription, setPlaylistDescription] = useState(
 		playlist.description
 	)
+
+	const updatePlaylist = () => {
+		spotifyApi
+			.changePlaylistDetails(playlist.id, {
+				name: playlistName,
+				description: playlistDescription || undefined,
+			})
+			.then(() => {
+				toast.success('Playlist data has been updated')
+			})
+			.catch(() => {
+				toast.error('Error, try again later')
+			})
+	}
+
 	return (
 		<Dialog
 			open={open}
@@ -39,6 +56,8 @@ const PopupModifyPlaylist: React.FC<PopupDeletePlaylistProps> = ({
 				<div className={styles.playlistData}>
 					<input
 						className={styles.playlistName}
+						placeholder={'Enter title'}
+						required
 						value={playlistName}
 						onChange={(event) =>
 							setPlaylistName(event.target.value)
@@ -54,14 +73,7 @@ const PopupModifyPlaylist: React.FC<PopupDeletePlaylistProps> = ({
 					/>
 				</div>
 			</div>
-			<Button autoFocus>
-				Save
-				<IconButton
-					edge='end'
-					color='inherit'
-					onClick={handleClose}
-				></IconButton>
-			</Button>
+			<Button onClick={() => updatePlaylist()}>Save</Button>
 		</Dialog>
 	)
 }

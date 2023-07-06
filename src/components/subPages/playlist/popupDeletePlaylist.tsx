@@ -1,10 +1,4 @@
-import {
-	Button,
-	Dialog,
-	DialogActions,
-	DialogTitle,
-	IconButton,
-} from '@mui/material'
+import { Button, Dialog, DialogActions, DialogTitle } from '@mui/material'
 import React from 'react'
 import DeleteIcon from '@mui/icons-material/Delete'
 
@@ -35,13 +29,7 @@ const PopupDeletePlaylist: React.FC<PopupDeletePlaylistProps> = ({
 				<Button onClick={handleClose}>Cancel</Button>
 				<Button onClick={deletePlaylist} autoFocus>
 					Delete playlist
-					<IconButton
-						edge='end'
-						color='inherit'
-						onClick={handleClose}
-					>
-						<DeleteIcon />
-					</IconButton>
+					<DeleteIcon />
 				</Button>
 			</DialogActions>
 		</Dialog>
