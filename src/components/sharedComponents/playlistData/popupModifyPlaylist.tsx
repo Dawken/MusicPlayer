@@ -5,6 +5,7 @@ import SpotifyApi from 'spotify-web-api-node'
 import SinglePlaylistResponse = SpotifyApi.SinglePlaylistResponse
 import spotifyApi from '../../../shared/spotifyApi'
 import { toast } from 'react-toastify'
+import MusicNoteIcon from '@mui/icons-material/MusicNote'
 
 type PopupDeletePlaylistProps = {
 	open: boolean
@@ -22,7 +23,6 @@ const PopupModifyPlaylist: React.FC<PopupDeletePlaylistProps> = ({
 	const [playlistDescription, setPlaylistDescription] = useState(
 		playlist.description
 	)
-
 	const updatePlaylist = () => {
 		spotifyApi
 			.changePlaylistDetails(playlist.id, {
@@ -49,10 +49,16 @@ const PopupModifyPlaylist: React.FC<PopupDeletePlaylistProps> = ({
 			}}
 		>
 			<div className={styles.playlist}>
-				<img
-					className={styles.playlistImage}
-					src={playlist?.images[0].url}
-				/>
+				{playlist?.images[0] ? (
+					<img
+						src={playlist?.images[0].url}
+						className={styles.playlistImage}
+					/>
+				) : (
+					<div className={styles.playlistImage}>
+						<MusicNoteIcon className={styles.songIcon} />
+					</div>
+				)}
 				<div className={styles.playlistData}>
 					<input
 						className={styles.playlistName}

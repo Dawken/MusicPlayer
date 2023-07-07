@@ -42,7 +42,7 @@ const PlaylistData = ({ playlist }: PlaylistType) => {
 				)}
 			</div>
 			<div className={styles.playlist}>
-				<div className={styles.playlistName}>
+				<div className={styles.playlistName} onClick={handleClickOpen}>
 					{playlist?.name ? (
 						playlist.name
 					) : (
@@ -50,6 +50,9 @@ const PlaylistData = ({ playlist }: PlaylistType) => {
 							className={`${loading.skeleton} ${loading.skeletonTrackText}`}
 						/>
 					)}
+				</div>
+				<div className={styles.playlistDescription}>
+					{playlistWithDescription?.description}
 				</div>
 			</div>
 			{playlistWithDescription && (
