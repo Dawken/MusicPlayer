@@ -57,7 +57,11 @@ const PopularSongsAlbums = ({
 						style={{ display: 'flex' }}
 					>
 						{popular.albums?.map((item, index) => (
-							<AlbumCard item={item} key={index} />
+							<AlbumCard
+								item={item}
+								key={index}
+								route={'album'}
+							/>
 						))}
 					</ScrollContainer>
 				)}

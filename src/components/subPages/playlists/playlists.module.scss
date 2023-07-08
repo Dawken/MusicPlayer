@@ -5,6 +5,7 @@
   grid-template-columns: 250px;
   grid-template-rows: auto;
   grid-template-areas: "sidebar main";
+  font-family: 'Rajdhani', sans-serif;
   .playlistsContainer {
     grid-area: main;
     width: 100%;
@@ -22,37 +23,31 @@
     .playlists {
       background-color: rgba(0, 0, 0, 0.3);
       width: 100%;
-      min-height: 65vh;
-      margin-top: 165px;
-      padding-bottom: 15vh;
-      .yourPlaylists {
+      min-height: 85vh;
+      margin-top: 65px;
+      .createPlaylist {
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
+        margin: 2vh 5vh 2vh 0;
+        color: white;
+        text-decoration: none;
+        font-family: 'Rajdhani', sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .yourPlaylists {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 200px);
+        justify-content: center;
+        grid-gap: 15vh;
+        align-content: center;
         .yourPlaylistsText {
           margin: 10px;
           font-size: 2rem;
-          font-family: 'Montserrat', sans-serif;
         }
       }
     }
-  }
-}
-.createPlaylist {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin:15px;
-  color: white;
-  text-decoration: none;
-  font-family: 'Montserrat', sans-serif;
-  .createPlaylistButton {
-    font-size: 40px;
-    margin: 10px;
-  }
-  .createPlaylistText {
-    font-size: 25px;
-    font-weight: 400;
   }
 }
 @media only screen and (max-width: 1100px) {

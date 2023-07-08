@@ -8,15 +8,24 @@ import PauseIcon from '../../../assets/pauseButton.png'
 import spotifyApi from '../../../shared/spotifyApi'
 import setSong from '../../sharedFunctions/setSong'
 import useAlbumCard from './useAlbumCard'
+import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
+import NotFoundPhoto from '../../../assets/notFound.png'
 
-const AlbumCard = ({ item }: { item: AlbumObjectSimplified }) => {
+type CardProps = {
+	item: AlbumObjectSimplified | PlaylistObjectSimplified
+	route: string
+}
+
+const AlbumCard = ({ item, route }: CardProps) => {
 	const { isPlaying, trackId, imageColor, rgbaColor } = useAlbumCard(item)
 
 	return (
 		<div className={styles.albumCard}>
-			<Link to={`/album/${item.id}`}>
+			<Link to={`/${route}/${item.id}`}>
 				<img
-					src={item.images[0].url}
+					src={
+						item.images[0]?.url ? item.images[0].url : NotFoundPhoto
+					}
 					className={styles.albumImage}
 					style={{
 						boxShadow: `10px 10px 0 2px rgba(${rgbaColor.slice(
@@ -43,7 +52,7 @@ const AlbumCard = ({ item }: { item: AlbumObjectSimplified }) => {
 					onClick={() => setSong(item.uri, 0, trackId)}
 				/>
 			)}
-			<Link to={`/album/${item.id}`} className={styles.albumName}>
+			<Link to={`/${route}/${item.id}`} className={styles.albumName}>
 				{item.name}
 			</Link>
 		</div>

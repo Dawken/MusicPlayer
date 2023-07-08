@@ -12,6 +12,7 @@
       -webkit-box-shadow: 0px 9px 22px 9px rgba(0, 0, 0, 1);
       -moz-box-shadow: 0px 9px 22px 9px rgba(0, 0, 0, 1);
       box-shadow: 0px 9px 22px 9px rgba(0, 0, 0, 1);
+      cursor: pointer;
     }
     .songIcon {
       background-color: #1a1a1a;
@@ -36,8 +37,20 @@
       -webkit-box-orient: vertical;
       display: -webkit-box;
       white-space: unset;
-      word-break: break-all;
-      height: auto;
+      word-break: break-word;
+      text-align: left;
+      cursor: pointer;
+    }
+    .playlistDescription {
+      font-size: 1vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      display: -webkit-box;
+      white-space: unset;
+      word-break: break-word;
+      text-align: left;
     }
   }
 }
@@ -50,7 +63,7 @@
     .playlist {
       .playlistName {
         font-size: 4vh;
-        height: 17vh;
+        margin: 10px;
       }
     }
   }

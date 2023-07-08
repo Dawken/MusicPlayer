@@ -10,6 +10,7 @@ export const initialState = {
 	isPlaying: false,
 	playingSongId: '',
 	playingSongPhoto: '',
+	actionTrackUri: '',
 }
 
 export const user = createSlice({
@@ -67,6 +68,12 @@ export const user = createSlice({
 		) => {
 			state.playingSongPhoto = action.payload.playingSongPhoto
 		},
+		setActionTrackUri: (
+			state,
+			action: PayloadAction<{ actionTrackUri: string }>
+		) => {
+			state.actionTrackUri = action.payload.actionTrackUri
+		},
 	},
 })
 
@@ -80,4 +87,5 @@ export const {
 	setIsPlaying,
 	setPlayingSongId,
 	setPlayingSongPhoto,
+	setActionTrackUri,
 } = user.actions

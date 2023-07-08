@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './playlist.module.scss'
 import BackgroundImageColor from '../../sharedComponents/backgroundImageColor/backgroundImageColor'
 import usePlaylist from './usePlaylist'
-import PlaylistData from './playlistData/playlistData'
+import PlaylistData from '../../sharedComponents/playlistData/playlistData'
 import SearchBar from '../../sharedComponents/searchBar/searchBar'
 import useSearchBar from '../../sharedComponents/searchBar/useSearchBar'
 import PlaylistMenu from '../../sharedComponents/playlistMenu/playlistMenu'
@@ -15,6 +15,8 @@ import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
 import setSong from '../../sharedFunctions/setSong'
 import spotifyApi from '../../../shared/spotifyApi'
 import SkeletonPlaylistSongItem from '../../../animations/skeletonLoading/skeletonPlaylistSongItem'
+import DeleteIcon from '@mui/icons-material/Delete'
+import PopupDeletePlaylist from './popupDeletePlaylist'
 
 const Playlist = () => {
 	const {
@@ -25,6 +27,11 @@ const Playlist = () => {
 		isPlaying,
 		recommendedTracks,
 		isTyping,
+		track,
+		open,
+		handleClickOpen,
+		handleClose,
+		deletePlaylist,
 	} = usePlaylist()
 
 	const { setSearch, search, searchResult } = useSearchBar()
@@ -35,22 +42,27 @@ const Playlist = () => {
 			<div className={styles.playlist}>
 				<PlaylistData playlist={playlist} />
 				<div className={styles.background}>
-					{isPlaying && playlist?.uri === playlistId ? (
-						<PauseCircleIcon
-							style={{ color: imageColor }}
-							className={styles.playIcon}
-							onClick={() => spotifyApi.pause()}
+					<div className={styles.actionButtons}>
+						{isPlaying && playlist?.uri === playlistId ? (
+							<PauseCircleIcon
+								style={{ color: imageColor }}
+								className={styles.playIcon}
+								onClick={() => spotifyApi.pause()}
+							/>
+						) : (
+							<PlayCircleFilledIcon
+								style={{ color: imageColor }}
+								className={styles.playIcon}
+								onClick={() => {
+									playlist && setSong(playlist.uri, 0, track)
+								}}
+							/>
+						)}
+						<DeleteIcon
+							className={styles.deletePlaylist}
+							onClick={handleClickOpen}
 						/>
-					) : (
-						<PlayCircleFilledIcon
-							style={{ color: imageColor }}
-							className={styles.playIcon}
-							onClick={() => {
-								playlist &&
-									setSong(playlist.uri, 0, playlist.uri)
-							}}
-						/>
-					)}
+					</div>
 					{playlistSongs && playlist ? (
 						<PlaylistMenu
 							playlistData={
@@ -108,6 +120,11 @@ const Playlist = () => {
 					</div>
 				</div>
 			</div>
+			<PopupDeletePlaylist
+				open={open}
+				handleClose={handleClose}
+				deletePlaylist={deletePlaylist}
+			/>
 		</div>
 	)
 }
