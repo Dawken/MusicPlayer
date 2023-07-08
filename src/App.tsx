@@ -6,8 +6,6 @@ import Layout from './components/layout/layout'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import './index.scss'
 import Playlists from './components/subPages/playlists/playlists'
-import MusicPlayer from './components/sharedComponents/musicPlayer/musicPlayer'
-import SidebarMenu from './components/sharedComponents/sidebarMenu/sidebarMenu'
 import Track from './components/subPages/track/track'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -27,7 +25,6 @@ const App = () => {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<BrowserRouter>
-				<SidebarMenu />
 				<Routes>
 					<Route element={<PrivateRoutes />}>
 						<Route path='/' element={<Layout />} />
@@ -39,7 +36,6 @@ const App = () => {
 					</Route>
 					<Route path='/login' element={<Login />} />
 				</Routes>
-				<MusicPlayer />
 				<ToastContainer
 					position='top-center'
 					autoClose={3000}

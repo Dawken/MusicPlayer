@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import TrackSearchResult from '../../sharedComponents/trackCard/trackCard'
 import useResultsLayout from './useResultsLayout'
 import styles from './resultsLayout.module.scss'
@@ -23,7 +23,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
 	return (
 		<div className={styles.mainContainer}>
 			{searchResult.length > 0 && (
-				<>
+				<Fragment>
 					<section>
 						<div className={styles.sectionText}>Best results</div>
 						<div className={styles.cardsContainer}>
@@ -80,7 +80,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
 							)}
 						</div>
 					</section>
-				</>
+				</Fragment>
 			)}
 			<section>
 				<div className={styles.sectionText}>Last Played</div>
