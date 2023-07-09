@@ -6,9 +6,8 @@ import SpotifyLogo from '../../../assets/spotify.png'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
-	const { isLoading } = useLogin()
+	useLogin()
 
-	if (isLoading) return <div>Loading...</div>
 	return (
 		<div className={styles.layout}>
 			<div className={styles.spotify}>
