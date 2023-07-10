@@ -1,18 +1,20 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 import textureImg from '../../../assets/NormalMap.png'
 
 const threejs = () => {
+	const canvasRef = useRef<HTMLCanvasElement | null>(null)
+
 	useEffect(() => {
 		const textureLoader = new THREE.TextureLoader()
 
 		const normalTexture = textureLoader.load(textureImg)
 		// Canvas
-		const canvas = document.querySelector('canvas.webgl')
+		const canvas = canvasRef.current
 		// Scene
 		const scene = new THREE.Scene()
 		// Objects
-		const geometry = new THREE.SphereGeometry(0.5, 64, 64)
+		const geometry = new THREE.SphereGeometry(0.65, 64, 64)
 		// Materials
 		const material = new THREE.MeshStandardMaterial()
 		material.metalness = 0.7
@@ -24,18 +26,18 @@ const threejs = () => {
 		const sphere = new THREE.Mesh(geometry, material)
 		scene.add(sphere)
 		// Lights
-		const pointLight = new THREE.PointLight(0xffffff, 0.1)
+		const pointLight = new THREE.PointLight(0xfffff, 0.1)
 		pointLight.position.x = 2
 		pointLight.position.y = 3
 		pointLight.position.z = 4
 		scene.add(pointLight)
 		//LIGHT 2
-		const pointLight2 = new THREE.PointLight(0xff0000, 2)
+		const pointLight2 = new THREE.PointLight(0xff00, 2)
 		pointLight2.position.set(-1.86, 1, -1.65)
 		pointLight2.intensity = 5
 		scene.add(pointLight2)
 		//LIGHT3
-		const pointLight3 = new THREE.PointLight(0xff, 2)
+		const pointLight3 = new THREE.PointLight(0xffff, 2)
 		pointLight3.position.set(1.3, -1.2, -1)
 		pointLight3.intensity = 5
 		scene.add(pointLight3)
@@ -71,7 +73,6 @@ const threejs = () => {
 		camera.position.z = 2
 		scene.add(camera)
 
-		//Renderer
 		const renderer = new THREE.WebGLRenderer({
 			canvas: canvas as HTMLCanvasElement,
 			alpha: true,
@@ -102,9 +103,9 @@ const threejs = () => {
 
 		const clock = new THREE.Clock()
 
-		const tick = () => {
-			targetX = mouseX * 0.001
-			targetY = mouseY * 0.001
+		const tick = async () => {
+			targetX = mouseX * 0.0004
+			targetY = mouseY * 0.0004
 
 			const elapsedTime = clock.getElapsedTime()
 			// Update objects
@@ -121,5 +122,6 @@ const threejs = () => {
 
 		tick()
 	}, [])
+	return canvasRef
 }
 export default threejs

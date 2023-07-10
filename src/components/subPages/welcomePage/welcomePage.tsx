@@ -1,20 +1,26 @@
 import React from 'react'
 import threejs from './threejs'
-import { FullPage, Slide } from 'react-full-page'
 import styles from './welcomePage.module.scss'
+import 'animate.css'
+import { FullPage, Slide } from 'react-full-page'
 
 const WelcomePage = () => {
-	threejs()
+	const canvasRef = threejs()
 
 	return (
 		<div className={styles.layoutBackground}>
 			<FullPage>
 				<Slide>
-					<canvas className='webgl'></canvas>
+					<div className={styles.headerTitle}>
+						<h1
+							className={'animate__animated animate__slideInLeft'}
+						>
+							Feel the vibe
+						</h1>
+					</div>
+					<canvas className={styles.webgl} ref={canvasRef}></canvas>
 				</Slide>
-				<Slide>
-					<h1>Another slide content</h1>
-				</Slide>
+				<Slide>Example</Slide>
 			</FullPage>
 		</div>
 	)

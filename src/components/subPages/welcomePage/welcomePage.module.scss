@@ -1,3 +1,18 @@
 .layoutBackground {
   background-color: #050505;
+  color: #c5c5c5;
+  font-family: 'Poppins', serif;
+  .headerTitle {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    font-size: 4vw;
+  }
+  .webgl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: none;
+    mix-blend-mode: exclusion;
+  }
 }
