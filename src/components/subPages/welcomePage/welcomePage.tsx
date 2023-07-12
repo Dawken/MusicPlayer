@@ -2,8 +2,9 @@ import React from 'react'
 import threejs from './threejs'
 import styles from './welcomePage.module.scss'
 import 'animate.css'
-import { FullPage, Slide } from 'react-full-page'
 import { Link } from 'react-router-dom'
+import Reveal from './reveal'
+import { FullPage, Slide } from 'react-full-page'
 
 const WelcomePage = () => {
 	const canvasRef = threejs()
@@ -16,15 +17,12 @@ const WelcomePage = () => {
 			<FullPage>
 				<Slide>
 					<div className={styles.headerTitle}>
-						<h1
-							className={'animate__animated animate__slideInLeft'}
-						>
-							Feel the vibe
-						</h1>
+						<Reveal>
+							<h1>Feel the vibe</h1>
+						</Reveal>
 					</div>
 					<canvas className={styles.webgl} ref={canvasRef}></canvas>
 				</Slide>
-				<Slide>Example</Slide>
 			</FullPage>
 		</div>
 	)

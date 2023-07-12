@@ -1,0 +1,12 @@
+.reveal {
+  position: relative;
+  .greenReveal {
+    position: absolute;
+    top: 14px;
+    bottom: 14px;
+    left: 0;
+    right: 0;
+    background: #1ed760;
+    z-index: 1;
+  }
+}

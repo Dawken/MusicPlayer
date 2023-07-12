@@ -1,5 +1,5 @@
 .layoutBackground {
-  background-color: #050505;
+  background-color: #000000;
   color: #c5c5c5;
   font-family: 'Poppins', serif;
   .login {
@@ -16,7 +16,7 @@
     justify-content: center;
     font-size: 17px;
     font-weight: bold;
-    color: black;
+    color: #000000;
     border: none;
     cursor: pointer;
     text-decoration: none;
@@ -34,5 +34,10 @@
     left: 0;
     outline: none;
     mix-blend-mode: exclusion;
+  }
+  .example {
+    justify-content: center;
+    display: flex;
+    font-size: 30px;
   }
 }
