@@ -2,11 +2,11 @@
   position: relative;
   .greenReveal {
     position: absolute;
-    top: 14px;
-    bottom: 14px;
+    top: 10%;
+    bottom: 10%;
     left: 0;
     right: 0;
-    background: #1ed760;
+    background: linear-gradient(90deg, rgb(11, 230, 62) 0%, rgba(69,237,252,1) 88%);
     z-index: 1;
   }
 }

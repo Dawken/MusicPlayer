@@ -44,7 +44,7 @@ const Reveal = ({ children }: ChildrenType) => {
 				}}
 				initial='hidden'
 				animate={slideControls}
-				transition={{ duration: 0.5, ease: 'easeIn' }}
+				transition={{ duration: 0.3, delay: 0.25, ease: 'easeIn' }}
 				className={styles.greenReveal}
 			></motion.div>
 		</div>
