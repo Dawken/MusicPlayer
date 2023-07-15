@@ -49,6 +49,16 @@ const WelcomePage = () => {
 						]}
 					/>
 				</Slide>
+				<Slide>
+					<SlideSection
+						header={'Enjoy favourite artists content'}
+						image={favouriteArtis}
+						list={[
+							'Immerse yourself in their latest tracks and albums.',
+							'Expand your musical horizons by discovering similar artists and exploring their unique sounds.',
+						]}
+					/>
+				</Slide>
 			</FullPage>
 		</div>
 	)
