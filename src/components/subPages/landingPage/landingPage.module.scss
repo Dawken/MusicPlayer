@@ -1,0 +1,43 @@
+.layoutBackground {
+  background-color: #000000;
+  color: #c5c5c5;
+  width: 100vw;
+  font-family: 'Poppins', serif;
+  .login {
+    position: fixed;
+    right: 0;
+    margin: 20px;
+    width: 10vh;
+    height: 4vh;
+    border-radius: 5px;
+    background: linear-gradient(90deg, rgba(39,230,11,1) 0%, rgba(69,237,252,1) 88%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 17px;
+    font-weight: bold;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    z-index: 1;
+  }
+  .headerTitle {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    font-size: 7.5vw;
+    background-color: #000000;
+    .title {
+      display: grid;
+      place-items: center;
+    }
+  }
+  .webgl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: none;
+    mix-blend-mode: exclusion;
+  }
+}

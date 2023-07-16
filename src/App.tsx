@@ -1,5 +1,4 @@
 import React from 'react'
-import Login from './components/subPages/login/login'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import PrivateRoutes from './components/utils/privateRoutes'
 import Layout from './components/layout/layout'
@@ -12,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import Artist from './components/subPages/artist/artist'
 import Playlist from './components/subPages/playlist/playlist'
 import Album from './components/subPages/album/album'
+import LandingPage from './components/subPages/landingPage/landingPage'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -34,7 +34,7 @@ const App = () => {
 						<Route path='/playlist/:id' element={<Playlist />} />
 						<Route path='/album/:id' element={<Album />} />
 					</Route>
-					<Route path='/login' element={<Login />} />
+					<Route path='/login' element={<LandingPage />} />
 				</Routes>
 				<ToastContainer
 					position='top-center'
