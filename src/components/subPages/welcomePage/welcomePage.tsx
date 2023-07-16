@@ -9,6 +9,7 @@ import explore from '../../../assets/spotify-premium.jpg'
 import managePlaylist from '../../../assets/managePlaylist.png'
 import favouriteArtis from '../../../assets/favouriteArists.png'
 import SlideSection from './slideSection/slideSection'
+import LoginButton from '../../sharedComponents/loginButton/loginButton'
 
 const WelcomePage = () => {
 	const canvasRef = threejs()
@@ -22,7 +23,7 @@ const WelcomePage = () => {
 				<Slide>
 					<div className={styles.headerTitle}>
 						<Reveal>
-							<div className={styles.title}>Feel the vibe</div>
+							<div>Feel the vibe</div>
 						</Reveal>
 					</div>
 					<canvas className={styles.webgl} ref={canvasRef}></canvas>
@@ -58,6 +59,16 @@ const WelcomePage = () => {
 							'Expand your musical horizons by discovering similar artists and exploring their unique sounds.',
 						]}
 					/>
+				</Slide>
+				<Slide>
+					<div className={styles.headerTitle}>
+						<div className={styles.title}>
+							<Reveal>
+								<div>Are you ready?</div>
+							</Reveal>
+							<LoginButton />
+						</div>
+					</div>
 				</Slide>
 			</FullPage>
 		</div>

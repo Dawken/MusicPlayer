@@ -27,6 +27,11 @@
     place-items: center;
     height: 100vh;
     font-size: 7.5vw;
+    background-color: #000000;
+    .title {
+      display: grid;
+      place-items: center;
+    }
   }
   .webgl {
     position: absolute;
