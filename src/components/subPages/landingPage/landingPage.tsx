@@ -1,8 +1,7 @@
 import React from 'react'
 import threejs from './threejs'
-import styles from './welcomePage.module.scss'
+import styles from './landingPage.module.scss'
 import 'animate.css'
-import { Link } from 'react-router-dom'
 import Reveal from './reveal/reveal'
 import { FullPage, Slide } from 'react-full-page'
 import explore from '../../../assets/spotify-premium.jpg'
@@ -10,13 +9,18 @@ import managePlaylist from '../../../assets/managePlaylist.png'
 import favouriteArtis from '../../../assets/favouriteArists.png'
 import SlideSection from './slideSection/slideSection'
 import LoginButton from '../../sharedComponents/loginButton/loginButton'
+import useLogin from '../../sharedComponents/loginButton/useLogin'
+import { spotifyAuthenticationUrl } from '../../../shared/spotifyAuthenticationUrl'
+import { Link } from 'react-router-dom'
 
-const WelcomePage = () => {
+const LandingPage = () => {
 	const canvasRef = threejs()
+
+	useLogin()
 
 	return (
 		<div className={styles.layoutBackground}>
-			<Link to={'/login'} className={styles.login}>
+			<Link to={spotifyAuthenticationUrl.url} className={styles.login}>
 				<span>Login</span>
 			</Link>
 			<FullPage>
@@ -74,4 +78,4 @@ const WelcomePage = () => {
 		</div>
 	)
 }
-export default WelcomePage
+export default LandingPage

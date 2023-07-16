@@ -17,7 +17,7 @@ const PrivateRoutes = () => {
 			<MusicPlayer />
 		</Fragment>
 	) : (
-		<Navigate to={'/welcome'} />
+		<Navigate to={'/login'} />
 	)
 }
 
