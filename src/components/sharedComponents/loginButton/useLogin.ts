@@ -6,15 +6,12 @@ import { getClientResponse } from '../../../redux/user'
 import { useEffect } from 'react'
 
 const useLogin = () => {
-	const code = localStorage.getItem('code')
 	const isLogged = useAppSelector((state) => state.auth.isLoggedIn)
 	const navigate = useNavigate()
 
 	const { isLoading, mutate: login } = useMutation(
 		() => {
-			return musicPlayerBackend.post('/api/login', {
-				code,
-			})
+			return musicPlayerBackend.post('/api/login')
 		},
 		{
 			onSuccess: () => {
@@ -28,7 +25,7 @@ const useLogin = () => {
 		}
 	)
 	useEffect(() => {
-		if (code && !isLogged) {
+		if (!isLogged) {
 			login()
 		}
 	}, [])
