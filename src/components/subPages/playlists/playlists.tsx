@@ -47,11 +47,13 @@ const Playlists = () => {
 								  ))
 								: playlists?.items.map((item) => {
 										return (
-											<AlbumCard
-												item={item}
-												key={item.id}
-												route={'playlist'}
-											/>
+											item.tracks.total > 0 && (
+												<AlbumCard
+													item={item}
+													key={item.id}
+													route={'playlist'}
+												/>
+											)
 										)
 								  })}
 						</div>
