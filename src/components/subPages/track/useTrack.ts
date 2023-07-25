@@ -10,52 +10,52 @@ import { useQuery } from 'react-query'
 import musicPlayerBackend from '../../../config/axiosConfig'
 
 const useTrack = () => {
-	const spotify = useAuth()
+    const spotify = useAuth()
 
-	const { id } = useParams()
+    const { id } = useParams()
 
-	const [trackData, setTrackData] = useState<SingleTrackResponse>()
-	const [artist, setArtist] = useState<SingleArtistResponse>()
-	const [imageColor, setImageColor] = useState('')
+    const [trackData, setTrackData] = useState<SingleTrackResponse>()
+    const [artist, setArtist] = useState<SingleArtistResponse>()
+    const [imageColor, setImageColor] = useState('')
 
-	useEffect(() => {
-		if (spotify.accessToken) {
-			spotifyApi.setAccessToken(spotify.accessToken)
-			if (id) {
-				spotifyApi.getTrack(id).then((data) => {
-					setTrackData(data.body)
-					getColorFromImage(
-						data.body.album.images[0].url,
-						(color: string) => {
-							setImageColor(color)
-						}
-					)
-					spotifyApi
-						.getArtist(data.body.artists[0].id)
-						.then((data) => {
-							setArtist(data.body)
-						})
-				})
-			}
-		}
-	}, [id, spotify.accessToken])
+    useEffect(() => {
+        if (spotify.accessToken) {
+            spotifyApi.setAccessToken(spotify.accessToken)
+            if (id) {
+                spotifyApi.getTrack(id).then((data) => {
+                    setTrackData(data.body)
+                    getColorFromImage(
+                        data.body.album.images[0].url,
+                        (color: string) => {
+                            setImageColor(color)
+                        }
+                    )
+                    spotifyApi
+                        .getArtist(data.body.artists[0].id)
+                        .then((data) => {
+                            setArtist(data.body)
+                        })
+                })
+            }
+        }
+    }, [id, spotify.accessToken])
 
-	const { data: songLyrics, isLoading } = useQuery(
-		[trackData?.name, id],
-		async () => {
-			const response = await musicPlayerBackend.get('/api/lyrics', {
-				params: { artist: artist?.name, track: trackData?.name },
-			})
-			return response.data.lyrics
-		}
-	)
+    const { data: songLyrics, isLoading } = useQuery(
+        [trackData?.name, id],
+        async () => {
+            const response = await musicPlayerBackend.get('/api/lyrics', {
+                params: { artist: artist?.name, track: trackData?.name },
+            })
+            return response.data.lyrics
+        }
+    )
 
-	return {
-		trackData,
-		artist,
-		imageColor,
-		songLyrics,
-		isLoading,
-	}
+    return {
+        trackData,
+        artist,
+        imageColor,
+        songLyrics,
+        isLoading,
+    }
 }
 export default useTrack

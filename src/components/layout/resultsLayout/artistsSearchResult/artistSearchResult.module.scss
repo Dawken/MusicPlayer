@@ -1,38 +1,38 @@
 .artistContainer {
-  width: 25vh;
-  background-color: #151515;
-  border-radius: 10px;
-  text-align: center;
-  color: white;
-  margin: 20px 10px;
-  transition: 0.3s;
-  text-decoration: none;
-  .artistPhotoContainer {
-    display: flex;
-    justify-content: center;
-    .artistPhoto {
-      width: 19vh;
-      height: 19vh;
-      border-radius: 50%;
-      margin:10px;
-      -webkit-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
-      -moz-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
-      box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
+    width: 25vh;
+    background-color: #151515;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    margin: 20px 10px;
+    transition: 0.3s;
+    text-decoration: none;
+    .artistPhotoContainer {
+        display: flex;
+        justify-content: center;
+        .artistPhoto {
+            width: 19vh;
+            height: 19vh;
+            border-radius: 50%;
+            margin: 10px;
+            -webkit-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
+            -moz-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
+            box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
+        }
     }
-  }
-  .artistName {
-    font-family: 'Fira Sans', sans-serif;
-    margin: 20px;
-    font-weight: bold;
-    font-size: 18px;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-  }
+    .artistName {
+        font-family: 'Fira Sans', sans-serif;
+        margin: 20px;
+        font-weight: bold;
+        font-size: 18px;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+    }
 }
 .artistContainer:hover {
-  background-color: #1f1f1f;
-  transition: 0.3s;
-  cursor: pointer;
-  text-decoration: underline;
+    background-color: #1f1f1f;
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: underline;
 }

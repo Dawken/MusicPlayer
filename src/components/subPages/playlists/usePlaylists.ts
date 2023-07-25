@@ -6,30 +6,30 @@ import useAuth from '../../../customHooks/useAuth'
 import { useNavigate } from 'react-router-dom'
 
 const usePlaylists = () => {
-	const navigate = useNavigate()
+    const navigate = useNavigate()
 
-	const [playlists, setPlayLists] = useState<ListOfUsersPlaylistsResponse>()
+    const [playlists, setPlayLists] = useState<ListOfUsersPlaylistsResponse>()
 
-	const spotify = useAuth()
+    const spotify = useAuth()
 
-	useEffect(() => {
-		if (spotify.accessToken) spotifyApi.setAccessToken(spotify.accessToken)
-		spotifyApi.getUserPlaylists().then((data) => {
-			if (data.body) {
-				setPlayLists(data.body)
-			}
-		})
-	}, [spotify.accessToken])
+    useEffect(() => {
+        if (spotify.accessToken) spotifyApi.setAccessToken(spotify.accessToken)
+        spotifyApi.getUserPlaylists().then((data) => {
+            if (data.body) {
+                setPlayLists(data.body)
+            }
+        })
+    }, [spotify.accessToken])
 
-	const createPlaylist = () => {
-		spotifyApi.createPlaylist('My playlist').then((data) => {
-			navigate(`/playlist/${data.body.id}`)
-		})
-	}
+    const createPlaylist = () => {
+        spotifyApi.createPlaylist('My playlist').then((data) => {
+            navigate(`/playlist/${data.body.id}`)
+        })
+    }
 
-	return {
-		playlists,
-		createPlaylist,
-	}
+    return {
+        playlists,
+        createPlaylist,
+    }
 }
 export default usePlaylists

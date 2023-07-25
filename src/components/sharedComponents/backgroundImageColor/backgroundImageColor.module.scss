@@ -1,19 +1,23 @@
 .backgroundImageColor {
-  width: 100%;
-  height: 480px;
-  top: 0;
-  z-index: -1;
-  opacity: 1;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgb(18, 18, 18));
-  transition: background 1s ease-in-out;
-  grid-area: main;
+    width: 100%;
+    height: 480px;
+    top: 0;
+    z-index: -1;
+    opacity: 1;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0),
+        rgb(18, 18, 18)
+    );
+    transition: background 1s ease-in-out;
+    grid-area: main;
 }
 
 .backgroundScrolled {
-  height: 7vh;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  transition: background 1s ease-in-out;
+    height: 7vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    transition: background 1s ease-in-out;
 }

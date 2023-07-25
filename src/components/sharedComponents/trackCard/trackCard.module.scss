@@ -1,69 +1,69 @@
 .songContainer {
-  width: 25vh;
-  background-color: #151515;
-  border-radius: 8px;
-  text-align: center;
-  color: white;
-  margin: 20px 10px;
-  transition: 0.3s;
-  .songPhotoContainer {
-    display: flex;
-    justify-content: center;
-    .songPhoto {
-      width: 19vh;
-      height: 19vh;
-      margin: 10px;
-      border-radius: 8px;
-      -webkit-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
-      -moz-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
-      box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
+    width: 25vh;
+    background-color: #151515;
+    border-radius: 8px;
+    text-align: center;
+    color: white;
+    margin: 20px 10px;
+    transition: 0.3s;
+    .songPhotoContainer {
+        display: flex;
+        justify-content: center;
+        .songPhoto {
+            width: 19vh;
+            height: 19vh;
+            margin: 10px;
+            border-radius: 8px;
+            -webkit-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
+            -moz-box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
+            box-shadow: 0 0 18px 1px rgba(0, 0, 0, 1);
+        }
     }
-  }
-  .artistName {
-    font-family: 'Fira Sans', sans-serif;
-    margin: 10px 20px;
-    font-weight: bold;
-    font-size: 1rem;
-    border-radius: 15px;
-    display: flex;
-    justify-content: flex-start;
-    text-align: left;
-    color: white;
-    text-decoration: none;
-  }
-  .artistName:hover{
-    text-decoration: underline;
-  }
-  .songName {
-    font-family: 'Fira Sans', sans-serif;
-    margin: 10px 20px;
-    font-weight: 200;
-    font-size: 0.9rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    height: 2.4em;
-    line-height: 1.2em;
-    text-overflow: ellipsis;
-    text-align: left;
-    text-decoration: none;
-    color: white;
-  }
-  .songName:hover {
-    text-decoration: underline;
-  }
+    .artistName {
+        font-family: 'Fira Sans', sans-serif;
+        margin: 10px 20px;
+        font-weight: bold;
+        font-size: 1rem;
+        border-radius: 15px;
+        display: flex;
+        justify-content: flex-start;
+        text-align: left;
+        color: white;
+        text-decoration: none;
+    }
+    .artistName:hover {
+        text-decoration: underline;
+    }
+    .songName {
+        font-family: 'Fira Sans', sans-serif;
+        margin: 10px 20px;
+        font-weight: 200;
+        font-size: 0.9rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 2.4em;
+        line-height: 1.2em;
+        text-overflow: ellipsis;
+        text-align: left;
+        text-decoration: none;
+        color: white;
+    }
+    .songName:hover {
+        text-decoration: underline;
+    }
 }
 .songContainer:hover {
-  background-color: #1f1f1f;
-  transition: 0.3s;
-  cursor: pointer;
-  .playIcon {
-    visibility: visible;
+    background-color: #1f1f1f;
     transition: 0.3s;
-    transform: translate(0%);
-  }
-  .playIcon:hover {
-    scale: 1.1;
-  }
+    cursor: pointer;
+    .playIcon {
+        visibility: visible;
+        transition: 0.3s;
+        transform: translate(0%);
+    }
+    .playIcon:hover {
+        scale: 1.1;
+    }
 }

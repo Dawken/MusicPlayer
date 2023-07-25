@@ -1,12 +1,16 @@
 .reveal {
-  position: relative;
-  .greenReveal {
-    position: absolute;
-    top: 10%;
-    bottom: 10%;
-    left: 0;
-    right: 0;
-    background: linear-gradient(90deg, rgb(11, 230, 62) 0%, rgba(69,237,252,1) 88%);
-    z-index: 1;
-  }
+    position: relative;
+    .greenReveal {
+        position: absolute;
+        top: 10%;
+        bottom: 10%;
+        left: 0;
+        right: 0;
+        background: linear-gradient(
+            90deg,
+            rgb(11, 230, 62) 0%,
+            rgba(69, 237, 252, 1) 88%
+        );
+        z-index: 1;
+    }
 }

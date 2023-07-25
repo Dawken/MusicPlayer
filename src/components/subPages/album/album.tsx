@@ -12,52 +12,52 @@ import PopularSongsAlbums from '../../sharedComponents/popularSongsAlbums/popula
 import SkeletonPlaylistSongItem from '../../../animations/skeletonLoading/skeletonPlaylistSongItem'
 
 const Album = () => {
-	const { imageColor, album, playlistId, isPlaying, track } = useAlbum()
+    const { imageColor, album, playlistId, isPlaying, track } = useAlbum()
 
-	return (
-		<div className={styles.layout}>
-			<BackgroundImageColor color={imageColor} />
-			<div className={styles.playlist}>
-				<PlaylistData playlist={album} />
-				<div className={styles.background}>
-					{isPlaying && album?.uri === playlistId ? (
-						<PauseCircleIcon
-							style={{ color: imageColor }}
-							className={styles.playIcon}
-							onClick={() => spotifyApi.pause()}
-						/>
-					) : (
-						<PlayCircleFilledIcon
-							style={{ color: imageColor }}
-							className={styles.playIcon}
-							onClick={() => {
-								album && setSong(album.uri, 0, track)
-							}}
-						/>
-					)}
-					{album
-						? album.tracks.items.map((item, i) => {
-								return (
-									<Song
-										item={item}
-										index={i}
-										uri={album.uri}
-										key={i}
-									/>
-								)
-						  })
-						: Array.from({ length: 5 }, (_, i) => {
-								return (
-									<SkeletonPlaylistSongItem
-										key={i}
-										isAlbumTrack={true}
-									/>
-								)
-						  })}
-					<PopularSongsAlbums artist={album?.artists[0]} />
-				</div>
-			</div>
-		</div>
-	)
+    return (
+        <div className={styles.layout}>
+            <BackgroundImageColor color={imageColor} />
+            <div className={styles.playlist}>
+                <PlaylistData playlist={album} />
+                <div className={styles.background}>
+                    {isPlaying && album?.uri === playlistId ? (
+                        <PauseCircleIcon
+                            style={{ color: imageColor }}
+                            className={styles.playIcon}
+                            onClick={() => spotifyApi.pause()}
+                        />
+                    ) : (
+                        <PlayCircleFilledIcon
+                            style={{ color: imageColor }}
+                            className={styles.playIcon}
+                            onClick={() => {
+                                album && setSong(album.uri, 0, track)
+                            }}
+                        />
+                    )}
+                    {album
+                        ? album.tracks.items.map((item, i) => {
+                              return (
+                                  <Song
+                                      item={item}
+                                      index={i}
+                                      uri={album.uri}
+                                      key={i}
+                                  />
+                              )
+                          })
+                        : Array.from({ length: 5 }, (_, i) => {
+                              return (
+                                  <SkeletonPlaylistSongItem
+                                      key={i}
+                                      isAlbumTrack={true}
+                                  />
+                              )
+                          })}
+                    <PopularSongsAlbums artist={album?.artists[0]} />
+                </div>
+            </div>
+        </div>
+    )
 }
 export default Album

@@ -1,67 +1,68 @@
 .albumCard {
-  margin: 20px 40px 20px 10px;
-  position: relative;
-  .albumImage {
-      width: 19vh;
-      height: 19vh;
-      z-index: 3;
-      box-shadow: 10px 10px 0 2px rgba(23, 23, 23, 0.5), 20px 20px 0px 2px rgb(17, 17, 17);
-      border-radius: 12px;
+    margin: 20px 40px 20px 10px;
+    position: relative;
+    .albumImage {
+        width: 19vh;
+        height: 19vh;
+        z-index: 3;
+        box-shadow: 10px 10px 0 2px rgba(23, 23, 23, 0.5),
+            20px 20px 0px 2px rgb(17, 17, 17);
+        border-radius: 12px;
     }
-  .playIcon {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 120px;
-    right: 5px;
-    color: black;
-    opacity: 0;
-    transform: translate(0%);
-  }
-  .pauseIcon {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    top: 120px;
-    right: 5px;
-    color: black;
-    transform: translate(0%);
-    transition: 0.2s;
-  }
-  .pauseIcon:hover {
-    transform: scale(1.1);
-    transition: 0.2s;
-    cursor: pointer;
-  }
-  .albumName {
-    text-decoration: none;
-    color: white;
-    width: 20vh;
-    margin-top: 30px;
-    font-size: 1rem;
-    font-weight: bold;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-    white-space: unset;
-    word-break: break-word;
-    text-align: center;
-  }
-  .albumName:hover {
-   text-decoration: underline;
-  }
+    .playIcon {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 120px;
+        right: 5px;
+        color: black;
+        opacity: 0;
+        transform: translate(0%);
+    }
+    .pauseIcon {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 120px;
+        right: 5px;
+        color: black;
+        transform: translate(0%);
+        transition: 0.2s;
+    }
+    .pauseIcon:hover {
+        transform: scale(1.1);
+        transition: 0.2s;
+        cursor: pointer;
+    }
+    .albumName {
+        text-decoration: none;
+        color: white;
+        width: 20vh;
+        margin-top: 30px;
+        font-size: 1rem;
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
+        white-space: unset;
+        word-break: break-word;
+        text-align: center;
+    }
+    .albumName:hover {
+        text-decoration: underline;
+    }
 }
 .albumCard:hover {
-  .playIcon {
-    transform: translate3d(0, -5px, 0);
-    transition-timing-function: linear;
-    transition-duration: 0.2s;
-    opacity: 1;
-  }
-  .playIcon:hover {
-    transform: scale(1.05);
-    cursor: pointer;
-  }
+    .playIcon {
+        transform: translate3d(0, -5px, 0);
+        transition-timing-function: linear;
+        transition-duration: 0.2s;
+        opacity: 1;
+    }
+    .playIcon:hover {
+        transform: scale(1.05);
+        cursor: pointer;
+    }
 }

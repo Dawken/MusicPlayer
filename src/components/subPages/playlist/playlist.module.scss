@@ -1,43 +1,43 @@
 .layout {
-  color: white;
-  font-size: 30px;
-  display: grid;
-  grid-template-columns: 250px;
-  grid-template-rows: auto;
-  grid-template-areas: "sidebar main";
-  font-family: 'Kanit', sans-serif;
-  .playlist {
-    grid-area: main;
-    width: 100%;
-    justify-content: center;
-    align-items: flex-start;
-    .background {
-      background-color: rgba(0, 0, 0, 0.2);
-      width: 100%;
-      min-height: 65vh;
-      margin-top: 30px;
-      padding-bottom: 15vh;
-      .actionButtons {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        .playIcon {
-          width: 8vh;
-          height: 8vh;
-          margin: 20px;
-          cursor: pointer;
+    color: white;
+    font-size: 30px;
+    display: grid;
+    grid-template-columns: 250px;
+    grid-template-rows: auto;
+    grid-template-areas: 'sidebar main';
+    font-family: 'Kanit', sans-serif;
+    .playlist {
+        grid-area: main;
+        width: 100%;
+        justify-content: center;
+        align-items: flex-start;
+        .background {
+            background-color: rgba(0, 0, 0, 0.2);
+            width: 100%;
+            min-height: 65vh;
+            margin-top: 30px;
+            padding-bottom: 15vh;
+            .actionButtons {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                .playIcon {
+                    width: 8vh;
+                    height: 8vh;
+                    margin: 20px;
+                    cursor: pointer;
+                }
+                .deletePlaylist {
+                    font-size: 4vh;
+                    cursor: pointer;
+                }
+            }
         }
-        .deletePlaylist {
-          font-size: 4vh;
-          cursor: pointer;
-        }
-      }
     }
-  }
 }
 @media only screen and (max-width: 1100px) {
-  .layout {
-    display: grid;
-    grid-template-columns: 67px;
-  }
+    .layout {
+        display: grid;
+        grid-template-columns: 67px;
+    }
 }

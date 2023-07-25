@@ -3,17 +3,17 @@ import styles from '../../components/layout/resultsLayout/artistsSearchResult/ar
 import loading from './skeletonLoading.module.scss'
 
 const SkeletonArtistSearchResult = () => {
-	return (
-		<div className={styles.artistContainer}>
-			<div className={styles.artistPhotoContainer}>
-				<div className={`${styles.artistPhoto} ${loading.skeleton}`} />
-			</div>
-			<div className={styles.artistName}>
-				<div
-					className={`${loading.skeleton} ${loading.skeletonArtist}`}
-				></div>
-			</div>
-		</div>
-	)
+    return (
+        <div className={styles.artistContainer}>
+            <div className={styles.artistPhotoContainer}>
+                <div className={`${styles.artistPhoto} ${loading.skeleton}`} />
+            </div>
+            <div className={styles.artistName}>
+                <div
+                    className={`${loading.skeleton} ${loading.skeletonArtist}`}
+                ></div>
+            </div>
+        </div>
+    )
 }
 export default SkeletonArtistSearchResult

@@ -1,119 +1,119 @@
 .playlistSong {
-  display: grid;
-  grid-template-columns: 5% 40% 40% 5% 10%;
-  grid-auto-flow: column;
-  align-items: center;
-  font-family: 'Rajdhani', sans-serif;
-  transition: background 0.3s linear;
-  .equalizer {
-    height: 15px;
-    padding:  0 0 0 3vh;
-  }
-  .songNumber {
-    font-size: 20px;
-    padding:  0 0 0 3vh;
-  }
-  .playIcon {
-    font-size: 25px;
-    padding:  0 0 0 2vh;
-    cursor: pointer;
-  }
-  .songContainer {
-    display: flex;
+    display: grid;
+    grid-template-columns: 5% 40% 40% 5% 10%;
+    grid-auto-flow: column;
     align-items: center;
-    margin: 10px 15px;
-    width: 100%;
-    .songPhoto {
-      width: 7vh;
-      height: 7vh;
-      border-radius: 8px;
+    font-family: 'Rajdhani', sans-serif;
+    transition: background 0.3s linear;
+    .equalizer {
+        height: 15px;
+        padding: 0 0 0 3vh;
     }
-    .songData {
-      margin: 10px 15px;
-      .songName {
-        font-weight: bold;
+    .songNumber {
+        font-size: 20px;
+        padding: 0 0 0 3vh;
+    }
+    .playIcon {
+        font-size: 25px;
+        padding: 0 0 0 2vh;
+        cursor: pointer;
+    }
+    .songContainer {
+        display: flex;
+        align-items: center;
+        margin: 10px 15px;
+        width: 100%;
+        .songPhoto {
+            width: 7vh;
+            height: 7vh;
+            border-radius: 8px;
+        }
+        .songData {
+            margin: 10px 15px;
+            .songName {
+                font-weight: bold;
+                font-size: 1rem;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                display: -webkit-box;
+                white-space: unset;
+                text-decoration: none;
+                color: white;
+            }
+            .songName:hover {
+                text-decoration: underline;
+            }
+            .artistName {
+                font-size: 18px;
+                color: white;
+                text-decoration: none;
+            }
+            .artistName:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .albumName {
+        color: white;
+        text-decoration: none;
         font-size: 1rem;
         overflow: hidden;
         text-overflow: ellipsis;
-        -webkit-line-clamp: 2;
+        -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         display: -webkit-box;
         white-space: unset;
-        text-decoration: none;
-        color: white;
-      }
-      .songName:hover {
-        text-decoration: underline;
-      }
-      .artistName {
-        font-size: 18px;
-        color: white;
-        text-decoration: none;
-      }
-      .artistName:hover {
-        text-decoration: underline;
-      }
+        word-break: break-word;
     }
-  }
-  .albumName {
-    color:white;
-    text-decoration: none;
-    font-size: 1rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    display: -webkit-box;
-    white-space: unset;
-    word-break: break-word;
-  }
-  .albumName:hover {
-    text-decoration: underline;
-  }
-  .songDurationTime {
-    font-size: 18px;
-    text-align: center;
-    margin: 5px 5px;
-  }
-  .addSong {
-    width: 7vh;
-    height: 3vh;
-    border-radius: 22px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: 2px solid #818181;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-    color: white;
-    cursor: pointer;
-  }
+    .albumName:hover {
+        text-decoration: underline;
+    }
+    .songDurationTime {
+        font-size: 18px;
+        text-align: center;
+        margin: 5px 5px;
+    }
+    .addSong {
+        width: 7vh;
+        height: 3vh;
+        border-radius: 22px;
+        font-size: 1rem;
+        font-weight: bold;
+        border: 2px solid #818181;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        color: white;
+        cursor: pointer;
+    }
 }
 .optionsText {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
 .playlistSong:hover {
-  background-color: #131313;
-  transition-duration: 0.5s;
+    background-color: #131313;
+    transition-duration: 0.5s;
 }
 @media only screen and (max-width: 900px) {
-  .playlistSong {
-    grid-template-columns: 10% 45% 20% 25%;
-    .equalizer {
-      padding: 15px;
+    .playlistSong {
+        grid-template-columns: 10% 45% 20% 25%;
+        .equalizer {
+            padding: 15px;
+        }
+        .albumName {
+            visibility: hidden;
+            display: none;
+        }
+        .songNumber {
+            padding: 20px;
+        }
+        .playIcon {
+            font-size: 25px;
+            padding: 0 0 0 10px;
+        }
     }
-    .albumName {
-      visibility: hidden;
-      display: none;
-    }
-    .songNumber {
-      padding: 20px;
-    }
-    .playIcon {
-      font-size: 25px;
-      padding:  0 0 0 10px;
-    }
-  }
 }

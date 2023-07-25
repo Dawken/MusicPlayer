@@ -8,48 +8,48 @@ import AlbumObjectSimplified = SpotifyApi.AlbumObjectSimplified
 import ArtistObjectSimplified = SpotifyApi.ArtistObjectSimplified
 
 type PopularType = {
-	songs: TrackObjectFull[]
-	albums: AlbumObjectSimplified[]
+    songs: TrackObjectFull[]
+    albums: AlbumObjectSimplified[]
 }
 
 const usePopularSongsAlbums = (
-	artist: SingleArtistResponse | ArtistObjectSimplified | undefined
+    artist: SingleArtistResponse | ArtistObjectSimplified | undefined
 ) => {
-	const { id } = useParams()
+    const { id } = useParams()
 
-	const [popular, setPopular] = useState<PopularType>({
-		songs: [],
-		albums: [],
-	})
+    const [popular, setPopular] = useState<PopularType>({
+        songs: [],
+        albums: [],
+    })
 
-	useEffect(() => {
-		if (artist) {
-			spotifyApi.getArtistTopTracks(artist.id, 'PL').then((data) => {
-				if (data.body.tracks) {
-					setPopular((prevState) => ({
-						...prevState,
-						songs: data.body.tracks,
-					}))
-				}
-			})
-			spotifyApi.getArtistAlbums(artist.id).then((data) => {
-				if (data.body.items) {
-					setPopular((prevState) => ({
-						...prevState,
-						albums: data.body.items?.filter(
-							(song, index) =>
-								data.body.items.findIndex(
-									(item) => item.name === song.name
-								) === index
-						),
-					}))
-				}
-			})
-		}
-	}, [artist, id])
+    useEffect(() => {
+        if (artist) {
+            spotifyApi.getArtistTopTracks(artist.id, 'PL').then((data) => {
+                if (data.body.tracks) {
+                    setPopular((prevState) => ({
+                        ...prevState,
+                        songs: data.body.tracks,
+                    }))
+                }
+            })
+            spotifyApi.getArtistAlbums(artist.id).then((data) => {
+                if (data.body.items) {
+                    setPopular((prevState) => ({
+                        ...prevState,
+                        albums: data.body.items?.filter(
+                            (song, index) =>
+                                data.body.items.findIndex(
+                                    (item) => item.name === song.name
+                                ) === index
+                        ),
+                    }))
+                }
+            })
+        }
+    }, [artist, id])
 
-	return {
-		popular,
-	}
+    return {
+        popular,
+    }
 }
 export default usePopularSongsAlbums

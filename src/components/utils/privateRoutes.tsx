@@ -8,20 +8,20 @@ import musicPlayerBackend from '../../config/axiosConfig'
 
 const code = new URLSearchParams(window.location.search).get('code')
 if (code) {
-	musicPlayerBackend.post('/api/code', { code: code })
+    musicPlayerBackend.post('/api/code', { code: code })
 }
 const PrivateRoutes = () => {
-	const isLogged = useAppSelector((state) => state.auth.isLoggedIn)
-	return isLogged ? (
-		<Fragment>
-			<SidebarMenu />
-			<LogoutButton />
-			<Outlet />
-			<MusicPlayer />
-		</Fragment>
-	) : (
-		<Navigate to={'/login'} />
-	)
+    const isLogged = useAppSelector((state) => state.auth.isLoggedIn)
+    return isLogged ? (
+        <Fragment>
+            <SidebarMenu />
+            <LogoutButton />
+            <Outlet />
+            <MusicPlayer />
+        </Fragment>
+    ) : (
+        <Navigate to={'/login'} />
+    )
 }
 
 export default PrivateRoutes

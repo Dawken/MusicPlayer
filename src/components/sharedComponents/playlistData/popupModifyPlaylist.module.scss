@@ -1,56 +1,56 @@
 .playlist {
-  display: flex;
-  flex-direction: row;
-  width: 460px;
-  .uploadFile {
-    height: 200px;
-    width: 200px;
-    position: absolute;
-    margin: 20px;
-    opacity: 0;
-  }
-  .playlistImage {
-    margin: 20px;
-    height: 200px;
-    .songIcon {
-      height: 200px;
-      font-size: 12rem;
+    display: flex;
+    flex-direction: row;
+    width: 460px;
+    .uploadFile {
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        margin: 20px;
+        opacity: 0;
     }
-  }
-  .playlistData {
-    margin: 20px 20px 20px 0;
-    .playlistName {
-      background-color: #101010;
-      margin: 0 0 10px;
-      width: 200px;
-      height: 30px;
-      border-radius: 5px;
-      outline: none;
-      border: none;
-      color:white;
+    .playlistImage {
+        margin: 20px;
+        height: 200px;
+        .songIcon {
+            height: 200px;
+            font-size: 12rem;
+        }
     }
-    .playlistDescription {
-      height: 150px;
-      width: 200px;
-      outline: none;
-      border: none;
-      background-color: #101010;
-      border-radius: 5px;
-      margin: 10px 0 0;
-      color: white;
-      resize: none;
+    .playlistData {
+        margin: 20px 20px 20px 0;
+        .playlistName {
+            background-color: #101010;
+            margin: 0 0 10px;
+            width: 200px;
+            height: 30px;
+            border-radius: 5px;
+            outline: none;
+            border: none;
+            color: white;
+        }
+        .playlistDescription {
+            height: 150px;
+            width: 200px;
+            outline: none;
+            border: none;
+            background-color: #101010;
+            border-radius: 5px;
+            margin: 10px 0 0;
+            color: white;
+            resize: none;
+        }
     }
-  }
 }
 @media (max-width: 550px) {
-  .playlist {
-    flex-direction: column;
-    width: 250px;
-    .playlistData {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0;
+    .playlist {
+        flex-direction: column;
+        width: 250px;
+        .playlistData {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+        }
     }
-  }
 }

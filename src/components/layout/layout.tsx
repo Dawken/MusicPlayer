@@ -6,16 +6,16 @@ import BackgroundImageColor from '../sharedComponents/backgroundImageColor/backg
 import useSearchBar from '../sharedComponents/searchBar/useSearchBar'
 
 const Layout = () => {
-	const { setSearch, search, searchResult, artists } = useSearchBar()
+    const { setSearch, search, searchResult, artists } = useSearchBar()
 
-	return (
-		<div className={styles.layoutContainer}>
-			<BackgroundImageColor color={undefined} />
-			<div className={styles.mainContainer}>
-				<SearchBar search={search} setSearch={setSearch} />
-				<ResultsLayout searchResult={searchResult} artists={artists} />
-			</div>
-		</div>
-	)
+    return (
+        <div className={styles.layoutContainer}>
+            <BackgroundImageColor color={undefined} />
+            <div className={styles.mainContainer}>
+                <SearchBar search={search} setSearch={setSearch} />
+                <ResultsLayout searchResult={searchResult} artists={artists} />
+            </div>
+        </div>
+    )
 }
 export default Layout

@@ -7,23 +7,23 @@ import AlbumObjectSimplified = SpotifyApi.AlbumObjectSimplified
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
 
 const useAlbumCard = (
-	item: AlbumObjectSimplified | PlaylistObjectSimplified
+    item: AlbumObjectSimplified | PlaylistObjectSimplified
 ) => {
-	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
-	const trackId = useAppSelector((state) => state.auth.track)
+    const isPlaying = useAppSelector((state) => state.auth.isPlaying)
+    const trackId = useAppSelector((state) => state.auth.track)
 
-	const [imageColor, setImageColor] = useState('')
-	useEffect(() => {
-		getColorFromImage(item.images[0]?.url, setImageColor)
-	}, [])
+    const [imageColor, setImageColor] = useState('')
+    useEffect(() => {
+        getColorFromImage(item.images[0]?.url, setImageColor)
+    }, [])
 
-	const rgbaColor = hexToRgb(imageColor)
+    const rgbaColor = hexToRgb(imageColor)
 
-	return {
-		isPlaying,
-		trackId,
-		imageColor,
-		rgbaColor,
-	}
+    return {
+        isPlaying,
+        trackId,
+        imageColor,
+        rgbaColor,
+    }
 }
 export default useAlbumCard

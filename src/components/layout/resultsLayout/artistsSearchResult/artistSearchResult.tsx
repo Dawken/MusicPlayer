@@ -7,24 +7,24 @@ import { Link } from 'react-router-dom'
 import NotFoundPhoto from '../../../../assets/notFound.png'
 
 interface ArtistsSearchResultProps {
-	item: ArtistObjectFull
+    item: ArtistObjectFull
 }
 
 const ArtistSearchResult = ({ item }: ArtistsSearchResultProps) => {
-	return (
-		<Link to={`/artist/${item.id}`} className={styles.artistContainer}>
-			<div className={styles.artistPhotoContainer}>
-				<img
-					className={`${styles.artistPhoto} ${loading.skeleton}`}
-					src={
-						item.images[0]?.url
-							? item.images[0]?.url
-							: NotFoundPhoto
-					}
-				/>
-			</div>
-			<div className={styles.artistName}>{item.name}</div>
-		</Link>
-	)
+    return (
+        <Link to={`/artist/${item.id}`} className={styles.artistContainer}>
+            <div className={styles.artistPhotoContainer}>
+                <img
+                    className={`${styles.artistPhoto} ${loading.skeleton}`}
+                    src={
+                        item.images[0]?.url
+                            ? item.images[0]?.url
+                            : NotFoundPhoto
+                    }
+                />
+            </div>
+            <div className={styles.artistName}>{item.name}</div>
+        </Link>
+    )
 }
 export default ArtistSearchResult

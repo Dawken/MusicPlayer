@@ -4,35 +4,35 @@
     align-items: center;
     gap: 20px;
     .playIcon {
-      font-size: 70px;
-      transition: 0.2s;
-      cursor: pointer;
+        font-size: 70px;
+        transition: 0.2s;
+        cursor: pointer;
     }
     .playIcon:hover {
-      transform: scale(1.1);
-      transition: 0.2s;
+        transform: scale(1.1);
+        transition: 0.2s;
     }
     .likeIcon {
-      font-size: 40px;
-      color: #cecece;
-      cursor: pointer;
+        font-size: 40px;
+        color: #cecece;
+        cursor: pointer;
     }
     .likeIcon:hover {
-      color: #ffffff
+        color: #ffffff;
     }
-  }
-  .lyricsContainer {
+}
+.lyricsContainer {
     display: flex;
     .lyrics {
-      height: 100%;
-      color: rgba(255, 255, 255, 0.8);
-      width: 30%;
-      font-size: 16px;
-      margin: 0 35px;
+        height: 100%;
+        color: rgba(255, 255, 255, 0.8);
+        width: 30%;
+        font-size: 16px;
+        margin: 0 35px;
 
-      .text {
-        font-size: 35px;
-        color: white;
-      }
+        .text {
+            font-size: 35px;
+            color: white;
+        }
     }
-  }
+}

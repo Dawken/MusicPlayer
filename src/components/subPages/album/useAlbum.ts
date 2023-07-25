@@ -8,39 +8,39 @@ import SingleAlbumResponse = SpotifyApi.SingleAlbumResponse
 import { useAppSelector } from '../../../redux/store'
 
 const useAlbum = () => {
-	const [imageColor, setImageColor] = useState('#424242')
-	const [album, setAlbum] = useState<SingleAlbumResponse>()
+    const [imageColor, setImageColor] = useState('#424242')
+    const [album, setAlbum] = useState<SingleAlbumResponse>()
 
-	const playlistId = useAppSelector((state) => state.auth.track)
-	const isPlaying = useAppSelector((state) => state.auth.isPlaying)
-	const track = useAppSelector((state) => state.auth.track)
+    const playlistId = useAppSelector((state) => state.auth.track)
+    const isPlaying = useAppSelector((state) => state.auth.isPlaying)
+    const track = useAppSelector((state) => state.auth.track)
 
-	const { id } = useParams()
+    const { id } = useParams()
 
-	const spotify = useAuth()
+    const spotify = useAuth()
 
-	useEffect(() => {
-		if (spotify.accessToken && id) {
-			spotifyApi.setAccessToken(spotify.accessToken)
-			spotifyApi.getAlbum(id).then((data) => {
-				setAlbum(data.body)
-				if (data.body.images[0]) {
-					getColorFromImage(
-						data.body.images[0].url,
-						(color: string) => {
-							setImageColor(color)
-						}
-					)
-				}
-			})
-		}
-	}, [spotify.accessToken, id])
-	return {
-		imageColor,
-		album,
-		playlistId,
-		isPlaying,
-		track,
-	}
+    useEffect(() => {
+        if (spotify.accessToken && id) {
+            spotifyApi.setAccessToken(spotify.accessToken)
+            spotifyApi.getAlbum(id).then((data) => {
+                setAlbum(data.body)
+                if (data.body.images[0]) {
+                    getColorFromImage(
+                        data.body.images[0].url,
+                        (color: string) => {
+                            setImageColor(color)
+                        }
+                    )
+                }
+            })
+        }
+    }, [spotify.accessToken, id])
+    return {
+        imageColor,
+        album,
+        playlistId,
+        isPlaying,
+        track,
+    }
 }
 export default useAlbum

@@ -1,62 +1,62 @@
 .layout {
-  color: white;
-  font-size: 30px;
-  display: grid;
-  grid-template-columns: 250px;
-  grid-template-rows: auto;
-  grid-template-areas: "sidebar main";
-  font-family: 'Rajdhani', sans-serif;
-  .playlistsContainer {
-    grid-area: main;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    .playlistsNotFound {
-      margin-top: 100px;
-      .playlistsNotFoundText {
-        font-weight: bold;
-        font-size: 2.5rem;
-      }
-    }
-    .playlists {
-      background-color: rgba(0, 0, 0, 0.3);
-      width: 100%;
-      min-height: 85vh;
-      margin-top: 65px;
-      .createPlaylist {
+    color: white;
+    font-size: 30px;
+    display: grid;
+    grid-template-columns: 250px;
+    grid-template-rows: auto;
+    grid-template-areas: 'sidebar main';
+    font-family: 'Rajdhani', sans-serif;
+    .playlistsContainer {
+        grid-area: main;
+        width: 100%;
+        height: 100vh;
         display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        margin: 2vh 5vh 2vh 0;
-        color: white;
-        text-decoration: none;
-        font-family: 'Rajdhani', sans-serif;
-        font-weight: bold;
-        cursor: pointer;
-      }
-      .yourPlaylists {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 200px);
         justify-content: center;
-        grid-gap: 15vh;
-        align-content: center;
-        .yourPlaylistsText {
-          margin: 10px;
-          font-size: 2rem;
+        align-items: flex-start;
+        .playlistsNotFound {
+            margin-top: 100px;
+            .playlistsNotFoundText {
+                font-weight: bold;
+                font-size: 2.5rem;
+            }
         }
-      }
+        .playlists {
+            background-color: rgba(0, 0, 0, 0.3);
+            width: 100%;
+            min-height: 85vh;
+            margin-top: 65px;
+            .createPlaylist {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                margin: 2vh 5vh 2vh 0;
+                color: white;
+                text-decoration: none;
+                font-family: 'Rajdhani', sans-serif;
+                font-weight: bold;
+                cursor: pointer;
+            }
+            .yourPlaylists {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, 200px);
+                justify-content: center;
+                grid-gap: 15vh;
+                align-content: center;
+                .yourPlaylistsText {
+                    margin: 10px;
+                    font-size: 2rem;
+                }
+            }
+        }
     }
-  }
 }
 @media only screen and (max-width: 1100px) {
-  .layout{
-    display: grid;
-    grid-template-columns: 67px;
-    .playlistsContainer {
-      grid-area: main;
-      width: 100%;
+    .layout {
+        display: grid;
+        grid-template-columns: 67px;
+        .playlistsContainer {
+            grid-area: main;
+            width: 100%;
+        }
     }
-  }
 }

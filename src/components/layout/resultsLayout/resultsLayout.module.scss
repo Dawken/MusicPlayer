@@ -1,18 +1,18 @@
 .mainContainer {
-  section {
-    .sectionText {
-      font-size: 30px;
-      color: white;
-      padding: 10px 35px 0;
-      display: flex;
-      justify-content: flex-start;
-      font-family: 'Kanit', sans-serif;
+    section {
+        .sectionText {
+            font-size: 30px;
+            color: white;
+            padding: 10px 35px 0;
+            display: flex;
+            justify-content: flex-start;
+            font-family: 'Kanit', sans-serif;
+        }
+        .cardsContainer {
+            margin: 5px 15px;
+            display: grid;
+            justify-content: center;
+            grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+        }
     }
-    .cardsContainer {
-      margin: 5px 15px;
-      display: grid;
-      justify-content: center;
-      grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
-    }
-  }
 }

@@ -4,25 +4,25 @@ import { useNavigate } from 'react-router-dom'
 import { useAppSelector } from '../redux/store'
 
 const useAuth = () => {
-	const navigate = useNavigate()
-	const [spotify, setSpotify] = useState({
-		accessToken: '',
-	})
+    const navigate = useNavigate()
+    const [spotify, setSpotify] = useState({
+        accessToken: '',
+    })
 
-	const isLogged = useAppSelector((state) => state.auth.isLoggedIn)
+    const isLogged = useAppSelector((state) => state.auth.isLoggedIn)
 
-	useEffect(() => {
-		if (isLogged)
-			musicPlayerBackend
-				.get('/api/get-cookie')
-				.then((res) => {
-					setSpotify(res.data)
-				})
-				.catch(() => {
-					navigate('/login')
-				})
-	}, [])
+    useEffect(() => {
+        if (isLogged)
+            musicPlayerBackend
+                .get('/api/get-cookie')
+                .then((res) => {
+                    setSpotify(res.data)
+                })
+                .catch(() => {
+                    navigate('/login')
+                })
+    }, [])
 
-	return spotify
+    return spotify
 }
 export default useAuth

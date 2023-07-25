@@ -1,18 +1,18 @@
-version: "3.8"
+version: '3.8'
 
 services:
-  app:
-    container_name: musicplayer
-    image: musicplayer
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ./src:/app/src
-    env_file: docker.env
-    environment:
-      - REACT_APP_TASK_BACKEND_HOST=${REACT_APP_TASK_BACKEND_HOST}
-      - REACT_APP_TASK_FRONT_HOST=${REACT_APP_TASK_FRONT_HOST}
-      - REACT_APP_CLIENT_ID=${REACT_APP_CLIENT_ID}
-    ports:
-      - '3000:3000'
+    app:
+        container_name: musicplayer
+        image: musicplayer
+        build:
+            context: .
+            dockerfile: Dockerfile
+        volumes:
+            - ./src:/app/src
+        env_file: docker.env
+        environment:
+            - REACT_APP_TASK_BACKEND_HOST=${REACT_APP_TASK_BACKEND_HOST}
+            - REACT_APP_TASK_FRONT_HOST=${REACT_APP_TASK_FRONT_HOST}
+            - REACT_APP_CLIENT_ID=${REACT_APP_CLIENT_ID}
+        ports:
+            - '3000:3000'

@@ -13,129 +13,129 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 import TrackCard from '../../sharedComponents/trackCard/trackCard'
 
 interface SearchResultType {
-	searchResult: TrackObjectFull[]
-	artists?: ArtistObjectFull[]
+    searchResult: TrackObjectFull[]
+    artists?: ArtistObjectFull[]
 }
 
 const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
-	const { tracks, isTyping, recommendations } = useResultsLayout()
+    const { tracks, isTyping, recommendations } = useResultsLayout()
 
-	return (
-		<div className={styles.mainContainer}>
-			{searchResult.length > 0 && (
-				<Fragment>
-					<section>
-						<div className={styles.sectionText}>Best results</div>
-						<div className={styles.cardsContainer}>
-							{isTyping ? (
-								<ScrollContainer
-									horizontal={true}
-									style={{ display: 'flex' }}
-								>
-									{Array.from({ length: 8 }, (_, i) => (
-										<SkeletonTrackCard key={i} />
-									))}
-								</ScrollContainer>
-							) : (
-								<ScrollContainer
-									horizontal={true}
-									style={{ display: 'flex' }}
-								>
-									{searchResult.map(
-										(item: TrackObjectFull) => (
-											<TrackCard
-												item={item}
-												key={item.id}
-											/>
-										)
-									)}
-								</ScrollContainer>
-							)}
-						</div>
-					</section>
-					<section>
-						<div className={styles.sectionText}>Best artists</div>
-						<div className={styles.cardsContainer}>
-							{isTyping ? (
-								<ScrollContainer
-									horizontal={true}
-									style={{ display: 'flex' }}
-								>
-									{Array.from({ length: 8 }, (_, i) => (
-										<SkeletonArtistSearchResult key={i} />
-									))}
-								</ScrollContainer>
-							) : (
-								<ScrollContainer
-									horizontal={true}
-									style={{ display: 'flex' }}
-								>
-									{artists?.map((item: ArtistObjectFull) => (
-										<ArtistSearchResult
-											item={item}
-											key={item.id}
-										/>
-									))}
-								</ScrollContainer>
-							)}
-						</div>
-					</section>
-				</Fragment>
-			)}
-			<section>
-				<div className={styles.sectionText}>Last Played</div>
-				<div className={styles.cardsContainer}>
-					{!tracks.length ? (
-						<ScrollContainer
-							horizontal={true}
-							style={{ display: 'flex' }}
-						>
-							{Array.from({ length: 8 }, (_, i) => (
-								<SkeletonTrackCard key={i} />
-							))}
-						</ScrollContainer>
-					) : (
-						<ScrollContainer
-							horizontal={true}
-							style={{ display: 'flex' }}
-						>
-							{tracks.map((item: TrackObjectFull) => (
-								<TrackCard item={item} key={item.id} />
-							))}
-						</ScrollContainer>
-					)}
-				</div>
-			</section>
-			<section>
-				<div className={styles.sectionText}>Recommendations</div>
-				<div className={styles.cardsContainer}>
-					{!recommendations.length ? (
-						<ScrollContainer
-							horizontal={true}
-							style={{ display: 'flex' }}
-						>
-							{Array.from({ length: 8 }, (_, i) => (
-								<SkeletonTrackCard key={i} />
-							))}
-						</ScrollContainer>
-					) : (
-						<ScrollContainer
-							horizontal={true}
-							style={{ display: 'flex' }}
-						>
-							{recommendations.map(
-								(item: RecommendationTrackObject) => (
-									<TrackSearchResult
-										item={item}
-										key={item.id}
-									/>
-								)
-							)}
-						</ScrollContainer>
-					)}
-				</div>
-			</section>
-		</div>
-	)
+    return (
+        <div className={styles.mainContainer}>
+            {searchResult.length > 0 && (
+                <Fragment>
+                    <section>
+                        <div className={styles.sectionText}>Best results</div>
+                        <div className={styles.cardsContainer}>
+                            {isTyping ? (
+                                <ScrollContainer
+                                    horizontal={true}
+                                    style={{ display: 'flex' }}
+                                >
+                                    {Array.from({ length: 8 }, (_, i) => (
+                                        <SkeletonTrackCard key={i} />
+                                    ))}
+                                </ScrollContainer>
+                            ) : (
+                                <ScrollContainer
+                                    horizontal={true}
+                                    style={{ display: 'flex' }}
+                                >
+                                    {searchResult.map(
+                                        (item: TrackObjectFull) => (
+                                            <TrackCard
+                                                item={item}
+                                                key={item.id}
+                                            />
+                                        )
+                                    )}
+                                </ScrollContainer>
+                            )}
+                        </div>
+                    </section>
+                    <section>
+                        <div className={styles.sectionText}>Best artists</div>
+                        <div className={styles.cardsContainer}>
+                            {isTyping ? (
+                                <ScrollContainer
+                                    horizontal={true}
+                                    style={{ display: 'flex' }}
+                                >
+                                    {Array.from({ length: 8 }, (_, i) => (
+                                        <SkeletonArtistSearchResult key={i} />
+                                    ))}
+                                </ScrollContainer>
+                            ) : (
+                                <ScrollContainer
+                                    horizontal={true}
+                                    style={{ display: 'flex' }}
+                                >
+                                    {artists?.map((item: ArtistObjectFull) => (
+                                        <ArtistSearchResult
+                                            item={item}
+                                            key={item.id}
+                                        />
+                                    ))}
+                                </ScrollContainer>
+                            )}
+                        </div>
+                    </section>
+                </Fragment>
+            )}
+            <section>
+                <div className={styles.sectionText}>Last Played</div>
+                <div className={styles.cardsContainer}>
+                    {!tracks.length ? (
+                        <ScrollContainer
+                            horizontal={true}
+                            style={{ display: 'flex' }}
+                        >
+                            {Array.from({ length: 8 }, (_, i) => (
+                                <SkeletonTrackCard key={i} />
+                            ))}
+                        </ScrollContainer>
+                    ) : (
+                        <ScrollContainer
+                            horizontal={true}
+                            style={{ display: 'flex' }}
+                        >
+                            {tracks.map((item: TrackObjectFull) => (
+                                <TrackCard item={item} key={item.id} />
+                            ))}
+                        </ScrollContainer>
+                    )}
+                </div>
+            </section>
+            <section>
+                <div className={styles.sectionText}>Recommendations</div>
+                <div className={styles.cardsContainer}>
+                    {!recommendations.length ? (
+                        <ScrollContainer
+                            horizontal={true}
+                            style={{ display: 'flex' }}
+                        >
+                            {Array.from({ length: 8 }, (_, i) => (
+                                <SkeletonTrackCard key={i} />
+                            ))}
+                        </ScrollContainer>
+                    ) : (
+                        <ScrollContainer
+                            horizontal={true}
+                            style={{ display: 'flex' }}
+                        >
+                            {recommendations.map(
+                                (item: RecommendationTrackObject) => (
+                                    <TrackSearchResult
+                                        item={item}
+                                        key={item.id}
+                                    />
+                                )
+                            )}
+                        </ScrollContainer>
+                    )}
+                </div>
+            </section>
+        </div>
+    )
 }
 export default ResultsLayout

@@ -15,67 +15,67 @@ import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 
 const Artist = () => {
-	const {
-		artist,
-		imageColor,
-		recommendedArtists,
-		playingSongArtistId,
-		isPlaying,
-		track,
-	} = useArtist()
+    const {
+        artist,
+        imageColor,
+        recommendedArtists,
+        playingSongArtistId,
+        isPlaying,
+        track,
+    } = useArtist()
 
-	return (
-		<div className={styles.layout}>
-			<BackgroundImageColor color={imageColor} />
-			<div className={styles.artist}>
-				<ArtistData artist={artist} />
-				<div className={styles.background}>
-					{isPlaying && playingSongArtistId === artist?.id ? (
-						<PauseCircleIcon
-							style={{ color: imageColor }}
-							className={styles.playIcon}
-							onClick={() => spotifyApi.pause()}
-						/>
-					) : (
-						<PlayCircleFilledIcon
-							style={{ color: imageColor }}
-							className={styles.playIcon}
-							onClick={() => {
-								artist && setSong(artist.uri, 0, track)
-							}}
-						/>
-					)}
-					<PopularSongsAlbums artist={artist} />
-					<div className={styles.sectionText}>Fans also like</div>
-					<section className={styles.recommendedArtists}>
-						{!recommendedArtists ? (
-							<ScrollContainer
-								horizontal={true}
-								style={{ display: 'flex' }}
-							>
-								{Array.from({ length: 8 }, (_, i) => (
-									<SkeletonArtistSearchResult key={i} />
-								))}
-							</ScrollContainer>
-						) : (
-							<ScrollContainer
-								horizontal={true}
-								style={{ display: 'flex' }}
-							>
-								{recommendedArtists?.map(
-									(item: ArtistObjectFull) => (
-										<ArtistSearchResult
-											item={item}
-											key={item.id}
-										/>
-									)
-								)}
-							</ScrollContainer>
-						)}
-					</section>
-				</div>
-			</div>
-		</div>
-	)
+    return (
+        <div className={styles.layout}>
+            <BackgroundImageColor color={imageColor} />
+            <div className={styles.artist}>
+                <ArtistData artist={artist} />
+                <div className={styles.background}>
+                    {isPlaying && playingSongArtistId === artist?.id ? (
+                        <PauseCircleIcon
+                            style={{ color: imageColor }}
+                            className={styles.playIcon}
+                            onClick={() => spotifyApi.pause()}
+                        />
+                    ) : (
+                        <PlayCircleFilledIcon
+                            style={{ color: imageColor }}
+                            className={styles.playIcon}
+                            onClick={() => {
+                                artist && setSong(artist.uri, 0, track)
+                            }}
+                        />
+                    )}
+                    <PopularSongsAlbums artist={artist} />
+                    <div className={styles.sectionText}>Fans also like</div>
+                    <section className={styles.recommendedArtists}>
+                        {!recommendedArtists ? (
+                            <ScrollContainer
+                                horizontal={true}
+                                style={{ display: 'flex' }}
+                            >
+                                {Array.from({ length: 8 }, (_, i) => (
+                                    <SkeletonArtistSearchResult key={i} />
+                                ))}
+                            </ScrollContainer>
+                        ) : (
+                            <ScrollContainer
+                                horizontal={true}
+                                style={{ display: 'flex' }}
+                            >
+                                {recommendedArtists?.map(
+                                    (item: ArtistObjectFull) => (
+                                        <ArtistSearchResult
+                                            item={item}
+                                            key={item.id}
+                                        />
+                                    )
+                                )}
+                            </ScrollContainer>
+                        )}
+                    </section>
+                </div>
+            </div>
+        </div>
+    )
 }
 export default Artist
