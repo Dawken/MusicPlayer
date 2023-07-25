@@ -1,7 +1,6 @@
 import React from 'react'
 import threejs from './threejs'
 import styles from './landingPage.module.scss'
-import 'animate.css'
 import Reveal from './reveal/reveal'
 import { FullPage, Slide } from 'react-full-page'
 import explore from '../../../assets/spotify-premium.jpg'
