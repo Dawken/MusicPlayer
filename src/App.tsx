@@ -1,18 +1,18 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import PrivateRoutes from './components/utils/privateRoutes'
-import Layout from './components/layout/layout'
+import PrivateRoutes from './utils/privateRoutes'
+import Layout from './pages/layout/layout'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import './index.scss'
-import Playlists from './components/subPages/playlists/playlists'
-import Track from './components/subPages/track/track'
+import Playlists from './pages/playlists/playlists'
+import Track from './pages/track/track'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import Artist from './components/subPages/artist/artist'
-import Playlist from './components/subPages/playlist/playlist'
-import Album from './components/subPages/album/album'
-import LandingPage from './components/subPages/landingPage/landingPage'
-import PageNotFound from './components/errorSubpages/pageNotFound/pageNotFound'
+import Artist from './pages/artist/artist'
+import Playlist from './pages/playlist/playlist'
+import Album from './pages/album/album'
+import Login from './pages/login/login'
+import PageNotFound from './pages/errorPages/pageNotFound/pageNotFound'
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -36,7 +36,7 @@ const App = () => {
                         <Route path='/album/:id' element={<Album />} />
                         <Route path='*' element={<PageNotFound />} />
                     </Route>
-                    <Route path='/login' element={<LandingPage />} />
+                    <Route path='/login' element={<Login />} />
                 </Routes>
                 <ToastContainer
                     position='top-center'

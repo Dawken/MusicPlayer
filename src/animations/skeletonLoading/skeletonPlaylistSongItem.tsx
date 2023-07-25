@@ -1,4 +1,4 @@
-import styles from '../../components/sharedComponents/playlistMenu/song/song.module.scss'
+import styles from '../../components/ui/playlistMenu/song/song.module.scss'
 import React from 'react'
 import loading from './skeletonLoading.module.scss'
 
