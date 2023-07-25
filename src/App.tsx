@@ -12,6 +12,7 @@ import Artist from './components/subPages/artist/artist'
 import Playlist from './components/subPages/playlist/playlist'
 import Album from './components/subPages/album/album'
 import LandingPage from './components/subPages/landingPage/landingPage'
+import PageNotFound from './components/errorSubpages/pageNotFound/pageNotFound'
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -33,6 +34,7 @@ const App = () => {
 						<Route path='/artist/:id' element={<Artist />} />
 						<Route path='/playlist/:id' element={<Playlist />} />
 						<Route path='/album/:id' element={<Album />} />
+						<Route path='*' element={<PageNotFound />} />
 					</Route>
 					<Route path='/login' element={<LandingPage />} />
 				</Routes>

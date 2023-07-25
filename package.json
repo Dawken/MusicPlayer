@@ -18,12 +18,12 @@
 		"@types/react-dom": "18.0.11",
 		"@types/spotify-api": "0.0.21",
 		"@types/spotify-web-api-js": "0.21.0",
-		"axios": "^1.4.0",
+		"axios": "1.4.0",
 		"chroma-js": "2.4.2",
 		"dayjs": "1.11.7",
 		"eslint-config-prettier": "8.8.0",
 		"fast-average-color": "9.3.0",
-		"framer-motion": "^10.12.18",
+		"framer-motion": "10.12.18",
 		"material-ui-popup-state": "5.0.8",
 		"react": "18.2.0",
 		"react-dom": "18.2.0",
@@ -80,7 +80,7 @@
 		]
 	},
 	"devDependencies": {
-		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"@babel/plugin-proposal-private-property-in-object": "7.21.11",
 		"@types/chroma-js": "2.4.0",
 		"@types/spotify-web-api-node": "5.0.7",
 		"@types/three": "0.153.0",
