@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './sidebarMenu.module.scss'
 import SpotifyLogo from '../../assets/spotify.png'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
@@ -7,32 +7,12 @@ import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark'
 import CollectionsBookmarkOutlinedIcon from '@mui/icons-material/CollectionsBookmarkOutlined'
 import LibraryAddSharpIcon from '@mui/icons-material/LibraryAddSharp'
 import LibraryAddOutlinedIcon from '@mui/icons-material/LibraryAddOutlined'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { useAppSelector } from '../../context/redux/store'
-import spotifyApi from '../../services/spotifyApi'
+import { Link } from 'react-router-dom'
+import useSidebarMenu from './useSidebarMenu'
 
 const SidebarMenu = () => {
-    const playingSongPhoto = useAppSelector(
-        (state) => state.auth.playingSongPhoto
-    )
-    const params = useLocation()
-    const navigate = useNavigate()
-
-    const { pathname } = params
-
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
-
-    const handleResize = () => {
-        setWindowWidth(window.innerWidth)
-    }
-
-    const createPlaylist = () => {
-        spotifyApi
-            .createPlaylist('My playlist')
-            .then((data) => navigate(`/playlist/${data.body.id}`))
-    }
-
-    window.addEventListener('resize', handleResize)
+    const { playingSongPhoto, pathname, windowWidth, createPlaylist } =
+        useSidebarMenu()
 
     return (
         <nav className={styles.sidebarMenuContainer}>

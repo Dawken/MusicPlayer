@@ -1,21 +1,16 @@
 import React from 'react'
-import useAuth from '../../hooks/useAuth'
 import styles from './musicPlayer.module.scss'
 import SpotifyPlayer from 'react-spotify-web-playback'
-import { store, useAppSelector } from '../../context/redux/store'
 import {
     setIsPlaying,
     setPlayingSongId,
     setPlayingSongPhoto,
 } from '../../context/redux/user'
+import useMusicPlayer from './useMusicPlayer'
 
 const MusicPlayer = () => {
-    const spotify = useAuth()
-    const track = useAppSelector((state) => state.auth.track)
-    const songNumber = useAppSelector((state) => state.auth.songNumber)
-    const playingSongColor = useAppSelector(
-        (state) => state.auth.playingSongColor
-    )
+    const { spotify, track, songNumber, playingSongColor, dispatch } =
+        useMusicPlayer()
 
     if (!spotify.accessToken) return null
 
@@ -39,14 +34,14 @@ const MusicPlayer = () => {
                 offset={songNumber}
                 callback={(state) => {
                     if (state.isPlaying) {
-                        store.dispatch(setIsPlaying({ isPlaying: true }))
+                        dispatch(setIsPlaying({ isPlaying: true }))
                     } else {
-                        store.dispatch(setIsPlaying({ isPlaying: false }))
+                        dispatch(setIsPlaying({ isPlaying: false }))
                     }
-                    store.dispatch(
+                    dispatch(
                         setPlayingSongId({ playingSongId: state.track.id })
                     )
-                    store.dispatch(
+                    dispatch(
                         setPlayingSongPhoto({
                             playingSongPhoto: state.track.image,
                         })

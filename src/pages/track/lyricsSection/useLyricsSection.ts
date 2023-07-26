@@ -1,14 +1,16 @@
 import { useParams } from 'react-router-dom'
-import { store, useAppSelector } from '../../../context/redux/store'
+import { useAppSelector } from '../../../context/redux/store'
 import spotifyApi from '../../../services/spotifyApi'
 import { toast } from 'react-toastify'
 import { useEffect, useState } from 'react'
 import useAuth from '../../../hooks/useAuth'
 import { setSongNumber, setTrack } from '../../../context/redux/user'
+import { useDispatch } from 'react-redux'
 
 const useLyricsSection = () => {
     const spotify = useAuth()
     const { id } = useParams()
+    const dispatch = useDispatch()
     const isPlaying = useAppSelector((state) => state.auth.isPlaying)
     const playingSongId = useAppSelector((state) => state.auth.playingSongId)
     const trackId = useAppSelector((state) => state.auth.track)
@@ -31,8 +33,8 @@ const useLyricsSection = () => {
         spotifyApi.pause()
     }
     const playSong = (index: number, uri: string) => {
-        store.dispatch(setTrack({ track: uri }))
-        store.dispatch(setSongNumber({ songNumber: index }))
+        dispatch(setTrack({ track: uri }))
+        dispatch(setSongNumber({ songNumber: index }))
         spotifyApi.play({
             context_uri: uri,
             offset: { position: index },

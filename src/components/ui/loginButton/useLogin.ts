@@ -1,13 +1,15 @@
-import { store, useAppSelector } from '../../../context/redux/store'
+import { useAppSelector } from '../../../context/redux/store'
 import { useNavigate } from 'react-router-dom'
 import { useMutation } from 'react-query'
 import musicPlayerBackend from '../../../lib/axiosConfig'
 import { getClientResponse } from '../../../context/redux/user'
 import { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 const useLogin = () => {
     const isLogged = useAppSelector((state) => state.auth.isLoggedIn)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const { isLoading, mutate: login } = useMutation(
         () => {
@@ -15,12 +17,9 @@ const useLogin = () => {
         },
         {
             onSuccess: () => {
-                store.dispatch(getClientResponse({ isLogged: true }))
+                dispatch(getClientResponse({ isLogged: true }))
                 window.history.pushState({}, '', '/')
                 navigate('/')
-            },
-            onError: () => {
-                navigate('/login')
             },
         }
     )
