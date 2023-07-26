@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../pages/layout/resultsLayout/artistsSearchResult/artistSearchResult.module.scss'
+import styles from '../../../pages/layout/resultsLayout/artistsSearchResult/artistSearchResult.module.scss'
 import loading from './skeletonLoading.module.scss'
 
 const SkeletonArtistSearchResult = () => {

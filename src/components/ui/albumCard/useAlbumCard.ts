@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../../context/redux/store'
 import { useEffect, useState } from 'react'
-import getColorFromImage from '../../../utils/getColorFromImage'
+import getColorFromImage from '../../../utils/functions/getColorFromImage'
 import { hexToRgb } from '@mui/material'
 import SpotifyApi from 'spotify-web-api-node'
 import AlbumObjectSimplified = SpotifyApi.AlbumObjectSimplified

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 import PlayButton from '../../../assets/playbutton.png'
 import PauseIcon from '../../../assets/pauseButton.png'
 import spotifyApi from '../../../services/spotifyApi'
-import setSong from '../../../utils/setSong'
+import setSong from '../../../utils/functions/setSong'
 import useAlbumCard from './useAlbumCard'
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
 import NotFoundPhoto from '../../../assets/notFound.png'

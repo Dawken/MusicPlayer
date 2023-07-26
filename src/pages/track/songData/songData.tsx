@@ -1,5 +1,5 @@
 import styles from './songData.module.scss'
-import loading from '../../../animations/skeletonLoading/skeletonLoading.module.scss'
+import loading from '../../../components/animations/skeletonLoading/skeletonLoading.module.scss'
 import dayjs from 'dayjs'
 import React from 'react'
 import SpotifyApi from 'spotify-web-api-node'

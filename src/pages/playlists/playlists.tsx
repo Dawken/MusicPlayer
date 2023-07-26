@@ -3,7 +3,7 @@ import styles from './playlists.module.scss'
 import AddIcon from '@mui/icons-material/Add'
 import BackgroundImageColor from '../../components/ui/backgroundImageColor/backgroundImageColor'
 import usePlaylists from './usePlaylists'
-import SkeletonAlbumCard from '../../animations/skeletonLoading/skeletonAlbumCard'
+import SkeletonAlbumCard from '../../components/animations/skeletonLoading/skeletonAlbumCard'
 import AlbumCard from '../../components/ui/albumCard/albumCard'
 import { Button } from '@mui/material'
 

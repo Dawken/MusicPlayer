@@ -1,5 +1,5 @@
 import styles from './playlistData.module.scss'
-import loading from '../../../animations/skeletonLoading/skeletonLoading.module.scss'
+import loading from '../../animations/skeletonLoading/skeletonLoading.module.scss'
 import React, { useState } from 'react'
 import SpotifyApi from 'spotify-web-api-node'
 import SinglePlaylistResponse = SpotifyApi.SinglePlaylistResponse

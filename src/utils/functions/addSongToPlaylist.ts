@@ -1,9 +1,9 @@
-import spotifyApi from '../services/spotifyApi'
+import spotifyApi from '../../services/spotifyApi'
 import { toast } from 'react-toastify'
 import SpotifyApi from 'spotify-web-api-node'
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
-import { setActionTrackUri } from '../context/redux/user'
-import { store } from '../context/redux/store'
+import { setActionTrackUri } from '../../context/redux/user'
+import { store } from '../../context/redux/store'
 
 const addSongToPlaylist = (
     playlist: PlaylistObjectSimplified,

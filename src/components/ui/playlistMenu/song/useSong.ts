@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../../../context/redux/store'
 import { useState } from 'react'
-import addSongToPlaylist from '../../../../utils/addSongToPlaylist'
+import addSongToPlaylist from '../../../../utils/functions/addSongToPlaylist'
 import spotifyApi from '../../../../services/spotifyApi'
 
 const useSong = () => {

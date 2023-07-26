@@ -12,9 +12,9 @@ import TrackObjectFull = SpotifyApi.TrackObjectFull
 import Song from '../../components/ui/playlistMenu/song/song'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
-import setSong from '../../utils/setSong'
+import setSong from '../../utils/functions/setSong'
 import spotifyApi from '../../services/spotifyApi'
-import SkeletonPlaylistSongItem from '../../animations/skeletonLoading/skeletonPlaylistSongItem'
+import SkeletonPlaylistSongItem from '../../components/animations/skeletonLoading/skeletonPlaylistSongItem'
 import DeleteIcon from '@mui/icons-material/Delete'
 import PopupDeletePlaylist from './popupDeletePlaylist'
 

@@ -7,8 +7,8 @@ import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
-import SkeletonTrackCard from '../../../animations/skeletonLoading/skeletonTrackCard'
-import SkeletonArtistSearchResult from '../../../animations/skeletonLoading/skeletonArtistSearchResult'
+import SkeletonTrackCard from '../../../components/animations/skeletonLoading/skeletonTrackCard'
+import SkeletonArtistSearchResult from '../../../components/animations/skeletonLoading/skeletonArtistSearchResult'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import TrackCard from '../../../components/ui/trackCard/trackCard'
 
