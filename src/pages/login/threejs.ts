@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
-import textureImg from '../../assets/NormalMap.png'
+import textureImg from '../../assets/normalMap.png'
 
 const threejs = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null)

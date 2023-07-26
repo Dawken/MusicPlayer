@@ -3,7 +3,7 @@ import styles from './albumCard.module.scss'
 import SpotifyApi from 'spotify-web-api-node'
 import AlbumObjectSimplified = SpotifyApi.AlbumObjectSimplified
 import { Link } from 'react-router-dom'
-import PlayButton from '../../../assets/playbutton.png'
+import PlayButton from '../../../assets/playButton.png'
 import PauseIcon from '../../../assets/pauseButton.png'
 import spotifyApi from '../../../services/spotifyApi'
 import setSong from '../../../utils/functions/setSong'
