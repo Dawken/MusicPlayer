@@ -1,13 +1,17 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import styles from './backgroundImageColor.module.scss'
 import useBackgroundImageColor from './useBackgroundImageColor'
 
-const BackgroundImageColor = (color: { color: string | undefined }) => {
+type colorType = {
+    color?: string
+}
+
+const BackgroundImageColor = (color: colorType) => {
     const { photoColor, playingSongColor, isPlaying, opacity } =
         useBackgroundImageColor()
 
     return (
-        <>
+        <Fragment>
             <div
                 className={styles.backgroundScrolled}
                 style={{
@@ -29,7 +33,7 @@ const BackgroundImageColor = (color: { color: string | undefined }) => {
                         : photoColor,
                 }}
             />
-        </>
+        </Fragment>
     )
 }
 export default BackgroundImageColor
