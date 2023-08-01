@@ -10,7 +10,7 @@ import {
 import PopupState, { bindPopper, bindToggle } from 'material-ui-popup-state'
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz'
 import { Link } from 'react-router-dom'
-import styles from '../playlistMenu/song/song.module.scss'
+import styles from './songOptions.module.scss'
 import PersonIcon from '@mui/icons-material/Person'
 import AlbumIcon from '@mui/icons-material/Album'
 import MusicNoteIcon from '@mui/icons-material/MusicNote'
@@ -27,9 +27,9 @@ import AlbumObjectSimplified = SpotifyApi.AlbumObjectSimplified
 
 type SongOptionMenuType = {
     item: TrackObjectFull | RecommendationTrackObject | TrackObjectSimplified
-    userPlaylists: PlaylistObjectSimplified[] | undefined
+    userPlaylists?: PlaylistObjectSimplified[]
     playlistId?: string
-    album: AlbumObjectSimplified | undefined
+    album?: AlbumObjectSimplified
 }
 
 const SongOptionsMenu = ({
@@ -47,19 +47,12 @@ const SongOptionsMenu = ({
                 {(popupState) => (
                     <div>
                         <Button {...bindToggle(popupState)}>
-                            <MoreHorizIcon style={{ color: '#fff' }} />
+                            <MoreHorizIcon className={styles.moreHorizonIcon} />
                         </Button>
                         <Popper {...bindPopper(popupState)} transition>
                             {({ TransitionProps }) => (
                                 <Fade {...TransitionProps} timeout={350}>
-                                    <Paper
-                                        style={{
-                                            background: '#1c1c1c',
-                                            color: '#ffffff',
-                                            borderRadius: '12px',
-                                            justifyContent: 'space-between',
-                                        }}
-                                    >
+                                    <Paper className={styles.paper}>
                                         <Link
                                             to={`/artist/${item.artists[0].id}`}
                                             className={styles.optionsText}
@@ -67,9 +60,9 @@ const SongOptionsMenu = ({
                                             <MenuItem sx={{ p: 2 }}>
                                                 <ListItemIcon>
                                                     <PersonIcon
-                                                        style={{
-                                                            color: '#fff',
-                                                        }}
+                                                        className={
+                                                            styles.personIcon
+                                                        }
                                                     />
                                                 </ListItemIcon>
                                                 Show artist
@@ -83,9 +76,9 @@ const SongOptionsMenu = ({
                                                 <MenuItem sx={{ p: 2 }}>
                                                     <ListItemIcon>
                                                         <AlbumIcon
-                                                            style={{
-                                                                color: '#fff',
-                                                            }}
+                                                            className={
+                                                                styles.albumIcon
+                                                            }
                                                         />
                                                     </ListItemIcon>
                                                     Show album
@@ -99,9 +92,9 @@ const SongOptionsMenu = ({
                                             <MenuItem sx={{ p: 2 }}>
                                                 <ListItemIcon>
                                                     <MusicNoteIcon
-                                                        style={{
-                                                            color: '#fff',
-                                                        }}
+                                                        className={
+                                                            styles.musicNoteIcon
+                                                        }
                                                     />
                                                 </ListItemIcon>
                                                 Go to the song
@@ -122,9 +115,9 @@ const SongOptionsMenu = ({
                                                 >
                                                     <ListItemIcon>
                                                         <DeleteIcon
-                                                            style={{
-                                                                color: '#fff',
-                                                            }}
+                                                            className={
+                                                                styles.deleteIcon
+                                                            }
                                                         />
                                                     </ListItemIcon>
                                                     Delete song
@@ -135,30 +128,19 @@ const SongOptionsMenu = ({
                                             popupId='demo-popup-popper'
                                         >
                                             {(popupState) => (
-                                                <div
-                                                    style={{
-                                                        justifyContent:
-                                                            'center',
-                                                    }}
-                                                >
+                                                <div>
                                                     <Button
                                                         {...bindToggle(
                                                             popupState
                                                         )}
-                                                        style={{
-                                                            color: '#fff',
-                                                            textTransform:
-                                                                'none',
-                                                            width: '100%',
-                                                            fontSize: '0.96rem',
-                                                        }}
+                                                        className={
+                                                            styles.addToPlaylist
+                                                        }
                                                     >
                                                         <PlaylistAddIcon
-                                                            style={{
-                                                                color: '#fff',
-                                                                marginRight:
-                                                                    '11px',
-                                                            }}
+                                                            className={
+                                                                styles.playlistAddIcon
+                                                            }
                                                         />
                                                         Add to playlist
                                                     </Button>
@@ -176,15 +158,9 @@ const SongOptionsMenu = ({
                                                                 timeout={350}
                                                             >
                                                                 <Paper
-                                                                    style={{
-                                                                        background:
-                                                                            '#1c1c1c',
-                                                                        color: '#ffffff',
-                                                                        borderRadius:
-                                                                            '12px',
-                                                                        justifyContent:
-                                                                            'space-between',
-                                                                    }}
+                                                                    className={
+                                                                        styles.addToPlaylistPopup
+                                                                    }
                                                                 >
                                                                     {' '}
                                                                     {userPlaylists?.map(
