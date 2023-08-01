@@ -5,7 +5,7 @@ import SpotifyApi from 'spotify-web-api-node'
 import SinglePlaylistResponse = SpotifyApi.SinglePlaylistResponse
 import MusicNoteIcon from '@mui/icons-material/MusicNote'
 import SingleAlbumResponse = SpotifyApi.SingleAlbumResponse
-import PopupModifyPlaylist from './popupModifyPlaylist'
+import PopupModifyPlaylist from './popupModifyPlaylist/popupModifyPlaylist'
 
 type PlaylistType = {
     playlist: SinglePlaylistResponse | SingleAlbumResponse | undefined

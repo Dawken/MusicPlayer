@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styles from './popupModifyPlaylist.module.scss'
 import SpotifyApi from 'spotify-web-api-node'
 import SinglePlaylistResponse = SpotifyApi.SinglePlaylistResponse
-import spotifyApi from '../../../services/spotifyApi'
+import spotifyApi from '../../../../services/spotifyApi'
 import { toast } from 'react-toastify'
 import MusicNoteIcon from '@mui/icons-material/MusicNote'
 
