@@ -13,7 +13,7 @@ const useLogoutButton = () => {
         },
         {
             onSuccess: () => {
-                toast.success('Your session expired')
+                toast.success('Logout succeed')
                 dispatch(getClientResponse({ isLogged: false }))
             },
             onError: () => {
