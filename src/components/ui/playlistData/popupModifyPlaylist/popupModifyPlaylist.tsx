@@ -26,16 +26,7 @@ const PopupModifyPlaylist: React.FC<PopupDeletePlaylistProps> = ({
     } = usePopupModifyPlaylist({ playlist })
 
     return (
-        <Dialog
-            open={open}
-            onClose={handleClose}
-            PaperProps={{
-                style: {
-                    backgroundColor: '#1f1f1f',
-                    color: 'white',
-                },
-            }}
-        >
+        <Dialog open={open} onClose={handleClose}>
             <div className={styles.playlist}>
                 {playlist?.images[0] ? (
                     <img
