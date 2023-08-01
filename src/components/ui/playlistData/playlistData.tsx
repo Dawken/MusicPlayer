@@ -1,28 +1,21 @@
 import styles from './playlistData.module.scss'
 import loading from '../../animations/skeletonLoading/skeletonLoading.module.scss'
-import React, { useState } from 'react'
+import React from 'react'
 import SpotifyApi from 'spotify-web-api-node'
 import SinglePlaylistResponse = SpotifyApi.SinglePlaylistResponse
 import MusicNoteIcon from '@mui/icons-material/MusicNote'
 import SingleAlbumResponse = SpotifyApi.SingleAlbumResponse
 import PopupModifyPlaylist from './popupModifyPlaylist/popupModifyPlaylist'
+import usePlaylistData from './usePlaylistData'
 
 type PlaylistType = {
-    playlist: SinglePlaylistResponse | SingleAlbumResponse | undefined
+    playlist?: SinglePlaylistResponse | SingleAlbumResponse
 }
 
 const PlaylistData = ({ playlist }: PlaylistType) => {
     const playlistWithDescription = playlist as SinglePlaylistResponse
 
-    const [open, setOpen] = useState(false)
-
-    const handleClickOpen = () => {
-        setOpen(true)
-    }
-
-    const handleClose = () => {
-        setOpen(false)
-    }
+    const { open, handleClickOpen, handleClose } = usePlaylistData()
 
     return (
         <div className={styles.playlistData}>
@@ -37,7 +30,7 @@ const PlaylistData = ({ playlist }: PlaylistType) => {
                     />
                 ) : (
                     <div className={styles.songIcon}>
-                        <MusicNoteIcon sx={{ fontSize: '5rem' }} />
+                        <MusicNoteIcon className={styles.icon} />
                     </div>
                 )}
             </div>
