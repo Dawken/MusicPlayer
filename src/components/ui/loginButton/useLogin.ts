@@ -18,7 +18,6 @@ const useLogin = () => {
         {
             onSuccess: () => {
                 dispatch(getClientResponse({ isLogged: true }))
-                window.history.pushState({}, '', '/')
                 navigate('/')
             },
         }

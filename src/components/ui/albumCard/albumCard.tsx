@@ -17,7 +17,8 @@ type CardProps = {
 }
 
 const AlbumCard = ({ item, route }: CardProps) => {
-    const { isPlaying, trackId, imageColor, rgbaColor } = useAlbumCard(item)
+    const { isPlaying, trackId, imageColor, boxShadowStyle } =
+        useAlbumCard(item)
 
     return (
         <div className={styles.albumCard}>
@@ -27,15 +28,7 @@ const AlbumCard = ({ item, route }: CardProps) => {
                         item.images[0]?.url ? item.images[0].url : NotFoundPhoto
                     }
                     className={styles.albumImage}
-                    style={{
-                        boxShadow: `10px 10px 0 2px rgba(${rgbaColor.slice(
-                            4,
-                            -1
-                        )}, 0.3), 20px 20px 0px 2px rgba(${rgbaColor.slice(
-                            4,
-                            -1
-                        )}, 0.15)`,
-                    }}
+                    style={boxShadowStyle}
                 />
             </Link>
             {item.uri === trackId && isPlaying ? (

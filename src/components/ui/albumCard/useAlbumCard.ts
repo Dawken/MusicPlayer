@@ -1,5 +1,5 @@
 import { useAppSelector } from '../../../context/redux/store'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import getColorFromImage from '../../../utils/functions/getColorFromImage'
 import { hexToRgb } from '@mui/material'
 import SpotifyApi from 'spotify-web-api-node'
@@ -19,11 +19,15 @@ const useAlbumCard = (
 
     const rgbaColor = hexToRgb(imageColor)
 
+    const boxShadowStyle = {
+        '--box-shadow-color': rgbaColor.slice(4, -1),
+    } as React.CSSProperties
+
     return {
         isPlaying,
         trackId,
         imageColor,
-        rgbaColor,
+        boxShadowStyle,
     }
 }
 export default useAlbumCard
