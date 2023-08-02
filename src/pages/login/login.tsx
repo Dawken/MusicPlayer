@@ -1,7 +1,7 @@
 import React from 'react'
 import threejs from './threejs'
 import styles from './login.module.scss'
-import Reveal from './reveal/reveal'
+import Reveal from '../../components/animations/reveal/reveal'
 import { FullPage, Slide } from 'react-full-page'
 import explore from '../../assets/spotifyPremium.jpg'
 import managePlaylist from '../../assets/managePlaylist.png'
