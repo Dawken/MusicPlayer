@@ -8,8 +8,8 @@ const AlbumSongs = ({
     trackData,
     albumId,
 }: {
-    trackData: SingleTrackResponse | undefined
-    albumId: string | undefined
+    trackData?: SingleTrackResponse
+    albumId?: string
 }) => {
     const { album } = useAlbumSongs(trackData)
     return <PlaylistMenu playlistData={album} uri={albumId} />

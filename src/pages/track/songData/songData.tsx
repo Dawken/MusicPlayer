@@ -8,8 +8,8 @@ import SingleArtistResponse = SpotifyApi.SingleArtistResponse
 import { Link } from 'react-router-dom'
 
 type TrackType = {
-    trackData: SingleTrackResponse | undefined
-    artist: SingleArtistResponse | undefined
+    trackData?: SingleTrackResponse
+    artist?: SingleArtistResponse
 }
 
 const SongData = ({ trackData, artist }: TrackType) => {

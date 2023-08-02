@@ -10,7 +10,7 @@ import SpotifyApi from 'spotify-web-api-node'
 import SingleTrackResponse = SpotifyApi.SingleTrackResponse
 
 type TrackType = {
-    trackData: SingleTrackResponse | undefined
+    trackData?: SingleTrackResponse
     songLyrics: string
     isLoading: boolean
     imageColor: string
