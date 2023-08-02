@@ -11,6 +11,7 @@ import SkeletonTrackCard from '../../../components/animations/skeletonLoading/sk
 import SkeletonArtistSearchResult from '../../../components/animations/skeletonLoading/skeletonArtistSearchResult'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import TrackCard from '../../../components/ui/trackCard/trackCard'
+import arrayFrom from '../../../utils/functions/arrayFrom'
 
 interface SearchResultType {
     searchResult: TrackObjectFull[]
@@ -32,9 +33,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                                     horizontal={true}
                                     className={styles.scrollContainer}
                                 >
-                                    {Array.from({ length: 8 }, (_, i) => (
-                                        <SkeletonTrackCard key={i} />
-                                    ))}
+                                    {arrayFrom(8, <SkeletonTrackCard />)}
                                 </ScrollContainer>
                             ) : (
                                 <ScrollContainer
@@ -61,9 +60,10 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                                     horizontal={true}
                                     className={styles.scrollContainer}
                                 >
-                                    {Array.from({ length: 8 }, (_, i) => (
-                                        <SkeletonArtistSearchResult key={i} />
-                                    ))}
+                                    {arrayFrom(
+                                        8,
+                                        <SkeletonArtistSearchResult />
+                                    )}
                                 </ScrollContainer>
                             ) : (
                                 <ScrollContainer
@@ -90,9 +90,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                             horizontal={true}
                             className={styles.scrollContainer}
                         >
-                            {Array.from({ length: 8 }, (_, i) => (
-                                <SkeletonTrackCard key={i} />
-                            ))}
+                            {arrayFrom(8, <SkeletonTrackCard />)}
                         </ScrollContainer>
                     ) : (
                         <ScrollContainer
@@ -114,9 +112,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                             horizontal={true}
                             className={styles.scrollContainer}
                         >
-                            {Array.from({ length: 8 }, (_, i) => (
-                                <SkeletonTrackCard key={i} />
-                            ))}
+                            {arrayFrom(8, <SkeletonTrackCard />)}
                         </ScrollContainer>
                     ) : (
                         <ScrollContainer
