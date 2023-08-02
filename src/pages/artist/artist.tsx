@@ -13,6 +13,7 @@ import SkeletonArtistSearchResult from '../../components/animations/skeletonLoad
 import ArtistSearchResult from '../layout/resultsLayout/artistsSearchResult/artistSearchResult'
 import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
+import arrayFrom from '../../utils/functions/arrayFrom'
 
 const Artist = () => {
     const {
@@ -51,16 +52,14 @@ const Artist = () => {
                         {!recommendedArtists ? (
                             <ScrollContainer
                                 horizontal={true}
-                                style={{ display: 'flex' }}
+                                className={styles.scrollContainer}
                             >
-                                {Array.from({ length: 8 }, (_, i) => (
-                                    <SkeletonArtistSearchResult key={i} />
-                                ))}
+                                {arrayFrom(8, <SkeletonArtistSearchResult />)}
                             </ScrollContainer>
                         ) : (
                             <ScrollContainer
                                 horizontal={true}
-                                style={{ display: 'flex' }}
+                                className={styles.scrollContainer}
                             >
                                 {recommendedArtists?.map(
                                     (item: ArtistObjectFull) => (

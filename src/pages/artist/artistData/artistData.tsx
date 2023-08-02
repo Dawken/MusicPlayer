@@ -5,11 +5,7 @@ import SpotifyApi from 'spotify-web-api-node'
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 
-const ArtistData = ({
-    artist,
-}: {
-    artist: SingleArtistResponse | undefined
-}) => {
+const ArtistData = ({ artist }: { artist?: SingleArtistResponse }) => {
     return (
         <div className={styles.artistData}>
             <div
