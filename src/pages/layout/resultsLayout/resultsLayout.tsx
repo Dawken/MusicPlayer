@@ -30,7 +30,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                             {isTyping ? (
                                 <ScrollContainer
                                     horizontal={true}
-                                    style={{ display: 'flex' }}
+                                    className={styles.scrollContainer}
                                 >
                                     {Array.from({ length: 8 }, (_, i) => (
                                         <SkeletonTrackCard key={i} />
@@ -39,7 +39,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                             ) : (
                                 <ScrollContainer
                                     horizontal={true}
-                                    style={{ display: 'flex' }}
+                                    className={styles.scrollContainer}
                                 >
                                     {searchResult.map(
                                         (item: TrackObjectFull) => (
@@ -59,7 +59,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                             {isTyping ? (
                                 <ScrollContainer
                                     horizontal={true}
-                                    style={{ display: 'flex' }}
+                                    className={styles.scrollContainer}
                                 >
                                     {Array.from({ length: 8 }, (_, i) => (
                                         <SkeletonArtistSearchResult key={i} />
@@ -68,7 +68,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                             ) : (
                                 <ScrollContainer
                                     horizontal={true}
-                                    style={{ display: 'flex' }}
+                                    className={styles.scrollContainer}
                                 >
                                     {artists?.map((item: ArtistObjectFull) => (
                                         <ArtistSearchResult
@@ -88,7 +88,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                     {!tracks.length ? (
                         <ScrollContainer
                             horizontal={true}
-                            style={{ display: 'flex' }}
+                            className={styles.scrollContainer}
                         >
                             {Array.from({ length: 8 }, (_, i) => (
                                 <SkeletonTrackCard key={i} />
@@ -97,7 +97,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                     ) : (
                         <ScrollContainer
                             horizontal={true}
-                            style={{ display: 'flex' }}
+                            className={styles.scrollContainer}
                         >
                             {tracks.map((item: TrackObjectFull) => (
                                 <TrackCard item={item} key={item.id} />
@@ -112,7 +112,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                     {!recommendations.length ? (
                         <ScrollContainer
                             horizontal={true}
-                            style={{ display: 'flex' }}
+                            className={styles.scrollContainer}
                         >
                             {Array.from({ length: 8 }, (_, i) => (
                                 <SkeletonTrackCard key={i} />
@@ -121,7 +121,7 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                     ) : (
                         <ScrollContainer
                             horizontal={true}
-                            style={{ display: 'flex' }}
+                            className={styles.scrollContainer}
                         >
                             {recommendations.map(
                                 (item: RecommendationTrackObject) => (
