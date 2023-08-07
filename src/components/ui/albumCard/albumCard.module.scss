@@ -5,9 +5,8 @@
         width: 19vh;
         height: 19vh;
         z-index: 3;
-        box-shadow: 10px 10px 0 2px rgba(23, 23, 23, 0.5),
-            20px 20px 0px 2px rgb(17, 17, 17);
         border-radius: 12px;
+        box-shadow: 10px 10px 0 2px rgba(var(--box-shadow-color), 0.4), 20px 20px 0 2px rgba(var(--box-shadow-color), 0.25);
     }
     .playIcon {
         position: absolute;

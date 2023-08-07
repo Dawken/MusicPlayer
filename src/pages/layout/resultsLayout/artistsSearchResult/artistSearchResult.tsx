@@ -2,7 +2,7 @@ import React from 'react'
 import styles from './artistSearchResult.module.scss'
 import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
-import loading from '../../../../animations/skeletonLoading/skeletonLoading.module.scss'
+import loading from '../../../../components/animations/skeletonLoading/skeletonLoading.module.scss'
 import { Link } from 'react-router-dom'
 import NotFoundPhoto from '../../../../assets/notFound.png'
 

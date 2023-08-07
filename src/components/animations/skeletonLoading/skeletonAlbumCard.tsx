@@ -1,4 +1,4 @@
-import styles from '../../components/ui/albumCard/albumCard.module.scss'
+import styles from '../../ui/albumCard/albumCard.module.scss'
 import React from 'react'
 import loading from './skeletonLoading.module.scss'
 

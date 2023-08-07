@@ -13,6 +13,9 @@
             display: grid;
             justify-content: center;
             grid-template-columns: repeat(auto-fit, minmax(200px, max-content));
+            .scrollContainer {
+                display: flex;
+            }
         }
     }
 }

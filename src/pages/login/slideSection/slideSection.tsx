@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from './slideSections.module.scss'
-import Reveal from '../reveal/reveal'
+import Reveal from '../../../components/animations/reveal/reveal'
 
 type SectionType = {
     header: string

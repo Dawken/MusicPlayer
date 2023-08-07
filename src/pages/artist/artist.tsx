@@ -6,13 +6,14 @@ import BackgroundImageColor from '../../components/ui/backgroundImageColor/backg
 import ArtistData from './artistData/artistData'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
-import setSong from '../../utils/setSong'
+import setSong from '../../utils/functions/setSong'
 import spotifyApi from '../../services/spotifyApi'
 import ScrollContainer from 'react-indiana-drag-scroll'
-import SkeletonArtistSearchResult from '../../animations/skeletonLoading/skeletonArtistSearchResult'
+import SkeletonArtistSearchResult from '../../components/animations/skeletonLoading/skeletonArtistSearchResult'
 import ArtistSearchResult from '../layout/resultsLayout/artistsSearchResult/artistSearchResult'
 import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
+import arrayFrom from '../../utils/functions/arrayFrom'
 
 const Artist = () => {
     const {
@@ -51,16 +52,14 @@ const Artist = () => {
                         {!recommendedArtists ? (
                             <ScrollContainer
                                 horizontal={true}
-                                style={{ display: 'flex' }}
+                                className={styles.scrollContainer}
                             >
-                                {Array.from({ length: 8 }, (_, i) => (
-                                    <SkeletonArtistSearchResult key={i} />
-                                ))}
+                                {arrayFrom(8, <SkeletonArtistSearchResult />)}
                             </ScrollContainer>
                         ) : (
                             <ScrollContainer
                                 horizontal={true}
-                                style={{ display: 'flex' }}
+                                className={styles.scrollContainer}
                             >
                                 {recommendedArtists?.map(
                                     (item: ArtistObjectFull) => (

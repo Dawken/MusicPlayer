@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from '../../components/ui/trackCard/trackCard.module.scss'
+import styles from '../../ui/trackCard/trackCard.module.scss'
 import loading from './skeletonLoading.module.scss'
 
 const SkeletonTrackCard = () => {

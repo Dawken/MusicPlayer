@@ -1,5 +1,5 @@
 import styles from './songData.module.scss'
-import loading from '../../../animations/skeletonLoading/skeletonLoading.module.scss'
+import loading from '../../../components/animations/skeletonLoading/skeletonLoading.module.scss'
 import dayjs from 'dayjs'
 import React from 'react'
 import SpotifyApi from 'spotify-web-api-node'
@@ -8,8 +8,8 @@ import SingleArtistResponse = SpotifyApi.SingleArtistResponse
 import { Link } from 'react-router-dom'
 
 type TrackType = {
-    trackData: SingleTrackResponse | undefined
-    artist: SingleArtistResponse | undefined
+    trackData?: SingleTrackResponse
+    artist?: SingleArtistResponse
 }
 
 const SongData = ({ trackData, artist }: TrackType) => {

@@ -1,8 +1,7 @@
 import React from 'react'
 import styles from './searchBar.module.scss'
 import SearchIcon from '@mui/icons-material/Search'
-import { store } from '../../../context/redux/store'
-import { setIsUserTyping } from '../../../context/redux/user'
+import useSearchBar from './useSearchBar'
 
 type SearchType = {
     search: string
@@ -10,17 +9,7 @@ type SearchType = {
 }
 
 const SearchBar = ({ search, setSearch }: SearchType) => {
-    const handleTyping = () => {
-        store.dispatch(setIsUserTyping({ isUserTyping: true }))
-        setTimeout(() => {
-            store.dispatch(setIsUserTyping({ isUserTyping: false }))
-        }, 2500)
-    }
-
-    const handleNotTyping = () => {
-        store.dispatch(setIsUserTyping({ isUserTyping: false }))
-    }
-
+    const { handleTyping, handleNotTyping } = useSearchBar()
     return (
         <div className={styles.searchBarContainer}>
             <div className={styles.searchBar}>

@@ -7,10 +7,11 @@ import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
-import SkeletonTrackCard from '../../../animations/skeletonLoading/skeletonTrackCard'
-import SkeletonArtistSearchResult from '../../../animations/skeletonLoading/skeletonArtistSearchResult'
+import SkeletonTrackCard from '../../../components/animations/skeletonLoading/skeletonTrackCard'
+import SkeletonArtistSearchResult from '../../../components/animations/skeletonLoading/skeletonArtistSearchResult'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import TrackCard from '../../../components/ui/trackCard/trackCard'
+import arrayFrom from '../../../utils/functions/arrayFrom'
 
 interface SearchResultType {
     searchResult: TrackObjectFull[]
@@ -30,16 +31,14 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                             {isTyping ? (
                                 <ScrollContainer
                                     horizontal={true}
-                                    style={{ display: 'flex' }}
+                                    className={styles.scrollContainer}
                                 >
-                                    {Array.from({ length: 8 }, (_, i) => (
-                                        <SkeletonTrackCard key={i} />
-                                    ))}
+                                    {arrayFrom(8, <SkeletonTrackCard />)}
                                 </ScrollContainer>
                             ) : (
                                 <ScrollContainer
                                     horizontal={true}
-                                    style={{ display: 'flex' }}
+                                    className={styles.scrollContainer}
                                 >
                                     {searchResult.map(
                                         (item: TrackObjectFull) => (
@@ -59,16 +58,17 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                             {isTyping ? (
                                 <ScrollContainer
                                     horizontal={true}
-                                    style={{ display: 'flex' }}
+                                    className={styles.scrollContainer}
                                 >
-                                    {Array.from({ length: 8 }, (_, i) => (
-                                        <SkeletonArtistSearchResult key={i} />
-                                    ))}
+                                    {arrayFrom(
+                                        8,
+                                        <SkeletonArtistSearchResult />
+                                    )}
                                 </ScrollContainer>
                             ) : (
                                 <ScrollContainer
                                     horizontal={true}
-                                    style={{ display: 'flex' }}
+                                    className={styles.scrollContainer}
                                 >
                                     {artists?.map((item: ArtistObjectFull) => (
                                         <ArtistSearchResult
@@ -88,16 +88,14 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                     {!tracks.length ? (
                         <ScrollContainer
                             horizontal={true}
-                            style={{ display: 'flex' }}
+                            className={styles.scrollContainer}
                         >
-                            {Array.from({ length: 8 }, (_, i) => (
-                                <SkeletonTrackCard key={i} />
-                            ))}
+                            {arrayFrom(8, <SkeletonTrackCard />)}
                         </ScrollContainer>
                     ) : (
                         <ScrollContainer
                             horizontal={true}
-                            style={{ display: 'flex' }}
+                            className={styles.scrollContainer}
                         >
                             {tracks.map((item: TrackObjectFull) => (
                                 <TrackCard item={item} key={item.id} />
@@ -112,16 +110,14 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
                     {!recommendations.length ? (
                         <ScrollContainer
                             horizontal={true}
-                            style={{ display: 'flex' }}
+                            className={styles.scrollContainer}
                         >
-                            {Array.from({ length: 8 }, (_, i) => (
-                                <SkeletonTrackCard key={i} />
-                            ))}
+                            {arrayFrom(8, <SkeletonTrackCard />)}
                         </ScrollContainer>
                     ) : (
                         <ScrollContainer
                             horizontal={true}
-                            style={{ display: 'flex' }}
+                            className={styles.scrollContainer}
                         >
                             {recommendations.map(
                                 (item: RecommendationTrackObject) => (

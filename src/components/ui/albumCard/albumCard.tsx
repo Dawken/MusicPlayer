@@ -3,10 +3,10 @@ import styles from './albumCard.module.scss'
 import SpotifyApi from 'spotify-web-api-node'
 import AlbumObjectSimplified = SpotifyApi.AlbumObjectSimplified
 import { Link } from 'react-router-dom'
-import PlayButton from '../../../assets/playbutton.png'
+import PlayButton from '../../../assets/playButton.png'
 import PauseIcon from '../../../assets/pauseButton.png'
 import spotifyApi from '../../../services/spotifyApi'
-import setSong from '../../../utils/setSong'
+import setSong from '../../../utils/functions/setSong'
 import useAlbumCard from './useAlbumCard'
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
 import NotFoundPhoto from '../../../assets/notFound.png'
@@ -17,7 +17,8 @@ type CardProps = {
 }
 
 const AlbumCard = ({ item, route }: CardProps) => {
-    const { isPlaying, trackId, imageColor, rgbaColor } = useAlbumCard(item)
+    const { isPlaying, trackId, imageColor, boxShadowStyle } =
+        useAlbumCard(item)
 
     return (
         <div className={styles.albumCard}>
@@ -27,15 +28,7 @@ const AlbumCard = ({ item, route }: CardProps) => {
                         item.images[0]?.url ? item.images[0].url : NotFoundPhoto
                     }
                     className={styles.albumImage}
-                    style={{
-                        boxShadow: `10px 10px 0 2px rgba(${rgbaColor.slice(
-                            4,
-                            -1
-                        )}, 0.3), 20px 20px 0px 2px rgba(${rgbaColor.slice(
-                            4,
-                            -1
-                        )}, 0.15)`,
-                    }}
+                    style={boxShadowStyle}
                 />
             </Link>
             {item.uri === trackId && isPlaying ? (

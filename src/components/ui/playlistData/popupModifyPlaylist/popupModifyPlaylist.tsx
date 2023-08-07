@@ -1,11 +1,10 @@
 import { Button, Dialog } from '@mui/material'
-import React, { useState } from 'react'
+import React from 'react'
 import styles from './popupModifyPlaylist.module.scss'
 import SpotifyApi from 'spotify-web-api-node'
 import SinglePlaylistResponse = SpotifyApi.SinglePlaylistResponse
-import spotifyApi from '../../../services/spotifyApi'
-import { toast } from 'react-toastify'
 import MusicNoteIcon from '@mui/icons-material/MusicNote'
+import usePopupModifyPlaylist from './usePopupModifyPlaylist'
 
 type PopupDeletePlaylistProps = {
     open: boolean
@@ -18,36 +17,16 @@ const PopupModifyPlaylist: React.FC<PopupDeletePlaylistProps> = ({
     handleClose,
     playlist,
 }) => {
-    const [playlistName, setPlaylistName] = useState(playlist.name)
-
-    const [playlistDescription, setPlaylistDescription] = useState(
-        playlist.description
-    )
-    const updatePlaylist = () => {
-        spotifyApi
-            .changePlaylistDetails(playlist.id, {
-                name: playlistName,
-                description: playlistDescription || undefined,
-            })
-            .then(() => {
-                toast.success('Playlist data has been updated')
-            })
-            .catch(() => {
-                toast.error('Error, try again later')
-            })
-    }
+    const {
+        playlistName,
+        setPlaylistName,
+        playlistDescription,
+        setPlaylistDescription,
+        updatePlaylist,
+    } = usePopupModifyPlaylist({ playlist })
 
     return (
-        <Dialog
-            open={open}
-            onClose={handleClose}
-            PaperProps={{
-                style: {
-                    backgroundColor: '#1f1f1f',
-                    color: 'white',
-                },
-            }}
-        >
+        <Dialog open={open} onClose={handleClose}>
             <div className={styles.playlist}>
                 {playlist?.images[0] ? (
                     <img

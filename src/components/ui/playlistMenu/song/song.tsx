@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styles from './song.module.scss'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow'
 import dayjs from 'dayjs'
@@ -10,21 +10,13 @@ import SongOptionsMenu from '../../songOptionsMenu/songOptionsMenu'
 import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
 import TrackObjectSimplified = SpotifyApi.TrackObjectSimplified
-import useAuth from '../../../../hooks/useAuth'
-import spotifyApi from '../../../../services/spotifyApi'
 
 type ItemType = {
     item: TrackObjectFull | RecommendationTrackObject | TrackObjectSimplified
     index: number
-    uri: string | undefined
+    uri?: string
     isCreatingPlaylist?: boolean
     playlist?: PlaylistObjectSimplified
-}
-
-const isAlbum = (
-    item: TrackObjectSimplified | TrackObjectFull
-): item is TrackObjectFull => {
-    return (item as TrackObjectFull).album !== undefined
 }
 
 const Song = ({ item, index, uri, isCreatingPlaylist, playlist }: ItemType) => {
@@ -36,27 +28,9 @@ const Song = ({ item, index, uri, isCreatingPlaylist, playlist }: ItemType) => {
         playSong,
         playingSongColor,
         addSongToPlaylist,
-    } = useSong()
-
-    const album = isAlbum(item) ? item.album : undefined
-
-    const [userPlaylists, setUserPlaylists] =
-        useState<PlaylistObjectSimplified[]>()
-
-    const spotify = useAuth()
-
-    useEffect(() => {
-        if (spotify.accessToken) {
-            spotifyApi.setAccessToken(spotify.accessToken)
-            spotifyApi
-                .getMe()
-                .then((data) =>
-                    spotifyApi
-                        .getUserPlaylists(data.body.id)
-                        .then((data) => setUserPlaylists(data.body.items))
-                )
-        }
-    }, [spotify.accessToken])
+        album,
+        userPlaylists,
+    } = useSong({ item })
 
     return (
         <div

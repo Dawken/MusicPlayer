@@ -1,28 +1,14 @@
-import React, { useEffect, useRef } from 'react'
-import { motion, useAnimation, useInView } from 'framer-motion'
+import React from 'react'
+import { motion } from 'framer-motion'
 import styles from './reveal.module.scss'
+import useReveal from './useReveal'
 
 type ChildrenType = {
     children: JSX.Element
 }
 
 const Reveal = ({ children }: ChildrenType) => {
-    const ref = useRef(null)
-
-    const isInView = useInView(ref, { once: false })
-
-    const mainControls = useAnimation()
-    const slideControls = useAnimation()
-
-    useEffect(() => {
-        if (isInView) {
-            mainControls.start('visible')
-            slideControls.start('visible')
-        } else {
-            mainControls.start('hidden')
-            slideControls.start('hidden')
-        }
-    }, [isInView])
+    const { ref, mainControls, slideControls } = useReveal()
 
     return (
         <div ref={ref} className={styles.reveal}>

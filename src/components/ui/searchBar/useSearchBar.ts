@@ -4,6 +4,8 @@ import useAuth from '../../../hooks/useAuth'
 import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import TrackObjectFull = SpotifyApi.TrackObjectFull
+import { store } from '../../../context/redux/store'
+import { setIsUserTyping } from '../../../context/redux/user'
 
 const useSearchBar = () => {
     const spotify = useAuth()
@@ -32,11 +34,24 @@ const useSearchBar = () => {
         }
     }, [search])
 
+    const handleTyping = () => {
+        store.dispatch(setIsUserTyping({ isUserTyping: true }))
+        setTimeout(() => {
+            store.dispatch(setIsUserTyping({ isUserTyping: false }))
+        }, 2500)
+    }
+
+    const handleNotTyping = () => {
+        store.dispatch(setIsUserTyping({ isUserTyping: false }))
+    }
+
     return {
         setSearch,
         search,
         searchResult,
         artists,
+        handleTyping,
+        handleNotTyping,
     }
 }
 export default useSearchBar

@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
-import getColorFromImage from '../../utils/getColorFromImage'
+import getColorFromImage from '../../utils/functions/getColorFromImage'
 import { useAppSelector } from '../../context/redux/store'
 
 const useArtist = () => {

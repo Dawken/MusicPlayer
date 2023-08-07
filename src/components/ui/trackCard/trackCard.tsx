@@ -1,12 +1,12 @@
 import React from 'react'
 import styles from './trackCard.module.scss'
-import loading from '../../../animations/skeletonLoading/skeletonLoading.module.scss'
+import loading from '../../animations/skeletonLoading/skeletonLoading.module.scss'
 import SpotifyApi from 'spotify-web-api-node'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
 import useTrackCard from './useTrackCard'
 import { Link } from 'react-router-dom'
-import setSong from '../../../utils/setSong'
+import setSong from '../../../utils/functions/setSong'
 
 interface TrackSearchResultProps {
     item: TrackObjectFull | RecommendationTrackObject

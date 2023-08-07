@@ -1,26 +1,9 @@
-import { useMutation } from 'react-query'
-import musicPlayerBackend from '../../../lib/axiosConfig'
-import { toast } from 'react-toastify'
-import { store } from '../../../context/redux/store'
-import { getClientResponse } from '../../../context/redux/user'
 import styles from './logoutButton.module.scss'
 import React from 'react'
+import useLogoutButton from './useLogoutButton'
 
 const LogoutButton = () => {
-    const { mutate: logout } = useMutation(
-        () => {
-            return musicPlayerBackend.post('/api/logout')
-        },
-        {
-            onSuccess: () => {
-                toast.success('Your session expired')
-                store.dispatch(getClientResponse({ isLogged: false }))
-            },
-            onError: () => {
-                toast.error('Logout failed')
-            },
-        }
-    )
+    const { logout } = useLogoutButton()
 
     return (
         <button className={styles.logout} onClick={() => logout()}>

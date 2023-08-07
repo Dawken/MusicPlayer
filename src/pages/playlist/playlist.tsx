@@ -12,11 +12,12 @@ import TrackObjectFull = SpotifyApi.TrackObjectFull
 import Song from '../../components/ui/playlistMenu/song/song'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
-import setSong from '../../utils/setSong'
+import setSong from '../../utils/functions/setSong'
 import spotifyApi from '../../services/spotifyApi'
-import SkeletonPlaylistSongItem from '../../animations/skeletonLoading/skeletonPlaylistSongItem'
+import SkeletonPlaylistSongItem from '../../components/animations/skeletonLoading/skeletonPlaylistSongItem'
 import DeleteIcon from '@mui/icons-material/Delete'
 import PopupDeletePlaylist from './popupDeletePlaylist'
+import arrayFrom from '../../utils/functions/arrayFrom'
 
 const Playlist = () => {
     const {
@@ -68,24 +69,20 @@ const Playlist = () => {
                             playlistData={
                                 playlistSongs as
                                     | (PlaylistTrackObject & {
-                                          track?: TrackObjectFull | undefined
+                                          track?: TrackObjectFull
                                       })[]
                                     | TrackObjectFull[]
                             }
                             uri={playlist.uri}
                         />
                     ) : (
-                        Array.from({ length: 5 }, (_, i) => {
-                            return <SkeletonPlaylistSongItem key={i} />
-                        })
+                        arrayFrom(5, <SkeletonPlaylistSongItem />)
                     )}
                     <div className={styles.searchBar}>
                         <div className={styles.sectionText}>Add new songs</div>
                         <SearchBar search={search} setSearch={setSearch} />
                         {isTyping
-                            ? Array.from({ length: 5 }, (_, i) => {
-                                  return <SkeletonPlaylistSongItem key={i} />
-                              })
+                            ? arrayFrom(5, <SkeletonPlaylistSongItem />)
                             : searchResult.map((item, index) => {
                                   return (
                                       <Song
@@ -114,9 +111,7 @@ const Playlist = () => {
                                       />
                                   )
                               })
-                            : Array.from({ length: 5 }, (_, i) => {
-                                  return <SkeletonPlaylistSongItem key={i} />
-                              })}
+                            : arrayFrom(5, <SkeletonPlaylistSongItem />)}
                     </div>
                 </div>
             </div>

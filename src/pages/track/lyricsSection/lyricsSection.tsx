@@ -3,14 +3,14 @@ import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
 import FavoriteIcon from '@mui/icons-material/Favorite'
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder'
-import loading from '../../../animations/skeletonLoading/skeletonLoading.module.scss'
+import loading from '../../../components/animations/skeletonLoading/skeletonLoading.module.scss'
 import React from 'react'
 import useLyricsSection from './useLyricsSection'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleTrackResponse = SpotifyApi.SingleTrackResponse
 
 type TrackType = {
-    trackData: SingleTrackResponse | undefined
+    trackData?: SingleTrackResponse
     songLyrics: string
     isLoading: boolean
     imageColor: string

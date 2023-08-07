@@ -10,7 +10,7 @@ type PlaylistDataType = {
     playlistData:
         | (PlaylistTrackObject & { track?: TrackObjectFull })[]
         | TrackObjectFull[]
-    uri?: string | undefined
+    uri?: string
     isCreatingPlaylist?: boolean
 }
 

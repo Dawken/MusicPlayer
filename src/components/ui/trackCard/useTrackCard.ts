@@ -1,6 +1,7 @@
-import { store, useAppSelector } from '../../../context/redux/store'
+import { useAppSelector } from '../../../context/redux/store'
 import { setPhotoColor } from '../../../context/redux/user'
-import getColorFromImage from '../../../utils/getColorFromImage'
+import getColorFromImage from '../../../utils/functions/getColorFromImage'
+import { useDispatch } from 'react-redux'
 
 const useTrackCard = () => {
     const playingSongColor = useAppSelector(
@@ -8,14 +9,16 @@ const useTrackCard = () => {
     )
     const trackId = useAppSelector((state) => state.auth.track)
 
+    const dispatch = useDispatch()
+
     const handleHover = (imageUrl: string) => {
         getColorFromImage(imageUrl, (color: string) => {
-            store.dispatch(setPhotoColor({ photoColor: color }))
+            dispatch(setPhotoColor({ photoColor: color }))
         })
     }
 
     const handleMouseLeave = () => {
-        store.dispatch(setPhotoColor({ photoColor: playingSongColor }))
+        dispatch(setPhotoColor({ photoColor: playingSongColor }))
     }
     return {
         trackId,

@@ -1,0 +1,41 @@
+.moreHorizonIcon {
+  color: #ffffff;
+}
+.optionsText {
+  text-decoration: none;
+  color: #ffffff;
+}
+.paper {
+  background: #1c1c1c;
+  color: #ffffff;
+  border-radius: 12px;
+  justify-content: space-between;
+  .personIcon {
+    color: #ffffff;
+  }
+  .albumIcon {
+    color: #ffffff;
+  }
+  .musicNoteIcon {
+    color: #ffffff;
+  }
+  .deleteIcon {
+    color: #ffffff;
+  }
+  .addToPlaylist {
+    color: #ffffff;
+    text-transform: none;
+    width: 100%;
+    font-size: 0.96rem;
+  }
+  .playlistAddIcon {
+    color: #ffffff;
+    margin-right: 11px;
+  }
+}
+.addToPlaylistPopup {
+  background: #1c1c1c;
+  color: #ffffff;
+  border-radius: 12px;
+  justify-content: space-between;
+}

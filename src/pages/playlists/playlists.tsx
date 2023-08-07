@@ -3,9 +3,10 @@ import styles from './playlists.module.scss'
 import AddIcon from '@mui/icons-material/Add'
 import BackgroundImageColor from '../../components/ui/backgroundImageColor/backgroundImageColor'
 import usePlaylists from './usePlaylists'
-import SkeletonAlbumCard from '../../animations/skeletonLoading/skeletonAlbumCard'
+import SkeletonAlbumCard from '../../components/animations/skeletonLoading/skeletonAlbumCard'
 import AlbumCard from '../../components/ui/albumCard/albumCard'
 import { Button } from '@mui/material'
+import arrayFrom from '../../utils/functions/arrayFrom'
 
 const Playlists = () => {
     const { playlists, createPlaylist } = usePlaylists()
@@ -42,9 +43,7 @@ const Playlists = () => {
                         </div>
                         <div className={styles.yourPlaylists}>
                             {!playlists
-                                ? Array.from({ length: 10 }, (_, i) => (
-                                      <SkeletonAlbumCard key={i} />
-                                  ))
+                                ? arrayFrom(10, <SkeletonAlbumCard />)
                                 : playlists?.items.map((item) => {
                                       return (
                                           item.tracks.total > 0 && (
