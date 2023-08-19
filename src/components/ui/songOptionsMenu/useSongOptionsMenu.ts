@@ -1,7 +1,7 @@
 import { useLocation } from 'react-router-dom'
 import spotifyApi from '../../../services/spotifyApi'
 import { toast } from 'react-toastify'
-import addSongToPlaylist from '../../../utils/functions/addSongToPlaylist'
+import addSongToPlaylist from '../../../utils/addSongToPlaylist'
 import { setActionTrackUri } from '../../../context/redux/user'
 import { useDispatch } from 'react-redux'
 

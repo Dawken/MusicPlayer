@@ -6,7 +6,7 @@ import usePlaylists from './usePlaylists'
 import SkeletonAlbumCard from '../../components/animations/skeletonLoading/skeletonAlbumCard'
 import AlbumCard from '../../components/ui/albumCard/albumCard'
 import { Button } from '@mui/material'
-import arrayFrom from '../../utils/functions/arrayFrom'
+import arrayFrom from '../../utils/arrayFrom'
 
 const Playlists = () => {
     const { playlists, createPlaylist } = usePlaylists()

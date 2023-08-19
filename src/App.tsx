@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import PrivateRoutes from './utils/components/privateRoutes'
+import PrivateRoutes from './components/routes/privateRoutes'
 import Layout from './pages/layout/layout'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import './index.scss'

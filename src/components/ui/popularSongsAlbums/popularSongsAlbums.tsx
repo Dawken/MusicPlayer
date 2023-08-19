@@ -8,7 +8,7 @@ import SpotifyApi from 'spotify-web-api-node'
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
 import AlbumCard from '../albumCard/albumCard'
 import ArtistObjectSimplified = SpotifyApi.ArtistObjectSimplified
-import arrayFrom from '../../../utils/functions/arrayFrom'
+import arrayFrom from '../../../utils/arrayFrom'
 import SkeletonAlbumCard from '../../animations/skeletonLoading/skeletonAlbumCard'
 
 const PopularSongsAlbums = ({

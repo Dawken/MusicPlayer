@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import spotifyApi from '../../services/spotifyApi'
-import getColorFromImage from '../../utils/functions/getColorFromImage'
+import getColorFromImage from '../../utils/getColorFromImage'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleAlbumResponse = SpotifyApi.SingleAlbumResponse
 import { useAppSelector } from '../../context/redux/store'

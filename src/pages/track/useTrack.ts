@@ -5,7 +5,7 @@ import useAuth from '../../hooks/useAuth'
 import SpotifyApi from 'spotify-web-api-node'
 import SingleTrackResponse = SpotifyApi.SingleTrackResponse
 import SingleArtistResponse = SpotifyApi.SingleArtistResponse
-import getColorFromImage from '../../utils/functions/getColorFromImage'
+import getColorFromImage from '../../utils/getColorFromImage'
 import { useQuery } from 'react-query'
 import musicPlayerBackend from '../../lib/axiosConfig'
 

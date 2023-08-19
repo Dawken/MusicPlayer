@@ -11,7 +11,7 @@ import SkeletonTrackCard from '../../../components/animations/skeletonLoading/sk
 import SkeletonArtistSearchResult from '../../../components/animations/skeletonLoading/skeletonArtistSearchResult'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import TrackCard from '../../../components/ui/trackCard/trackCard'
-import arrayFrom from '../../../utils/functions/arrayFrom'
+import arrayFrom from '../../../utils/arrayFrom'
 
 interface SearchResultType {
     searchResult: TrackObjectFull[]

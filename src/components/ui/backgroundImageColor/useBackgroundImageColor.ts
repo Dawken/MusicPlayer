@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../../context/redux/store'
 import { useEffect, useState } from 'react'
-import getColorFromImage from '../../../utils/functions/getColorFromImage'
+import getColorFromImage from '../../../utils/getColorFromImage'
 import { setPhotoColor, setPlayingSongColor } from '../../../context/redux/user'
 import { useDispatch } from 'react-redux'
 
