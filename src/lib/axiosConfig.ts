@@ -2,10 +2,10 @@ import axios from 'axios'
 import { store } from '../context/redux/store'
 import { getClientResponse } from '../context/redux/user'
 
-const localHost = process.env.REACT_APP_BACKEND_HOST
+const backendHost = process.env.REACT_APP_BACKEND_HOST
 
 const musicPlayerBackend = axios.create({
-    baseURL: localHost,
+    baseURL: backendHost,
     withCredentials: true,
 })
 musicPlayerBackend.interceptors.response.use(undefined, (error) => {
