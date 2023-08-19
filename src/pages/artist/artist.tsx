@@ -10,7 +10,7 @@ import setSong from '../../utils/setSong'
 import spotifyApi from '../../services/spotifyApi'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import SkeletonArtistSearchResult from '../../components/animations/skeletonLoading/skeletonArtistSearchResult'
-import ArtistSearchResult from '../layout/resultsLayout/artistsSearchResult/artistSearchResult'
+import ArtistSearchResult from '../home/homeResults/artistsSearchResult/artistSearchResult'
 import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
 import arrayFrom from '../../utils/arrayFrom'

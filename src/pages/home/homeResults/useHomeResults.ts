@@ -9,7 +9,7 @@ import { useAppSelector } from '../../../context/redux/store'
 
 type TracksType = SpotifyApi.PlayHistoryObject[]
 
-const useResultsLayout = () => {
+const useHomeResults = () => {
     const spotify = useAuth()
     const isTyping = useAppSelector((state) => state.auth.isUserTyping)
 
@@ -70,4 +70,4 @@ const useResultsLayout = () => {
         recommendations,
     }
 }
-export default useResultsLayout
+export default useHomeResults
