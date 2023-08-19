@@ -1,5 +1,26 @@
 const { REACT_APP_SPOTIFY_CLIENT_ID, REACT_APP_FRONT_HOST } = process.env
 
+const spotifyUrl = new URL('https://accounts.spotify.com/authorize')
+if (REACT_APP_SPOTIFY_CLIENT_ID && REACT_APP_FRONT_HOST) {
+    spotifyUrl.searchParams.append('client_id', REACT_APP_SPOTIFY_CLIENT_ID)
+    spotifyUrl.searchParams.append('response_type', 'code')
+    spotifyUrl.searchParams.append('redirect_uri', REACT_APP_FRONT_HOST)
+    spotifyUrl.searchParams.append(
+        'scope',
+        [
+            'streaming',
+            'user-read-email',
+            'user-read-private',
+            'user-library-read',
+            'user-library-modify',
+            'user-read-playback-state',
+            'user-modify-playback-state',
+            'user-read-recently-played',
+            'playlist-modify-public',
+            'playlist-modify-private',
+        ].join(' ')
+    )
+}
 export const spotifyAuthenticationUrl = {
-    url: `https://accounts.spotify.com/authorize?client_id=${REACT_APP_SPOTIFY_CLIENT_ID}&response_type=code&redirect_uri=${REACT_APP_FRONT_HOST}&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state%20user-read-recently-played%20playlist-modify-public%20playlist-modify-private`,
+    url: spotifyUrl.toString(),
 }
