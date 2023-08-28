@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import TrackSearchResult from '../../../components/ui/trackCard/trackCard'
-import useResultsLayout from './useResultsLayout'
-import styles from './resultsLayout.module.scss'
+import useHomeResults from './useHomeResults'
+import styles from './homeResults.module.scss'
 import ArtistSearchResult from './artistsSearchResult/artistSearchResult'
 import SpotifyApi from 'spotify-web-api-node'
 import ArtistObjectFull = SpotifyApi.ArtistObjectFull
@@ -11,15 +11,15 @@ import SkeletonTrackCard from '../../../components/animations/skeletonLoading/sk
 import SkeletonArtistSearchResult from '../../../components/animations/skeletonLoading/skeletonArtistSearchResult'
 import ScrollContainer from 'react-indiana-drag-scroll'
 import TrackCard from '../../../components/ui/trackCard/trackCard'
-import arrayFrom from '../../../utils/functions/arrayFrom'
+import arrayFrom from '../../../utils/arrayFrom'
 
 interface SearchResultType {
     searchResult: TrackObjectFull[]
     artists?: ArtistObjectFull[]
 }
 
-const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
-    const { tracks, isTyping, recommendations } = useResultsLayout()
+const HomeResults = ({ searchResult, artists }: SearchResultType) => {
+    const { tracks, isTyping, recommendations } = useHomeResults()
 
     return (
         <div className={styles.mainContainer}>
@@ -134,4 +134,4 @@ const ResultsLayout = ({ searchResult, artists }: SearchResultType) => {
         </div>
     )
 }
-export default ResultsLayout
+export default HomeResults

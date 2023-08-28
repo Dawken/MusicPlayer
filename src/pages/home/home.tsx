@@ -1,11 +1,11 @@
 import React from 'react'
 import SearchBar from '../../components/ui/searchBar/searchBar'
-import ResultsLayout from './resultsLayout/resultsLayout'
-import styles from './layout.module.scss'
+import HomeResults from './homeResults/homeResults'
+import styles from './home.module.scss'
 import BackgroundImageColor from '../../components/ui/backgroundImageColor/backgroundImageColor'
 import useSearchBar from '../../components/ui/searchBar/useSearchBar'
 
-const Layout = () => {
+const Home = () => {
     const { setSearch, search, searchResult, artists } = useSearchBar()
 
     return (
@@ -13,9 +13,9 @@ const Layout = () => {
             <BackgroundImageColor color={undefined} />
             <div className={styles.mainContainer}>
                 <SearchBar search={search} setSearch={setSearch} />
-                <ResultsLayout searchResult={searchResult} artists={artists} />
+                <HomeResults searchResult={searchResult} artists={artists} />
             </div>
         </div>
     )
 }
-export default Layout
+export default Home

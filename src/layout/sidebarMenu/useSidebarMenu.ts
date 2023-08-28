@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../context/redux/store'
 import { useLocation, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import spotifyApi from '../../services/spotifyApi'
 
 const useSidebarMenu = () => {
@@ -24,7 +24,13 @@ const useSidebarMenu = () => {
             .then((data) => navigate(`/playlist/${data.body.id}`))
     }
 
-    window.addEventListener('resize', handleResize)
+    useEffect(() => {
+        window.addEventListener('resize', handleResize)
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+    }, [])
 
     return {
         playingSongPhoto,

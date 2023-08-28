@@ -7,10 +7,10 @@ import Song from '../../components/ui/playlistMenu/song/song'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import spotifyApi from '../../services/spotifyApi'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
-import setSong from '../../utils/functions/setSong'
+import setSong from '../../utils/setSong'
 import PopularSongsAlbums from '../../components/ui/popularSongsAlbums/popularSongsAlbums'
 import SkeletonPlaylistSongItem from '../../components/animations/skeletonLoading/skeletonPlaylistSongItem'
-import arrayFrom from '../../utils/functions/arrayFrom'
+import arrayFrom from '../../utils/arrayFrom'
 
 const Album = () => {
     const { imageColor, album, playlistId, isPlaying, track } = useAlbum()

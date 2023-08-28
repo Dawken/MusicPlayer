@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import SpotifyApi from 'spotify-web-api-node'
 import SinglePlaylistResponse = SpotifyApi.SinglePlaylistResponse
 import useAuth from '../../hooks/useAuth'
-import getColorFromImage from '../../utils/functions/getColorFromImage'
+import getColorFromImage from '../../utils/getColorFromImage'
 import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
 import { useAppSelector } from '../../context/redux/store'
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject

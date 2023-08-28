@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import PrivateRoutes from './utils/components/privateRoutes'
-import Layout from './pages/layout/layout'
+import PrivateRoutes from './components/routes/privateRoutes'
+import Home from './pages/home/home'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import './index.scss'
 import Playlists from './pages/playlists/playlists'
@@ -28,7 +28,7 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     <Route element={<PrivateRoutes />}>
-                        <Route path='/' element={<Layout />} />
+                        <Route path='/' element={<Home />} />
                         <Route path='/playlists' element={<Playlists />} />
                         <Route path='/track/:id' element={<Track />} />
                         <Route path='/artist/:id' element={<Artist />} />

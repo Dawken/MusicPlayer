@@ -6,7 +6,7 @@ import TrackObjectFull = SpotifyApi.TrackObjectFull
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
 import useTrackCard from './useTrackCard'
 import { Link } from 'react-router-dom'
-import setSong from '../../../utils/functions/setSong'
+import setSong from '../../../utils/setSong'
 
 interface TrackSearchResultProps {
     item: TrackObjectFull | RecommendationTrackObject

@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../../../context/redux/store'
 import { useEffect, useState } from 'react'
-import addSongToPlaylist from '../../../../utils/functions/addSongToPlaylist'
+import addSongToPlaylist from '../../../../utils/addSongToPlaylist'
 import spotifyApi from '../../../../services/spotifyApi'
 import useAuth from '../../../../hooks/useAuth'
 import SpotifyApi from 'spotify-web-api-node'

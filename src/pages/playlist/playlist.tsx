@@ -12,12 +12,12 @@ import TrackObjectFull = SpotifyApi.TrackObjectFull
 import Song from '../../components/ui/playlistMenu/song/song'
 import PauseCircleIcon from '@mui/icons-material/PauseCircle'
 import PlayCircleFilledIcon from '@mui/icons-material/PlayCircleFilled'
-import setSong from '../../utils/functions/setSong'
+import setSong from '../../utils/setSong'
 import spotifyApi from '../../services/spotifyApi'
 import SkeletonPlaylistSongItem from '../../components/animations/skeletonLoading/skeletonPlaylistSongItem'
 import DeleteIcon from '@mui/icons-material/Delete'
 import PopupDeletePlaylist from './popupDeletePlaylist'
-import arrayFrom from '../../utils/functions/arrayFrom'
+import arrayFrom from '../../utils/arrayFrom'
 
 const Playlist = () => {
     const {

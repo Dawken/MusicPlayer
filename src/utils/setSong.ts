@@ -1,6 +1,6 @@
-import { store } from '../../context/redux/store'
-import { setSongNumber, setTrack } from '../../context/redux/user'
-import spotifyApi from '../../services/spotifyApi'
+import { store } from '../context/redux/store'
+import { setSongNumber, setTrack } from '../context/redux/user'
+import spotifyApi from '../services/spotifyApi'
 
 const setSong = (item: string, index: number, trackId: string) => {
     if (item !== trackId) {

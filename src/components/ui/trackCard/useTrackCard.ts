@@ -1,6 +1,6 @@
 import { useAppSelector } from '../../../context/redux/store'
 import { setPhotoColor } from '../../../context/redux/user'
-import getColorFromImage from '../../../utils/functions/getColorFromImage'
+import getColorFromImage from '../../../utils/getColorFromImage'
 import { useDispatch } from 'react-redux'
 
 const useTrackCard = () => {
