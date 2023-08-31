@@ -8,14 +8,11 @@ import managePlaylist from '../../assets/managePlaylist.png'
 import favouriteArtis from '../../assets/favouriteArists.png'
 import SlideSection from './slideSection/slideSection'
 import LoginButton from '../../components/ui/loginButton/loginButton'
-import useLogin from '../../components/ui/loginButton/useLogin'
 import { spotifyAuthenticationUrl } from '../../services/spotifyAuthenticationUrl'
 import { Link } from 'react-router-dom'
 
 const Login = () => {
     const canvasRef = threejs()
-
-    useLogin()
 
     return (
         <div className={styles.layoutBackground}>
