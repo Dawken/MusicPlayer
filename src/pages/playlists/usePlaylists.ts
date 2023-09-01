@@ -13,12 +13,14 @@ const usePlaylists = () => {
     const spotify = useAuth()
 
     useEffect(() => {
-        if (spotify.accessToken) spotifyApi.setAccessToken(spotify.accessToken)
-        spotifyApi.getUserPlaylists().then((data) => {
-            if (data.body) {
-                setPlayLists(data.body)
-            }
-        })
+        if (!playlists && spotify.accessToken) {
+            spotifyApi.setAccessToken(spotify.accessToken)
+            spotifyApi.getUserPlaylists().then((data) => {
+                if (data.body) {
+                    setPlayLists(data.body)
+                }
+            })
+        }
     }, [spotify.accessToken])
 
     const createPlaylist = () => {

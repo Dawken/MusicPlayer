@@ -8,12 +8,15 @@ import getColorFromImage from '../../utils/getColorFromImage'
 import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
 import { useAppSelector } from '../../context/redux/store'
 import RecommendationTrackObject = SpotifyApi.RecommendationTrackObject
+import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
 
 const usePlaylist = () => {
     const [imageColor, setImageColor] = useState('#424242')
     const [playlist, setPlaylist] = useState<SinglePlaylistResponse>()
     const [playlistSongs, setPlaylistSongs] = useState<PlaylistTrackObject[]>()
     const [open, setOpen] = useState(false)
+    const [userPlaylists, setUserPlaylists] =
+        useState<PlaylistObjectSimplified[]>()
 
     const [recommendedTracks, setRecommendedTracks] =
         useState<RecommendationTrackObject[]>()
@@ -58,6 +61,15 @@ const usePlaylist = () => {
                     })
                     .then((data) => setRecommendedTracks(data.body.tracks))
             })
+            if (!userPlaylists) {
+                spotifyApi
+                    .getMe()
+                    .then((data) =>
+                        spotifyApi
+                            .getUserPlaylists(data.body.id)
+                            .then((data) => setUserPlaylists(data.body.items))
+                    )
+            }
         }
     }, [id, spotify.accessToken, actionTrackUri])
 
@@ -85,6 +97,7 @@ const usePlaylist = () => {
         isTyping,
         track,
         open,
+        userPlaylists,
         handleClickOpen,
         handleClose,
         deletePlaylist,

@@ -30,6 +30,7 @@ const Playlist = () => {
         isTyping,
         track,
         open,
+        userPlaylists,
         handleClickOpen,
         handleClose,
         deletePlaylist,
@@ -92,6 +93,7 @@ const Playlist = () => {
                                           key={index}
                                           isCreatingPlaylist={true}
                                           playlist={playlist}
+                                          userPlaylists={userPlaylists}
                                       />
                                   )
                               })}
@@ -108,6 +110,7 @@ const Playlist = () => {
                                           key={index}
                                           isCreatingPlaylist={true}
                                           playlist={playlist}
+                                          userPlaylists={userPlaylists}
                                       />
                                   )
                               })

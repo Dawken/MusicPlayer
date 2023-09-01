@@ -25,4 +25,5 @@ const useAuth = () => {
 
     return spotify
 }
+
 export default useAuth

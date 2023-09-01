@@ -17,9 +17,17 @@ type ItemType = {
     uri?: string
     isCreatingPlaylist?: boolean
     playlist?: PlaylistObjectSimplified
+    userPlaylists?: PlaylistObjectSimplified[]
 }
 
-const Song = ({ item, index, uri, isCreatingPlaylist, playlist }: ItemType) => {
+const Song = ({
+    item,
+    index,
+    uri,
+    isCreatingPlaylist,
+    playlist,
+    userPlaylists,
+}: ItemType) => {
     const {
         isPlaying,
         playingSongId,
@@ -29,7 +37,6 @@ const Song = ({ item, index, uri, isCreatingPlaylist, playlist }: ItemType) => {
         playingSongColor,
         addSongToPlaylist,
         album,
-        userPlaylists,
     } = useSong({ item })
 
     return (
