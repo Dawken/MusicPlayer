@@ -13,7 +13,8 @@ import SkeletonPlaylistSongItem from '../../components/animations/skeletonLoadin
 import arrayFrom from '../../utils/arrayFrom'
 
 const Album = () => {
-    const { imageColor, album, playlistId, isPlaying, track } = useAlbum()
+    const { imageColor, album, playlistId, isPlaying, track, userPlaylists } =
+        useAlbum()
 
     return (
         <div className={styles.layout}>
@@ -44,6 +45,7 @@ const Album = () => {
                                       index={i}
                                       uri={album.uri}
                                       key={i}
+                                      userPlaylists={userPlaylists}
                                   />
                               )
                           })
