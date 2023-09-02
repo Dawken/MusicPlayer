@@ -13,6 +13,7 @@ import Playlist from './pages/playlist/playlist'
 import Album from './pages/album/album'
 import Login from './pages/login/login'
 import PageNotFound from './pages/errorPages/pageNotFound/pageNotFound'
+import { createTheme, ThemeProvider } from '@mui/material'
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -22,35 +23,46 @@ const queryClient = new QueryClient({
     },
 })
 
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark',
+    },
+})
+
 const App = () => {
     return (
         <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
-                <Routes>
-                    <Route element={<PrivateRoutes />}>
-                        <Route path='/' element={<Home />} />
-                        <Route path='/playlists' element={<Playlists />} />
-                        <Route path='/track/:id' element={<Track />} />
-                        <Route path='/artist/:id' element={<Artist />} />
-                        <Route path='/playlist/:id' element={<Playlist />} />
-                        <Route path='/album/:id' element={<Album />} />
-                        <Route path='*' element={<PageNotFound />} />
-                    </Route>
-                    <Route path='/login' element={<Login />} />
-                </Routes>
-                <ToastContainer
-                    position='top-center'
-                    autoClose={3000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme='dark'
-                />
-            </BrowserRouter>
+            <ThemeProvider theme={darkTheme}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route element={<PrivateRoutes />}>
+                            <Route path='/' element={<Home />} />
+                            <Route path='/playlists' element={<Playlists />} />
+                            <Route path='/track/:id' element={<Track />} />
+                            <Route path='/artist/:id' element={<Artist />} />
+                            <Route
+                                path='/playlist/:id'
+                                element={<Playlist />}
+                            />
+                            <Route path='/album/:id' element={<Album />} />
+                            <Route path='*' element={<PageNotFound />} />
+                        </Route>
+                        <Route path='/login' element={<Login />} />
+                    </Routes>
+                    <ToastContainer
+                        position='top-center'
+                        autoClose={3000}
+                        hideProgressBar={false}
+                        newestOnTop={false}
+                        closeOnClick
+                        rtl={false}
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
+                        theme='dark'
+                    />
+                </BrowserRouter>
+            </ThemeProvider>
         </QueryClientProvider>
     )
 }

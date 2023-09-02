@@ -51,10 +51,7 @@ const SongOptionsMenu = ({
                     <Popper {...bindPopper(popupState)} transition>
                         {({ TransitionProps }) => (
                             <Fade {...TransitionProps} timeout={350}>
-                                <Paper
-                                    className={styles.paper}
-                                    sx={{ backgroundColor: '#1c1c1c' }}
-                                >
+                                <Paper className={styles.paper}>
                                     <Link
                                         to={`/artist/${item.artists[0].id}`}
                                         className={styles.optionsText}
@@ -152,13 +149,7 @@ const SongOptionsMenu = ({
                                                             {...TransitionProps}
                                                             timeout={350}
                                                         >
-                                                            <Paper
-                                                                sx={{
-                                                                    backgroundColor:
-                                                                        '#1c1c1c',
-                                                                    color: '#ffffff',
-                                                                }}
-                                                            >
+                                                            <Paper>
                                                                 {' '}
                                                                 {userPlaylists?.map(
                                                                     (

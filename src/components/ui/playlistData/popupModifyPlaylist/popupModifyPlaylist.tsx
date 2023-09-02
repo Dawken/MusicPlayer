@@ -58,7 +58,12 @@ const PopupModifyPlaylist: React.FC<PopupDeletePlaylistProps> = ({
                     />
                 </div>
             </div>
-            <Button onClick={() => updatePlaylist()}>Save</Button>
+            <Button
+                onClick={() => updatePlaylist()}
+                className={styles.saveButton}
+            >
+                Save
+            </Button>
         </Dialog>
     )
 }
