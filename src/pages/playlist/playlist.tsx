@@ -75,6 +75,7 @@ const Playlist = () => {
                                     | TrackObjectFull[]
                             }
                             uri={playlist.uri}
+                            userPlaylists={userPlaylists}
                         />
                     ) : (
                         arrayFrom(5, <SkeletonPlaylistSongItem />)
@@ -93,7 +94,6 @@ const Playlist = () => {
                                           key={index}
                                           isCreatingPlaylist={true}
                                           playlist={playlist}
-                                          userPlaylists={userPlaylists}
                                       />
                                   )
                               })}
@@ -110,7 +110,6 @@ const Playlist = () => {
                                           key={index}
                                           isCreatingPlaylist={true}
                                           playlist={playlist}
-                                          userPlaylists={userPlaylists}
                                       />
                                   )
                               })

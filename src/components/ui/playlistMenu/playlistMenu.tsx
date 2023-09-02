@@ -5,6 +5,7 @@ import PlaylistTrackObject = SpotifyApi.PlaylistTrackObject
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 import Song from './song/song'
 import TrackObjectFull = SpotifyApi.TrackObjectFull
+import PlaylistObjectSimplified = SpotifyApi.PlaylistObjectSimplified
 
 type PlaylistDataType = {
     playlistData:
@@ -12,6 +13,7 @@ type PlaylistDataType = {
         | TrackObjectFull[]
     uri?: string
     isCreatingPlaylist?: boolean
+    userPlaylists?: PlaylistObjectSimplified[]
 }
 
 const isPlaylistTrackObject = (
@@ -24,6 +26,7 @@ const PlaylistMenu = ({
     playlistData,
     uri,
     isCreatingPlaylist,
+    userPlaylists,
 }: PlaylistDataType) => {
     return (
         <div className={styles.playlistMenu}>
@@ -42,6 +45,7 @@ const PlaylistMenu = ({
                         uri={uri ?? track.id}
                         key={index}
                         isCreatingPlaylist={isCreatingPlaylist}
+                        userPlaylists={userPlaylists}
                     />
                 )
             })}
