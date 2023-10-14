@@ -1,5 +1,9 @@
 # _**MusicPlayer**_
 
+
+https://github.com/Dawken/MusicPlayer/assets/108353406/28038cc6-e3cc-4a20-baf1-33460b07ed20
+
+
 Spotify clone based on spotify-web-api-node package.
 
 **Functions:**
