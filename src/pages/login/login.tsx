@@ -67,6 +67,15 @@ const Login = () => {
                                 <div>Are you ready?</div>
                             </Reveal>
                             <LoginButton />
+                            <a
+                                href={
+                                    'https://github.com/Dawken/MusicPlayer/blob/main/README.md'
+                                }
+                                className={styles.loginInformation}
+                            >
+                                Don&apos;t want to login? Checkout ReadME
+                                presentation
+                            </a>
                         </div>
                     </div>
                 </Slide>
